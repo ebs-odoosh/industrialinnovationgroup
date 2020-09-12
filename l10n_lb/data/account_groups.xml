@@ -1,0 +1,2577 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <!-- Account Groups -->
+        
+
+        <!--الفئة الاولى-->
+        <record id="grp_coa_lb_1" model="account.group">
+            <field name="name">حسابات الرساميل الدائمة</field>
+            <field name="code_prefix">1</field>
+        </record>
+
+        <record id="grp_coa_lb_10" model="account.group">
+            <field name="name">رأس المال</field>
+            <field name="code_prefix">10</field>
+            <field name="parent_id" ref="grp_coa_lb_1"/>
+        </record>
+        <record id="grp_coa_lb_101" model="account.group">
+            <field name="name">رأس المال (للشركة او للشخص)</field>
+            <field name="code_prefix">101</field>
+            <field name="parent_id" ref="grp_coa_lb_10"/>
+        </record>
+        <record id="grp_coa_lb_1011" model="account.group">
+            <field name="name">رأس المال المكتتب غير المستدعى</field>
+            <field name="code_prefix">1011</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_101"/>
+        </record>
+
+        <record id="grp_coa_lb_1012" model="account.group">
+            <field name="name">رأس المال المكتتب المستدعى وغير المدفوع</field>
+            <field name="code_prefix">1012</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_101"/>
+        </record>
+
+        <record id="grp_coa_lb_1013" model="account.group">
+            <field name="name">رأس المال المكتتب المستدعى والمدفوع</field>
+            <field name="code_prefix">1013</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_101"/>
+        </record>
+        <record id="grp_coa_lb_102" model="account.group">
+            <field name="name">علاوات الاصدار والاندماج والمقدمات</field>
+            <field name="code_prefix">102</field>
+            <field name="parent_id" ref="grp_coa_lb_10"/>
+        </record>
+        <record id="grp_coa_lb_1021" model="account.group">
+            <field name="name">علاوات الإصدار</field>
+            <field name="code_prefix">1021</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_102"/>
+        </record>
+
+        <record id="grp_coa_lb_1022" model="account.group">
+            <field name="name">علاوات الإندماج</field>
+            <field name="code_prefix">1022</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_102"/>
+        </record>
+
+        <record id="grp_coa_lb_1023" model="account.group">
+            <field name="name">علاوات المقدمات</field>
+            <field name="code_prefix">1023</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_102"/>
+        </record>
+
+        <record id="grp_coa_lb_1024" model="account.group">
+            <field name="name">علاوات تحويل السندات إلى أسهم</field>
+            <field name="code_prefix">1024</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_102"/>
+        </record>
+        <record id="grp_coa_lb_103" model="account.group">
+            <field name="name">فروقات إعادة التخمين</field>
+            <field name="code_prefix">103</field>
+            <field name="parent_id" ref="grp_coa_lb_10"/>
+        </record>
+        <record id="grp_coa_lb_1031" model="account.group">
+            <field name="name">فروقات اعادة تخمين الاصول الثابتة غير القابلة للاستهلاك</field>
+            <field name="code_prefix">1031</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_103"/>
+        </record>
+
+        <record id="grp_coa_lb_1032" model="account.group">
+            <field name="name">فروقات اعادة تخمين الاصول الثابتة القابلة للاستهلاك</field>
+            <field name="code_prefix">1032</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_103"/>
+        </record>
+        <record id="grp_coa_lb_109" model="account.group">
+            <field name="name">الحساب الشخصي لصاحب المؤسسة</field>
+            <field name="code_prefix">109</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_10"/>
+        </record>
+
+        <record id="grp_coa_lb_11" model="account.group">
+            <field name="name">الاحتياطات</field>
+            <field name="code_prefix">11</field>
+            <field name="parent_id" ref="grp_coa_lb_1"/>
+        </record>
+        <record id="grp_coa_lb_111" model="account.group">
+            <field name="code_prefix">111</field>
+            <field name="name">إحتياطي قانوني</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_11"/>
+        </record>
+        <record id="grp_coa_lb_119" model="account.group">
+            <field name="code_prefix">119</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_11"/>
+            <field name="name">إحتياطات اخرى</field>
+        </record>
+
+        <record id="grp_coa_lb_12" model="account.group">
+            <field name="name">نتائج سابقة مدورة</field>
+            <field name="code_prefix">12</field>
+            <field name="parent_id" ref="grp_coa_lb_1"/>
+        </record>
+        <record id="grp_coa_lb_112" model="account.group">
+            <field name="code_prefix">112</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_12"/>
+            <field name="name">إحتياطات نظامية وتعاقدية</field>
+        </record>
+        <record id="grp_coa_lb_121" model="account.group">
+            <field name="code_prefix">121</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_12"/>
+            <field name="name">نتائج سابقة مدورة دائنة</field>
+        </record>
+
+        <record id="grp_coa_lb_125" model="account.group">
+            <field name="code_prefix">125</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_12"/>
+            <field name="name">نتائج سابقة مدورة مدينة</field>
+        </record>
+        
+
+        <record id="grp_coa_lb_13" model="account.group">
+            <field name="name">النتيجة الصافية للدورة المالية - ربح أو خسارة</field>
+            <field name="code_prefix">13</field>
+            <field name="parent_id" ref="grp_coa_lb_1"/>
+        </record>
+        <record id="grp_coa_lb_131" model="account.group">
+            <field name="code_prefix">131</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_13"/>
+            <field name="name">الهامش التجاري القائم</field>
+        </record>
+
+        <record id="grp_coa_lb_132" model="account.group">
+            <field name="code_prefix">132</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_13"/>
+            <field name="name">القيمة المضافة</field>
+        </record>
+
+        <record id="grp_coa_lb_133" model="account.group">
+            <field name="code_prefix">133</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_13"/>
+            <field name="name">الفائض غير الصافي للإستثمار</field>
+        </record>
+
+        <record id="grp_coa_lb_134" model="account.group">
+            <field name="code_prefix">134</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_13"/>
+            <field name="name">نتيجة الإستثمار (خارج الأعباء والإيرادات المالية)</field>
+        </record>
+
+        <record id="grp_coa_lb_135" model="account.group">
+            <field name="code_prefix">135</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_13"/>
+            <field name="name">النتيجة الجارية قبل الضريبة</field>
+        </record>
+
+        <record id="grp_coa_lb_136" model="account.group">
+            <field name="code_prefix">136</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_13"/>
+            <field name="name">النتيجة خارج الإستثمار</field>
+        </record>
+
+        <record id="grp_coa_lb_138" model="account.group">
+            <field name="code_prefix">138</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_13"/>
+            <field name="name">نتيجة الدورة - أرباح</field>
+        </record>
+
+        <record id="grp_coa_lb_139" model="account.group">
+            <field name="code_prefix">139</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_13"/>
+            <field name="name">نتيجة الدورة - خسائر</field>
+        </record>
+
+        <record id="grp_coa_lb_14" model="account.group">
+            <field name="name">إعانات للتوظيفات</field>
+            <field name="code_prefix">14</field>
+            <field name="parent_id" ref="grp_coa_lb_1"/>
+        </record>
+        <record id="grp_coa_lb_141" model="account.group">
+            <field name="code_prefix">141</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_14"/>
+            <field name="name">إعانات للتوظيفات مقبوضة</field>
+        </record>
+
+        <record id="grp_coa_lb_145" model="account.group">
+            <field name="code_prefix">145</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_14"/>
+            <field name="name">إعانات للتوظيفات محولة للنتائج</field>
+        </record>
+
+        <record id="grp_coa_lb_15" model="account.group">
+            <field name="name">مؤونات لمواجهة أخطار وأعباء</field>
+            <field name="code_prefix">15</field>
+            <field name="parent_id" ref="grp_coa_lb_1"/>
+        </record>
+        <record id="grp_coa_lb_151" model="account.group">
+            <field name="name">مؤونات لمواجهة أخطار</field>
+            <field name="code_prefix">151</field>
+            <field name="parent_id" ref="grp_coa_lb_15"/>
+        </record>
+        <record id="grp_coa_lb_1511" model="account.group">
+            <field name="code_prefix">1511</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_151"/>
+            <field name="name">مؤونات أخطار المنازعات والإحتمالات المختلفة</field>
+        </record>
+
+        <record id="grp_coa_lb_1512" model="account.group">
+            <field name="code_prefix">1512</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_151"/>
+            <field name="name">مؤونات لقاء الضمانات المعطاة للزبائن</field>
+        </record>
+
+        <record id="grp_coa_lb_1513" model="account.group">
+            <field name="code_prefix">1513</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_151"/>
+            <field name="name">مؤونات مواجهة خسائر سعر الصرف</field>
+        </record>
+
+        <record id="grp_coa_lb_1514" model="account.group">
+            <field name="code_prefix">1514</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_151"/>
+            <field name="name">مؤونات مواجهة خسائر على عقود لأجل</field>
+        </record>
+
+        <record id="grp_coa_lb_1515" model="account.group">
+            <field name="code_prefix">1515</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_151"/>
+            <field name="name">مؤونات مواجهة الغرامات والجزاءات</field>
+        </record>
+        <record id="grp_coa_lb_155" model="account.group">
+            <field name="name">مؤونات لمواجهة أعباء</field>
+            <field name="code_prefix">155</field>
+            <field name="parent_id" ref="grp_coa_lb_15"/>
+        </record>
+        <record id="grp_coa_lb_1551" model="account.group">
+            <field name="code_prefix">1551</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_155"/>
+            <field name="name">مؤونات الأعباء الواجب توزيعها على عدة دورات مالية</field>
+        </record>
+
+        <record id="grp_coa_lb_1552" model="account.group">
+            <field name="code_prefix">1552</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_155"/>
+            <field name="name">مؤونات لمواجهة معاشات التعاقد والموجبات المماثلة</field>
+        </record>
+
+        <record id="grp_coa_lb_1553" model="account.group">
+            <field name="code_prefix">1553</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_155"/>
+            <field name="name">مؤونات للضرائب</field>
+        </record>
+
+        <record id="grp_coa_lb_16" model="account.group">
+            <field name="name">ديون مالية طويلة ومتوسطة الأجل</field>
+            <field name="code_prefix">16</field>
+            <field name="parent_id" ref="grp_coa_lb_1"/>
+        </record>
+        <record id="grp_coa_lb_161" model="account.group">
+            <field name="code_prefix">161</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_16"/>
+            <field name="name">قروض لقاء سندات دين</field>
+        </record>
+
+        <record id="grp_coa_lb_162" model="account.group">
+            <field name="code_prefix">162</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_16"/>
+            <field name="name">قروض من مؤسسات التسليف</field>
+        </record>
+
+        <record id="grp_coa_lb_168" model="account.group">
+            <field name="name">قروض وديون مختلفة</field>
+            <field name="code_prefix">168</field>
+            <field name="parent_id" ref="grp_coa_lb_16"/>
+        </record>
+        <record id="grp_coa_lb_1681" model="account.group">
+            <field name="code_prefix">1681</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_168"/>
+            <field name="name">اوراق دفع ناجمة عن شراء المؤسسة التجارية</field>
+        </record>
+
+        <record id="grp_coa_lb_1682" model="account.group">
+            <field name="code_prefix">1682</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_168"/>
+            <field name="name">ودائع وكفالات</field>
+        </record>
+
+        <record id="grp_coa_lb_1683" model="account.group">
+            <field name="code_prefix">1683</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_168"/>
+            <field name="name">سلفات دولة</field>
+        </record>
+
+        <record id="grp_coa_lb_1684" model="account.group">
+            <field name="code_prefix">1684</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_168"/>
+            <field name="name">دخل لمدى الحياة متراكم</field>
+        </record>
+
+        <record id="grp_coa_lb_1689" model="account.group">
+            <field name="code_prefix">1689</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_168"/>
+            <field name="name">ديون اخرى طويلة ومتوسطة الاجل</field>
+        </record>
+
+        <record id="grp_coa_lb_18" model="account.group">
+            <field name="name">حسابات ارتباط المؤسسات والفروع والشركات المشاركة</field>
+            <field name="code_prefix">18</field>
+            <field name="parent_id" ref="grp_coa_lb_1"/>
+        </record>
+        <record id="grp_coa_lb_181" model="account.group">
+            <field name="name">حسابات ارتباط المؤسسات والفروع وشركات المشاركة(حساب لكل مؤسسة)</field>
+            <field name="code_prefix">181</field>
+            <field name="parent_id" ref="grp_coa_lb_18"/>
+        </record>
+        
+        <record id="grp_coa_lb_1811" model="account.group">
+            <field name="code_prefix">1811</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_181"/>
+            <field name="name">رصيد مدور</field>
+        </record>
+
+        <record id="grp_coa_lb_1815" model="account.group">
+            <field name="code_prefix">1815</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_181"/>
+            <field name="name">حركات الدورة المالية</field>
+        </record>
+        <record id="grp_coa_lb_186" model="account.group">
+            <field name="code_prefix">186</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_18"/>
+            <field name="name">الاموال والخدمات المتبادلة بين الفروع(أعباء)</field>
+        </record>
+
+        <record id="grp_coa_lb_187" model="account.group">
+            <field name="code_prefix">187</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_18"/>
+            <field name="name">الأموال والخدمات المتبادلة بين الفروع(إيرادات)</field>
+        </record>
+
+        <record id="grp_coa_lb_19" model="account.group">
+            <field name="name">حسابات تجميع الأعباء والإيرادات</field>
+            <field name="code_prefix">19</field>
+            <field name="parent_id" ref="grp_coa_lb_1"/>
+        </record>
+        <record id="grp_coa_lb_191" model="account.group">
+            <field name="code_prefix">191</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_19"/>
+            <field name="name">تحديد الهامش التجاري القائم</field>
+        </record>
+
+        <record id="grp_coa_lb_192" model="account.group">
+            <field name="code_prefix">192</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_19"/>
+            <field name="name">تحديد القيمة المضافة</field>
+        </record>
+
+        <record id="grp_coa_lb_193" model="account.group">
+            <field name="code_prefix">193</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_19"/>
+            <field name="name">تحديد الفائض غير الصافي للإستثمار</field>
+        </record>
+
+        <record id="grp_coa_lb_194" model="account.group">
+            <field name="code_prefix">194</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_19"/>
+            <field name="name">تحديد نتيجة الإستثمار(قبل الأعباء والإيرادات المالية)</field>
+        </record>
+
+        <record id="grp_coa_lb_195" model="account.group">
+            <field name="code_prefix">195</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_19"/>
+            <field name="name">تحديد النتيجة الجارية قبل الضريبة</field>
+        </record>
+
+        <record id="grp_coa_lb_196" model="account.group">
+            <field name="code_prefix">196</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_19"/>
+            <field name="name">تحديد النتيجة خارج الإستثمار</field>
+        </record>
+
+        <record id="grp_coa_lb_197" model="account.group">
+            <field name="code_prefix">197</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_19"/>
+            <field name="name">تحديد نتيجة الدورة المالية</field>
+        </record>
+
+        <!--الفئة الثانية-->
+        <record id="grp_coa_lb_2" model="account.group">
+            <field name="name">حسابات الأصول الثابتة</field>
+            <field name="code_prefix">2</field>
+        </record>
+
+        <record id="grp_coa_lb_21" model="account.group">
+            <field name="name">الأصول الثابتة غير المادية</field>
+            <field name="code_prefix">21</field>
+            <field name="parent_id" ref="grp_coa_lb_2"/>
+        </record>
+        <record id="grp_coa_lb_211" model="account.group">
+            <field name="code_prefix">211</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_21"/>
+            <field name="name">المؤسسات التجارية - الخلو، الشهرة، الزبائن.....</field>
+        </record>
+        <record id="grp_coa_lb_212" model="account.group">
+            <field name="code_prefix">212</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_21"/>
+            <field name="name">مصاريف التأسيس</field>
+        </record>
+        <record id="grp_coa_lb_213" model="account.group">
+            <field name="code_prefix">213</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_21"/>
+            <field name="name">مصاريف البحوث والتطوير</field>
+        </record>
+        <record id="grp_coa_lb_214" model="account.group">
+            <field name="code_prefix">214</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_21"/>
+            <field name="name">براءات الإختراع-الإجازات-العلامات والقيم المماثلة</field>
+        </record>
+        <record id="grp_coa_lb_219" model="account.group">
+            <field name="name">أصول ثابتة غير مادية أخرى</field>
+            <field name="code_prefix">219</field>
+            <field name="parent_id" ref="grp_coa_lb_21"/>
+        </record>
+        <record id="grp_coa_lb_2191" model="account.group">
+            <field name="code_prefix">2191</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_219"/>
+            <field name="name">.............</field>
+        </record>
+        <record id="grp_coa_lb_2198" model="account.group">
+            <field name="code_prefix">2198</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_219"/>
+            <field name="name">سلفات ودفعات على حساب تقديم أصول ثابتة مادية</field>
+        </record>
+        <record id="grp_coa_lb_22" model="account.group">
+            <field name="name">الأصول الثابتة المادية</field>
+            <field name="code_prefix">22</field>
+            <field name="parent_id" ref="grp_coa_lb_2"/>
+        </record>
+        <record id="grp_coa_lb_221" model="account.group">
+            <field name="name">الأراضي</field>
+            <field name="code_prefix">221</field>
+            <field name="parent_id" ref="grp_coa_lb_22"/>
+        </record>
+        <record id="grp_coa_lb_2211" model="account.group">
+            <field name="code_prefix">2211</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_221"/>
+            <field name="name">الاراضي الفراغ</field>
+        </record>
+        <record id="grp_coa_lb_2212" model="account.group">
+            <field name="code_prefix">2212</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_221"/>
+            <field name="name">الاراضي المبنية</field>
+        </record>
+        <record id="grp_coa_lb_2213" model="account.group">
+            <field name="code_prefix">2213</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_221"/>
+            <field name="name">الاراضي برسم الإستثمار الجوفي - مناجم- مقاليع...</field>
+        </record>
+        <record id="grp_coa_lb_2214" model="account.group">
+            <field name="code_prefix">2214</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_221"/>
+            <field name="name">استصلاح وتنظيم الأراضي</field>
+        </record>
+        <record id="grp_coa_lb_223" model="account.group">
+            <field name="name">الأبنية</field>
+            <field name="code_prefix">223</field>
+            <field name="parent_id" ref="grp_coa_lb_22"/>
+        </record>
+        <record id="grp_coa_lb_224" model="account.group">
+            <field name="name">التجهيزات الفنية- والآلات الصناعية</field>
+            <field name="code_prefix">224</field>
+            <field name="parent_id" ref="grp_coa_lb_22"/>
+        </record>
+        <record id="grp_coa_lb_226" model="account.group">
+            <field name="name">أصول ثابتة مادية أخرى</field>
+            <field name="code_prefix">226</field>
+            <field name="parent_id" ref="grp_coa_lb_22"/>
+        </record>
+        <record id="grp_coa_lb_2262" model="account.group">
+            <field name="name">أدوات مكتبية ومعلوماتية</field>
+            <field name="code_prefix">2262</field>
+            <field name="parent_id" ref="grp_coa_lb_226"/>
+        </record>
+        <record id="grp_coa_lb_227" model="account.group">
+            <field name="name">أصول ثابتة مادية قيد الصنع</field>
+            <field name="code_prefix">227</field>
+            <field name="parent_id" ref="grp_coa_lb_22"/>
+        </record>
+        <record id="grp_coa_lb_25" model="account.group">
+            <field name="name">الأصول الثابتة المالية</field>
+            <field name="code_prefix">25</field>
+            <field name="parent_id" ref="grp_coa_lb_2"/>
+        </record>
+        <record id="grp_coa_lb_252" model="account.group">
+            <field name="name">ذمم مدينة مرتبطة بمشاركات</field>
+            <field name="code_prefix">252</field>
+            <field name="parent_id" ref="grp_coa_lb_25"/>
+        </record>
+        <record id="grp_coa_lb_253" model="account.group">
+            <field name="name">سندات أخرى مجمدة</field>
+            <field name="code_prefix">253</field>
+            <field name="parent_id" ref="grp_coa_lb_25"/>
+        </record>
+        <record id="grp_coa_lb_255" model="account.group">
+            <field name="name">قروض طويلة ومتوسطة الأجل</field>
+            <field name="code_prefix">255</field>
+            <field name="parent_id" ref="grp_coa_lb_25"/>
+        </record>
+        <record id="grp_coa_lb_28" model="account.group">
+            <field name="name">استهلاكات الأصول الثابتة</field>
+            <field name="code_prefix">28</field>
+            <field name="parent_id" ref="grp_coa_lb_2"/>
+        </record>
+        <record id="grp_coa_lb_281" model="account.group">
+            <field name="name">استهلاكات الاصول الثابتة غير المادية الاخرى</field>
+            <field name="code_prefix">281</field>
+            <field name="parent_id" ref="grp_coa_lb_28"/>
+        </record>
+        <record id="grp_coa_lb_282" model="account.group">
+            <field name="name">استهلاكات الاصول الثابتة المادية</field>
+            <field name="code_prefix">282</field>
+            <field name="parent_id" ref="grp_coa_lb_28"/>
+        </record>
+        <record id="grp_coa_lb_29" model="account.group">
+            <field name="name">مؤونات هبوط أسعار الأصول الثابتة</field>
+            <field name="code_prefix">29</field>
+            <field name="parent_id" ref="grp_coa_lb_2"/>
+        </record>
+        <record id="grp_coa_lb_291" model="account.group">
+            <field name="name">مؤونات هبوط قيم الأصول الثابتة غير المادية</field>
+            <field name="code_prefix">291</field>
+            <field name="parent_id" ref="grp_coa_lb_29"/>
+        </record>
+        <record id="grp_coa_lb_292" model="account.group">
+            <field name="name">مؤونات هبوط أسعار الأصول الثابتة المادية</field>
+            <field name="code_prefix">292</field>
+            <field name="parent_id" ref="grp_coa_lb_29"/>
+        </record>
+        <record id="grp_coa_lb_295" model="account.group">
+            <field name="name">مؤونات هبوط أسعار الأصول الثابتة المالية</field>
+            <field name="code_prefix">295</field>
+            <field name="parent_id" ref="grp_coa_lb_29"/>
+        </record>
+
+        <!--الفئة الثالثة-->
+        <record id="grp_coa_lb_3" model="account.group">
+            <field name="name">المخزون وقيد الصنع</field>
+            <field name="code_prefix">3</field>
+        </record>
+
+        <record id="grp_coa_lb_31" model="account.group">
+            <field name="name">مواد أولية واستهلاكية</field>
+            <field name="code_prefix">31</field>
+            <field name="parent_id" ref="grp_coa_lb_3"/>
+        </record>
+        <record id="grp_coa_lb_32" model="account.group">
+            <field name="name">نفايات مواد اولية ومخزون</field>
+            <field name="code_prefix">32</field>
+            <field name="parent_id" ref="grp_coa_lb_3"/>
+        </record>
+        <record id="grp_coa_lb_325" model="account.group">
+            <field name="name">نفايات مواد اخرى</field>
+            <field name="code_prefix">325</field>
+            <field name="parent_id" ref="grp_coa_lb_32"/>
+        </record>
+        <record id="grp_coa_lb_33" model="account.group">
+            <field name="name">قيد الصنع(سلع وأشغال وخدمات)</field>
+            <field name="code_prefix">33</field>
+            <field name="parent_id" ref="grp_coa_lb_3"/>
+        </record>
+        <record id="grp_coa_lb_35" model="account.group">
+            <field name="name">منتجات</field>
+            <field name="code_prefix">35</field>
+            <field name="parent_id" ref="grp_coa_lb_3"/>
+        </record>
+        <record id="grp_coa_lb_37" model="account.group">
+            <field name="name">البضائع المعدة للبيع</field>
+            <field name="code_prefix">37</field>
+            <field name="parent_id" ref="grp_coa_lb_3"/>
+        </record>
+        <record id="grp_coa_lb_39" model="account.group">
+            <field name="name">مؤونات هبوط أسعار المخزون وقيد الصنع</field>
+            <field name="code_prefix">39</field>
+            <field name="parent_id" ref="grp_coa_lb_3"/>
+        </record>
+
+        <!--الفئة الرابعة-->
+        <record id="grp_coa_lb_4" model="account.group">
+            <field name="name">حسابات الزمم</field>
+            <field name="code_prefix">4</field>
+        </record>
+
+        <record id="grp_coa_lb_40" model="account.group">
+            <field name="name">الموردون</field>
+            <field name="code_prefix">40</field>
+            <field name="parent_id" ref="grp_coa_lb_4"/>
+        </record>
+        <record id="grp_coa_lb_401" model="account.group">
+            <field name="name">ذمم دائنة - موردو الإستثمار</field>
+            <field name="code_prefix">401</field>
+            <field name="parent_id" ref="grp_coa_lb_40"/>
+        </record>
+		
+		<record id="grp_coa_lb_4011" model="account.group">
+            <field name="name">ذمم دائنة - موردو الإستثمار</field>
+            <field name="code_prefix">4011</field>
+            <field name="parent_id" ref="grp_coa_lb_401"/>
+        </record>
+		
+        <record id="grp_coa_lb_403" model="account.group">
+            <field name="name">موردو الأصول الثابتة</field>
+            <field name="code_prefix">403</field>
+            <field name="parent_id" ref="grp_coa_lb_40"/>
+        </record>
+		
+		<record id="grp_coa_lb_4031" model="account.group">
+            <field name="name">موردو الأصول الثابتة</field>
+            <field name="code_prefix">4031</field>
+            <field name="parent_id" ref="grp_coa_lb_403"/>
+        </record>
+		
+        <record id="grp_coa_lb_41" model="account.group">
+            <field name="name">الزبائن</field>
+            <field name="code_prefix">41</field>
+            <field name="parent_id" ref="grp_coa_lb_4"/>
+        </record>
+        <record id="grp_coa_lb_411" model="account.group">
+            <field name="name">فواتير الزبائن</field>
+            <field name="code_prefix">411</field>
+            <field name="parent_id" ref="grp_coa_lb_41"/>
+        </record>
+		<record id="grp_coa_lb_4111" model="account.group">
+            <field name="name">فواتير الزبائن</field>
+            <field name="code_prefix">4111</field>
+            <field name="parent_id" ref="grp_coa_lb_411"/>
+        </record>
+        <record id="grp_coa_lb_42" model="account.group">
+            <field name="name">المستخدمون</field>
+            <field name="code_prefix">42</field>
+            <field name="parent_id" ref="grp_coa_lb_4"/>
+        </record>
+        <record id="grp_coa_lb_428" model="account.group">
+            <field name="name">حسابات المستخدمين المدينة</field>
+            <field name="code_prefix">428</field>
+            <field name="parent_id" ref="grp_coa_lb_42"/>
+        </record>
+        <record id="grp_coa_lb_43" model="account.group">
+            <field name="name">مؤسسات الضمان الإجتماعي</field>
+            <field name="code_prefix">43</field>
+            <field name="parent_id" ref="grp_coa_lb_4"/>
+        </record>
+        <record id="grp_coa_lb_431" model="account.group">
+            <field name="name">ذمم دائنة تجاه مؤسسات الضمان الإجتماعي</field>
+            <field name="code_prefix">431</field>
+            <field name="parent_id" ref="grp_coa_lb_43"/>
+        </record>
+
+        <record id="grp_coa_lb_44" model="account.group">
+            <field name="name">الدولة والمؤسسات العامة</field>
+            <field name="code_prefix">44</field>
+            <field name="parent_id" ref="grp_coa_lb_4"/>
+        </record>
+        <record id="grp_coa_lb_441" model="account.group">
+            <field name="name">ضرائب متوجبة على الإستثمار</field>
+            <field name="code_prefix">441</field>
+            <field name="parent_id" ref="grp_coa_lb_44"/>
+        </record>
+        <record id="grp_coa_lb_442" model="account.group">
+            <field name="name">الضريبة على القيمة المضافة</field>
+            <field name="code_prefix">442</field>
+            <field name="parent_id" ref="grp_coa_lb_44"/>
+        </record>
+		
+		
+		<record id="grp_coa_lb_4425" model="account.group">
+            <field name="name">Paid to MOF</field>
+            <field name="code_prefix">4425</field>
+            <field name="parent_id" ref="grp_coa_lb_442"/>
+        </record>
+		
+		
+		<record id="grp_coa_lb_4426" model="account.group">
+            <field name="name">TVA Purchase and Services Closing</field>
+            <field name="code_prefix">4426</field>
+            <field name="parent_id" ref="grp_coa_lb_442"/>
+        </record>
+		
+		<record id="grp_coa_lb_4427" model="account.group">
+            <field name="name">Sales TVA</field>
+            <field name="code_prefix">4427</field>
+            <field name="parent_id" ref="grp_coa_lb_442"/>
+        </record>
+		
+		<record id="grp_coa_lb_442700" model="account.group">
+            <field name="name">Sales TVA</field>
+            <field name="code_prefix">442700</field>
+            <field name="parent_id" ref="grp_coa_lb_4427"/>
+        </record>
+		
+		<record id="grp_coa_lb_4421" model="account.group">
+            <field name="name">الضريبة على القيمة المضافة المدفوعة</field>
+            <field name="code_prefix">4421</field>
+            <field name="parent_id" ref="grp_coa_lb_442"/>
+        </record>
+		
+        <record id="grp_coa_lb_44210" model="account.group">
+            <field name="name">TVA Service and Purchase</field>
+            <field name="code_prefix">44210</field>
+            <field name="parent_id" ref="grp_coa_lb_4421"/>
+        </record>
+		
+		 <record id="grp_coa_lb_44216" model="account.group">
+            <field name="name">TVA Charges</field>
+            <field name="code_prefix">44216</field>
+            <field name="parent_id" ref="grp_coa_lb_4421"/>
+        </record>
+		
+		 <record id="grp_coa_lb_44213" model="account.group">
+            <field name="name">TVA Asset</field>
+            <field name="code_prefix">44213</field>
+            <field name="parent_id" ref="grp_coa_lb_4421"/>
+        </record>
+		
+		
+		
+        <record id="grp_coa_lb_443" model="account.group">
+            <field name="name">ضرائب متوجبة خارج الإستثمار</field>
+            <field name="code_prefix">443</field>
+            <field name="parent_id" ref="grp_coa_lb_44"/>
+        </record>
+        <record id="grp_coa_lb_449" model="account.group">
+            <field name="name">الدولة والمؤسسات العامة - ذمم مدينة</field>
+            <field name="code_prefix">449</field>
+            <field name="parent_id" ref="grp_coa_lb_44"/>
+        </record>
+        <record id="grp_coa_lb_45" model="account.group">
+            <field name="name">الشركاء</field>
+            <field name="code_prefix">45</field>
+            <field name="parent_id" ref="grp_coa_lb_4"/>
+        </record>
+        <record id="grp_coa_lb_451" model="account.group">
+            <field name="name">حسابات الشركاء الجارية المدينة أو الدائنة</field>
+            <field name="code_prefix">451</field>
+            <field name="parent_id" ref="grp_coa_lb_45"/>
+        </record>
+        <record id="grp_coa_lb_4511" model="account.group">
+            <field name="name">شركات شقيقة</field>
+            <field name="code_prefix">4511</field>
+            <field name="parent_id" ref="grp_coa_lb_451"/>
+        </record>
+        <record id="grp_coa_lb_455" model="account.group">
+            <field name="name">ذمم دائنة أخرى للشركاء</field>
+            <field name="code_prefix">455</field>
+            <field name="parent_id" ref="grp_coa_lb_45"/>
+        </record>
+        <record id="grp_coa_lb_459" model="account.group">
+            <field name="name">ذمم الشركاء المدينة</field>
+            <field name="code_prefix">459</field>
+            <field name="parent_id" ref="grp_coa_lb_45"/>
+        </record>
+        <record id="grp_coa_lb_46" model="account.group">
+            <field name="name">ذمم مختلفة</field>
+            <field name="code_prefix">46</field>
+            <field name="parent_id" ref="grp_coa_lb_4"/>
+        </record>
+        <record id="grp_coa_lb_461" model="account.group">
+            <field name="name">ذمم الإستثمار الدائنة الأخرى</field>
+            <field name="code_prefix">461</field>
+            <field name="parent_id" ref="grp_coa_lb_46"/>
+        </record>
+        <record id="grp_coa_lb_463" model="account.group">
+            <field name="name">اقساط برسم الدفع على أصول ثابتة مالية</field>
+            <field name="code_prefix">463</field>
+            <field name="parent_id" ref="grp_coa_lb_46"/>
+        </record>
+        <record id="grp_coa_lb_465" model="account.group">
+            <field name="name">دائنون مختلفون خارج الإستثمار</field>
+            <field name="code_prefix">465</field>
+            <field name="parent_id" ref="grp_coa_lb_46"/>
+        </record>
+		
+		<record id="grp_coa_lb_4651" model="account.group">
+            <field name="name">دائنون مختلفون خارج الإستثمار</field>
+            <field name="code_prefix">4651</field>
+            <field name="parent_id" ref="grp_coa_lb_465"/>
+        </record>
+
+        <record id="grp_coa_lb_468" model="account.group">
+            <field name="name">مدينون مختلفون للإستثمار</field>
+            <field name="code_prefix">468</field>
+            <field name="parent_id" ref="grp_coa_lb_46"/>
+        </record>
+        <record id="grp_coa_lb_469" model="account.group">
+            <field name="name">مدينون مختلفون - خارج الإستثمار</field>
+            <field name="code_prefix">469</field>
+            <field name="parent_id" ref="grp_coa_lb_46"/>
+        </record>
+        <record id="grp_coa_lb_47" model="account.group">
+            <field name="name">حسابات التسوية</field>
+            <field name="code_prefix">47</field>
+            <field name="parent_id" ref="grp_coa_lb_4"/>
+        </record>
+        <record id="grp_coa_lb_471" model="account.group">
+            <field name="name">الأعباء الواجب توزيعها على عدة دورات</field>
+            <field name="code_prefix">471</field>
+            <field name="parent_id" ref="grp_coa_lb_47"/>
+        </record>
+        <record id="grp_coa_lb_475" model="account.group">
+            <field name="name">فروقات صرف - خصوم</field>
+            <field name="code_prefix">475</field>
+            <field name="parent_id" ref="grp_coa_lb_47"/>
+        </record>
+        <record id="grp_coa_lb_476" model="account.group">
+            <field name="name">فروقات صرف - أصول</field>
+            <field name="code_prefix">476</field>
+            <field name="parent_id" ref="grp_coa_lb_47"/>
+        </record>
+        <record id="grp_coa_lb_48" model="account.group">
+            <field name="name">حسابات مؤقتة وقيد التسوية</field>
+            <field name="code_prefix">48</field>
+            <field name="parent_id" ref="grp_coa_lb_4"/>
+        </record>
+        <record id="grp_coa_lb_49" model="account.group">
+            <field name="name">مؤونات لمواجهة هبوط قيم حسابات الذمم</field>
+            <field name="code_prefix">49</field>
+            <field name="parent_id" ref="grp_coa_lb_4"/>
+        </record>
+        <record id="grp_coa_lb_496" model="account.group">
+            <field name="name">مؤونات هبوط قيم حسابات الذمم المدينة المختلفة</field>
+            <field name="code_prefix">496</field>
+            <field name="parent_id" ref="grp_coa_lb_49"/>
+        </record>
+
+        <!--الفئة الخامسة-->
+        <record id="grp_coa_lb_5" model="account.group">
+            <field name="name">الفئة الخامسة - الحسابات المالية</field>
+            <field name="code_prefix">5</field>
+        </record>
+        <record id="grp_coa_lb_53" model="account.group">
+            <field name="name">الصندوق</field>
+            <field name="code_prefix">53</field>
+            <field name="parent_id" ref="grp_coa_lb_5"/>
+        </record>
+        <record id="grp_coa_lb_50" model="account.group">
+            <field name="name">سندات التوظيف</field>
+            <field name="code_prefix">50</field>
+            <field name="parent_id" ref="grp_coa_lb_5"/>
+        </record>
+        <record id="grp_coa_lb_51" model="account.group">
+            <field name="name">المؤسسات المالية</field>
+            <field name="code_prefix">51</field>
+            <field name="parent_id" ref="grp_coa_lb_5"/>
+        </record>
+        <record id="grp_coa_lb_512" model="account.group">
+            <field name="name">بنـــوك</field>
+            <field name="code_prefix">512</field>
+            <field name="parent_id" ref="grp_coa_lb_51"/>
+        </record>
+        <record id="grp_coa_lb_513" model="account.group">
+            <field name="name">بطاقات الائتمان</field>
+            <field name="code_prefix">513</field>
+            <field name="parent_id" ref="grp_coa_lb_51"/>
+        </record>
+
+
+
+
+        <!--الفئة السادسة-->
+        <record id='grp_coa_lb_6' model='account.group'>
+            <field name='code_prefix'>6</field>
+            <field name='name'>الفئة السادسة - حسابات الأعباء</field>
+        </record>
+        <record id='grp_coa_lb_60' model='account.group'>
+            <field name='code_prefix'>60</field>
+            <field name='parent_id' ref='grp_coa_lb_6'/>
+            <field name='name'>مشتريات البضاعة وقيمة التغيير في المخزون</field>
+        </record>
+        <record id='grp_coa_lb_601' model='account.group'>
+            <field name='code_prefix'>601</field>
+            <field name='parent_id' ref='grp_coa_lb_60'/>
+            <field name='name'>مشتريات البضاعة</field>
+        </record>
+        <record id='grp_coa_lb_6018' model='account.group'>
+            <field name='code_prefix'>6018</field>
+            <field name='parent_id' ref='grp_coa_lb_601'/>
+            <field name='name'>نفقات اضافية على شراء البضائع والعبوات</field>
+        </record>
+        <record id='grp_coa_lb_605' model='account.group'>
+            <field name='code_prefix'>605</field>
+            <field name='parent_id' ref='grp_coa_lb_60'/>
+            <field name='name'>قيمة التغيير في مخزون البضاعة</field>
+        </record>
+        <record id='grp_coa_lb_61' model='account.group'>
+            <field name='code_prefix'>61</field>
+            <field name='parent_id' ref='grp_coa_lb_6'/>
+            <field name='name'>مواد اولية و استهلاكية مستخدمة</field>
+        </record>
+        <record id='grp_coa_lb_611' model='account.group'>
+            <field name='code_prefix'>611</field>
+            <field name='parent_id' ref='grp_coa_lb_61'/>
+            <field name='name'>مشتريات المواد الأولية و الأستهلاكية</field>
+        </record>
+        <record id='grp_coa_lb_6111' model='account.group'>
+            <field name='code_prefix'>6111</field>
+            <field name='parent_id' ref='grp_coa_lb_611'/>
+            <field name='name'>شراء مواد اولية</field>
+        </record>
+        <record id='grp_coa_lb_6112' model='account.group'>
+            <field name='code_prefix'>6112</field>
+            <field name='parent_id' ref='grp_coa_lb_611'/>
+            <field name='name'>شراء مواد ولوازم استهلاكية</field>
+        </record>
+        <record id='grp_coa_lb_6113' model='account.group'>
+            <field name='code_prefix'>6113</field>
+            <field name='parent_id' ref='grp_coa_lb_611'/>
+            <field name='name'>شراء عبوات</field>
+        </record>
+        <record id='grp_coa_lb_6118' model='account.group'>
+            <field name='code_prefix'>6118</field>
+            <field name='parent_id' ref='grp_coa_lb_611'/>
+            <field name='name'>مصاريف اضافية على شراء م.اوليةواستهلاكية</field>
+        </record>
+        <record id='grp_coa_lb_615' model='account.group'>
+            <field name='code_prefix'>615</field>
+            <field name='parent_id' ref='grp_coa_lb_61'/>
+            <field name='name'>قيمة التغيير في مخزون م.اولية واستهلاكية</field>
+        </record>
+        <record id='grp_coa_lb_62' model='account.group'>
+            <field name='code_prefix'>62</field>
+            <field name='parent_id' ref='grp_coa_lb_6'/>
+            <field name='name'>اعباء خارجية اخرى</field>
+        </record>
+        <record id='grp_coa_lb_621' model='account.group'>
+            <field name='code_prefix'>621</field>
+            <field name='parent_id' ref='grp_coa_lb_62'/>
+            <field name='name'>مشتريات من ملتزمين ثانويين</field>
+        </record>
+        <record id='grp_coa_lb_625' model='account.group'>
+            <field name='code_prefix'>625</field>
+            <field name='parent_id' ref='grp_coa_lb_62'/>
+            <field name='name'>الأتاوى</field>
+        </record>
+        <record id='grp_coa_lb_626' model='account.group'>
+            <field name='code_prefix'>626</field>
+            <field name='parent_id' ref='grp_coa_lb_62'/>
+            <field name='name'>الخدمات الخارجية</field>
+        </record>
+        <record id='grp_coa_lb_6261' model='account.group'>
+            <field name='code_prefix'>6261</field>
+            <field name='parent_id' ref='grp_coa_lb_626'/>
+            <field name='name'>نقليات واتصالات</field>
+        </record>
+        <record id='grp_coa_lb_6263' model='account.group'>
+            <field name='code_prefix'>6263</field>
+            <field name='parent_id' ref='grp_coa_lb_626'/>
+            <field name='name'>الايجارات ( خدمات الابنية )</field>
+        </record>
+        <record id='grp_coa_lb_6264' model='account.group'>
+            <field name='code_prefix'>6264</field>
+            <field name='parent_id' ref='grp_coa_lb_626'/>
+            <field name='name'>خدمات الفنادق و المطاعم</field>
+        </record>
+        <record id='grp_coa_lb_6265' model='account.group'>
+            <field name='code_prefix'>6265</field>
+            <field name='parent_id' ref='grp_coa_lb_626'/>
+            <field name='name'>خدمات المستخدمين</field>
+        </record>
+        <record id='grp_coa_lb_6266' model='account.group'>
+            <field name='code_prefix'>6266</field>
+            <field name='parent_id' ref='grp_coa_lb_626'/>
+            <field name='name'>خدمات تعليمية</field>
+        </record>
+        <record id='grp_coa_lb_6269' model='account.group'>
+            <field name='code_prefix'>6269</field>
+            <field name='parent_id' ref='grp_coa_lb_626'/>
+            <field name='name'>خدمات خارجية اخرى</field>
+        </record>
+        <record id='grp_coa_lb_63' model='account.group'>
+            <field name='code_prefix'>63</field>
+            <field name='parent_id' ref='grp_coa_lb_6'/>
+            <field name='name'>اعباء المستخدمين</field>
+        </record>
+        <record id='grp_coa_lb_631' model='account.group'>
+            <field name='code_prefix'>631</field>
+            <field name='parent_id' ref='grp_coa_lb_63'/>
+            <field name='name'>رواتب واجور المستخدمين</field>
+        </record>
+        <record id='grp_coa_lb_635' model='account.group'>
+            <field name='code_prefix'>635</field>
+            <field name='parent_id' ref='grp_coa_lb_63'/>
+            <field name='name'>اعباء اجتماعية ( ضمان اجتماعي )</field>
+        </record>
+        <record id='grp_coa_lb_64' model='account.group'>
+            <field name='code_prefix'>64</field>
+            <field name='parent_id' ref='grp_coa_lb_6'/>
+            <field name='name'>ضرائب و رسوم و مدفوعات مماثلة</field>
+        </record>
+        <record id='grp_coa_lb_65' model='account.group'>
+            <field name='code_prefix'>65</field>
+            <field name='parent_id' ref='grp_coa_lb_6'/>
+            <field name='name'>مخصصات الأستهلاكات والمؤونات للأستثمار</field>
+        </record>
+        <record id='grp_coa_lb_651' model='account.group'>
+            <field name='code_prefix'>651</field>
+            <field name='parent_id' ref='grp_coa_lb_65'/>
+            <field name='name'>مخصصات الأستهلاكات</field>
+        </record>
+        <record id='grp_coa_lb_655' model='account.group'>
+            <field name='code_prefix'>655</field>
+            <field name='parent_id' ref='grp_coa_lb_65'/>
+            <field name='name'>مخصصات المؤونات</field>
+        </record>
+        <record id='grp_coa_lb_66' model='account.group'>
+            <field name='code_prefix'>66</field>
+            <field name='parent_id' ref='grp_coa_lb_6'/>
+            <field name='name'>أعباء ادارية عادية اخرى</field>
+        </record>
+        <record id='grp_coa_lb_661' model='account.group'>
+            <field name='code_prefix'>661</field>
+            <field name='parent_id' ref='grp_coa_lb_66'/>
+            <field name='name'>اعباء ادارية اخرى</field>
+        </record>
+        <record id='grp_coa_lb_67' model='account.group'>
+            <field name='code_prefix'>67</field>
+            <field name='parent_id' ref='grp_coa_lb_6'/>
+            <field name='name'>الاعباء المالية</field>
+        </record>
+        <record id='grp_coa_lb_673' model='account.group'>
+            <field name='code_prefix'>673</field>
+            <field name='parent_id' ref='grp_coa_lb_67'/>
+            <field name='name'>فوائد واعباء مشابهة</field>
+        </record>
+        <record id='grp_coa_lb_675' model='account.group'>
+            <field name='code_prefix'>675</field>
+            <field name='parent_id' ref='grp_coa_lb_67'/>
+            <field name='name'>فروقات صرف سلبية</field>
+        </record>
+        <record id='grp_coa_lb_679' model='account.group'>
+            <field name='code_prefix'>679</field>
+            <field name='parent_id' ref='grp_coa_lb_67'/>
+            <field name='name'>مخصصات الاستهلاكات والمؤونات المالية</field>
+        </record>
+        <record id='grp_coa_lb_68' model='account.group'>
+            <field name='code_prefix'>68</field>
+            <field name='parent_id' ref='grp_coa_lb_6'/>
+            <field name='name'>اعباء خارج الاستثمار</field>
+        </record>
+        <record id='grp_coa_lb_681' model='account.group'>
+            <field name='code_prefix'>681</field>
+            <field name='parent_id' ref='grp_coa_lb_68'/>
+            <field name='name'>القيمةالدفتريةللأصول الثابتةالمتفرغ عنها</field>
+        </record>
+        <record id='grp_coa_lb_685' model='account.group'>
+            <field name='code_prefix'>685</field>
+            <field name='parent_id' ref='grp_coa_lb_68'/>
+            <field name='name'>اعباء اخرى خارج الاستثمار</field>
+        </record>
+        <record id='grp_coa_lb_6851' model='account.group'>
+            <field name='code_prefix'>6851</field>
+            <field name='parent_id' ref='grp_coa_lb_685'/>
+            <field name='name'>اعباء على عمليات ادارة المؤسسة</field>
+        </record>
+        <record id='grp_coa_lb_6855' model='account.group'>
+            <field name='code_prefix'>6855</field>
+            <field name='parent_id' ref='grp_coa_lb_685'/>
+            <field name='name'>اعباء على عمليات رأسمالية</field>
+        </record>
+        <record id='grp_coa_lb_689' model='account.group'>
+            <field name='code_prefix'>689</field>
+            <field name='parent_id' ref='grp_coa_lb_68'/>
+            <field name='name'>مخصصات استهلاكات و مؤونات خارج الاستثمار</field>
+        </record>
+
+
+        <!--الفئة السابعة-->
+        <record id='grp_coa_lb_7' model='account.group'>
+            <field name='code_prefix'>7</field>
+            <field name='name'>الفئة السابعة - حسابات الايرادات</field>
+        </record>
+        <record id='grp_coa_lb_70' model='account.group'>
+            <field name='code_prefix'>70</field>
+            <field name='parent_id' ref='grp_coa_lb_7'/>
+            <field name='name'>مبيعات البضاعة</field>
+        </record>
+        <record id='grp_coa_lb_71' model='account.group'>
+            <field name='code_prefix'>71</field>
+            <field name='parent_id' ref='grp_coa_lb_7'/>
+            <field name='name'>المنتجات المباعة</field>
+        </record>
+        <record id='grp_coa_lb_711' model='account.group'>
+            <field name='code_prefix'>711</field>
+            <field name='parent_id' ref='grp_coa_lb_71'/>
+            <field name='name'>مبيعات</field>
+        </record>
+        <record id='grp_coa_lb_719' model='account.group'>
+            <field name='code_prefix'>719</field>
+            <field name='parent_id' ref='grp_coa_lb_71'/>
+            <field name='name'>حسومات ممنوحة</field>
+        </record>
+        <record id='grp_coa_lb_72' model='account.group'>
+            <field name='code_prefix'>72</field>
+            <field name='parent_id' ref='grp_coa_lb_7'/>
+            <field name='name'>الانتاج المخزون ( قيمة التغيير )</field>
+        </record>
+        <record id='grp_coa_lb_721' model='account.group'>
+            <field name='code_prefix'>721</field>
+            <field name='parent_id' ref='grp_coa_lb_72'/>
+            <field name='name'>قيد الصنع ( اموال )</field>
+        </record>
+        <record id='grp_coa_lb_722' model='account.group'>
+            <field name='code_prefix'>722</field>
+            <field name='parent_id' ref='grp_coa_lb_72'/>
+            <field name='name'>قيد الصنع ( خدمات )</field>
+        </record>
+        <record id='grp_coa_lb_725' model='account.group'>
+            <field name='code_prefix'>725</field>
+            <field name='parent_id' ref='grp_coa_lb_72'/>
+            <field name='name'>منتجــات</field>
+        </record>
+        <record id='grp_coa_lb_73' model='account.group'>
+            <field name='code_prefix'>73</field>
+            <field name='parent_id' ref='grp_coa_lb_7'/>
+            <field name='name'>منتجات لها طابع الاصول الثابتة</field>
+        </record>
+        <record id='grp_coa_lb_74' model='account.group'>
+            <field name='code_prefix'>74</field>
+            <field name='parent_id' ref='grp_coa_lb_7'/>
+            <field name='name'>اعانات للأستثمار</field>
+        </record>
+        <record id='grp_coa_lb_75' model='account.group'>
+            <field name='code_prefix'>75</field>
+            <field name='parent_id' ref='grp_coa_lb_7'/>
+            <field name='name'>استردادات من المؤونات - للأستثمار</field>
+        </record>
+        <record id='grp_coa_lb_76' model='account.group'>
+            <field name='code_prefix'>76</field>
+            <field name='parent_id' ref='grp_coa_lb_7'/>
+            <field name='name'>ايرادات اخرى ناتجة عن الاستثمار</field>
+        </record>
+        <record id='grp_coa_lb_761' model='account.group'>
+            <field name='code_prefix'>761</field>
+            <field name='parent_id' ref='grp_coa_lb_76'/>
+            <field name='name'>ايرادات عادية اخرى</field>
+        </record>
+        <record id='grp_coa_lb_765' model='account.group'>
+            <field name='code_prefix'>765</field>
+            <field name='parent_id' ref='grp_coa_lb_76'/>
+            <field name='name'>حصص ارباح العمليات المشتركة</field>
+        </record>
+        <record id='grp_coa_lb_77' model='account.group'>
+            <field name='code_prefix'>77</field>
+            <field name='parent_id' ref='grp_coa_lb_7'/>
+            <field name='name'>الايرادات المالية</field>
+        </record>
+        <record id='grp_coa_lb_771' model='account.group'>
+            <field name='code_prefix'>771</field>
+            <field name='parent_id' ref='grp_coa_lb_77'/>
+            <field name='name'>ايرادات سندات المشاركة</field>
+        </record>
+        <record id='grp_coa_lb_772' model='account.group'>
+            <field name='code_prefix'>772</field>
+            <field name='parent_id' ref='grp_coa_lb_77'/>
+            <field name='name'>ايرادات القيم المنقولة الاخرى</field>
+        </record>
+        <record id='grp_coa_lb_773' model='account.group'>
+            <field name='code_prefix'>773</field>
+            <field name='parent_id' ref='grp_coa_lb_77'/>
+            <field name='name'>فوائد وايرادات مشابهة</field>
+        </record>
+        <record id='grp_coa_lb_775' model='account.group'>
+            <field name='code_prefix'>775</field>
+            <field name='parent_id' ref='grp_coa_lb_77'/>
+            <field name='name'>فروقات صرف ايجابية</field>
+        </record>
+        <record id='grp_coa_lb_778' model='account.group'>
+            <field name='code_prefix'>778</field>
+            <field name='parent_id' ref='grp_coa_lb_77'/>
+            <field name='name'>ايرادات مالية اخرى</field>
+        </record>
+        <record id='grp_coa_lb_779' model='account.group'>
+            <field name='code_prefix'>779</field>
+            <field name='parent_id' ref='grp_coa_lb_77'/>
+            <field name='name'>استردادات من المؤونات المالية</field>
+        </record>
+        <record id='grp_coa_lb_78' model='account.group'>
+            <field name='code_prefix'>78</field>
+            <field name='parent_id' ref='grp_coa_lb_7'/>
+            <field name='name'>ايرادات خارج الاستثمار</field>
+        </record>
+        <record id='grp_coa_lb_781' model='account.group'>
+            <field name='code_prefix'>781</field>
+            <field name='parent_id' ref='grp_coa_lb_78'/>
+            <field name='name'>ايرادات التفرغ عن اصول ثابتة</field>
+        </record>
+        <record id='grp_coa_lb_788' model='account.group'>
+            <field name='code_prefix'>788</field>
+            <field name='parent_id' ref='grp_coa_lb_78'/>
+            <field name='name'>ايرادات اخرى خارج الاستثمار</field>
+        </record>
+
+        <record id='grp_coa_lb_789' model='account.group'>
+            <field name='code_prefix'>789</field>
+            <field name='parent_id' ref='grp_coa_lb_78'/>
+            <field name='name'>استردادات من مؤونات خارج الاستثمار</field>
+        </record>
+
+
+        <record id="grp_coa_lb_2231" model="account.group">
+            <field name="code_prefix">2231</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_223"/>
+            <field name="name">الابنية</field>
+        </record>
+        <record id="grp_coa_lb_2232" model="account.group">
+            <field name="code_prefix">2232</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_223"/>
+            <field name="name">الاراضي المبنية</field>
+        </record>
+        <record id="grp_coa_lb_2233" model="account.group">
+            <field name="code_prefix">2233</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_223"/>
+            <field name="name">انشاءات البنية التحتية - سدود - مدارج المطارات...</field>
+        </record>
+        <record id="grp_coa_lb_2234" model="account.group">
+            <field name="code_prefix">2234</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_223"/>
+            <field name="name">انشاءات على أراضي الغير</field>
+        </record>
+        <record id="grp_coa_lb_2241" model="account.group">
+            <field name="code_prefix">2241</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_224"/>
+            <field name="name">تجهيزات متخصصة</field>
+        </record>
+        <record id="grp_coa_lb_2242" model="account.group">
+            <field name="code_prefix">2242</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_224"/>
+            <field name="name">تجهيزات ذات طبيعة خاصة</field>
+        </record>
+        <record id="grp_coa_lb_2243" model="account.group">
+            <field name="code_prefix">2243</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_224"/>
+            <field name="name">المعدات الصناعية</field>
+        </record>
+        <record id="grp_coa_lb_2244" model="account.group">
+            <field name="code_prefix">2244</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_224"/>
+            <field name="name">الأدوات الصناعية</field>
+        </record>
+        <record id="grp_coa_lb_225" model="account.group">
+            <field name="code_prefix">225</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_22"/>
+            <field name="name">اليات النقل</field>
+        </record>
+        <record id="grp_coa_lb_2261" model="account.group">
+            <field name="code_prefix">2261</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_226"/>
+            <field name="name">تجهيزات داخلية, ديكور وتحسينات مختلفة</field>
+        </record>
+        <record id="grp_coa_lb_22621" model="account.group">
+            <field name="code_prefix">22621</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_2262"/>
+            <field name="name">ادوات مكتبية</field>
+        </record>
+        <record id="grp_coa_lb_22622" model="account.group">
+            <field name="code_prefix">22622</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_2262"/>
+            <field name="name">ادوات معلوماتية وبرامج</field>
+        </record>
+        <record id="grp_coa_lb_2263" model="account.group">
+            <field name="code_prefix">2263</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_226"/>
+            <field name="name">اثاث ومفروشات</field>
+        </record>
+        <record id="grp_coa_lb_2264" model="account.group">
+            <field name="code_prefix">2264</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_226"/>
+            <field name="name">استثمارات زراعية</field>
+        </record>
+        <record id="grp_coa_lb_2265" model="account.group">
+            <field name="code_prefix">2265</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_226"/>
+            <field name="name">عبوات قابلة لإعادة الإستعمال</field>
+        </record>
+        <record id="grp_coa_lb_2271" model="account.group">
+            <field name="code_prefix">2271</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_227"/>
+            <field name="name">اراضي</field>
+        </record>
+        <record id="grp_coa_lb_2272" model="account.group">
+            <field name="code_prefix">2272</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_227"/>
+            <field name="name">ابنية</field>
+        </record>
+        <record id="grp_coa_lb_2274" model="account.group">
+            <field name="code_prefix">2274</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_227"/>
+            <field name="name">تجهيزات فنية, معدات وادوات صناعية</field>
+        </record>
+        <record id="grp_coa_lb_2276" model="account.group">
+            <field name="code_prefix">2276</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_227"/>
+            <field name="name">اصول ثابتة مادية أخرى</field>
+        </record>
+        <record id="grp_coa_lb_228" model="account.group">
+            <field name="code_prefix">228</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_22"/>
+            <field name="name">سلفات ودفعات على حساب شراء أصول ثابتة مادية</field>
+        </record>
+        <record id="grp_coa_lb_251" model="account.group">
+            <field name="code_prefix">251</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_25"/>
+            <field name="name">سندات مشا ركة</field>
+        </record>
+        <record id="grp_coa_lb_2521" model="account.group">
+            <field name="code_prefix">2521</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_252"/>
+            <field name="name">ذمم مدينة مرتبطة بمشاركات محلية</field>
+        </record>
+        <record id="grp_coa_lb_2529" model="account.group">
+            <field name="code_prefix">2529</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_252"/>
+            <field name="name">ذمم مدينة مرتبطة بمشاركات اخرى</field>
+        </record>
+        <record id="grp_coa_lb_2531" model="account.group">
+            <field name="code_prefix">2531</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_253"/>
+            <field name="name">سندات ملكية - اسهم. حصص شراكة</field>
+        </record>
+        <record id="grp_coa_lb_2535" model="account.group">
+            <field name="code_prefix">2535</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_253"/>
+            <field name="name">سندات دين - سندات. قسائم</field>
+        </record>
+        <record id="grp_coa_lb_2551" model="account.group">
+            <field name="code_prefix">2551</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_255"/>
+            <field name="name">قروض للشركاء</field>
+        </record>
+        <record id="grp_coa_lb_2552" model="account.group">
+            <field name="code_prefix">2552</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_255"/>
+            <field name="name">قروض للمستخدمين</field>
+        </record>
+        <record id="grp_coa_lb_2558" model="account.group">
+            <field name="code_prefix">2558</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_255"/>
+            <field name="name">قروض أخرى</field>
+        </record>
+        <record id="grp_coa_lb_259" model="account.group">
+            <field name="code_prefix">259</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_25"/>
+            <field name="name">ذمم مدينة أخرى مجمدة</field>
+        </record>
+        <record id="grp_coa_lb_27" model="account.group">
+            <field name="code_prefix">27</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_2"/>
+            <field name="name">فروقات إعادة التخمين</field>
+        </record>
+        <record id="grp_coa_lb_280" model="account.group">
+            <field name="code_prefix">280</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_28"/>
+            <field name="name">استهلاكات المؤسسة التجارية(الشهرة)</field>
+        </record>
+        <record id="grp_coa_lb_2811" model="account.group">
+            <field name="code_prefix">2811</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_281"/>
+            <field name="name">مصاريف التأسيس</field>
+        </record>
+        <record id="grp_coa_lb_2812" model="account.group">
+            <field name="code_prefix">2812</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_281"/>
+            <field name="name">مصاريف البحوث والتطوير</field>
+        </record>
+        <record id="grp_coa_lb_2813" model="account.group">
+            <field name="code_prefix">2813</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_281"/>
+            <field name="name">براءات الإختراع-الإجازات والقيم المماثلة</field>
+        </record>
+        <record id="grp_coa_lb_2819" model="account.group">
+            <field name="code_prefix">2819</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_281"/>
+            <field name="name">أصول ثابتة غير مادية أخرى</field>
+        </record>
+        <record id="grp_coa_lb_2821" model="account.group">
+            <field name="code_prefix">2821</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_282"/>
+            <field name="name">اراضي برسم الإستثمار الجوفي</field>
+        </record>
+        <record id="grp_coa_lb_2822" model="account.group">
+            <field name="code_prefix">2822</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_282"/>
+            <field name="name">الاراضي المبنية</field>
+        </record>
+        <record id="grp_coa_lb_2823" model="account.group">
+            <field name="code_prefix">2823</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_282"/>
+            <field name="name">الأبنية</field>
+        </record>
+        <record id="grp_coa_lb_2824" model="account.group">
+            <field name="code_prefix">2824</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_282"/>
+            <field name="name">التجهيزات الفنية,المعدات والأدوات الصناعية</field>
+        </record>
+        <record id="grp_coa_lb_2825" model="account.group">
+            <field name="code_prefix">2825</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_282"/>
+            <field name="name">آليات النقل</field>
+        </record>
+        <record id="grp_coa_lb_2826" model="account.group">
+            <field name="code_prefix">2826</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_282"/>
+            <field name="name">أصول ثابتة مادية أخرى</field>
+        </record>
+        <record id="grp_coa_lb_290" model="account.group">
+            <field name="code_prefix">290</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_29"/>
+            <field name="name">مؤونات هبوط قيمة(المؤسسة التجارية)</field>
+        </record>
+        <record id="grp_coa_lb_2911" model="account.group">
+            <field name="code_prefix">2911</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_291"/>
+            <field name="name">علامات وقيم مماثلة</field>
+        </record>
+        <record id="grp_coa_lb_2919" model="account.group">
+            <field name="code_prefix">2919</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_291"/>
+            <field name="name">أصول ثابتة غير مادية أخرى</field>
+        </record>
+        <record id="grp_coa_lb_2921" model="account.group">
+            <field name="code_prefix">2921</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_292"/>
+            <field name="name">الاراضي(غير اراضي الاستثمار الجوفي)</field>
+        </record>
+        <record id="grp_coa_lb_2926" model="account.group">
+            <field name="code_prefix">2926</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_292"/>
+            <field name="name">أصول ثابتة مادية أخرى</field>
+        </record>
+        <record id="grp_coa_lb_2951" model="account.group">
+            <field name="code_prefix">2951</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_295"/>
+            <field name="name">سندات المشاركة</field>
+        </record>
+        <record id="grp_coa_lb_2952" model="account.group">
+            <field name="code_prefix">2952</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_295"/>
+            <field name="name">ذمم مدينة مرتبطة بمشاركات</field>
+        </record>
+        <record id="grp_coa_lb_2953" model="account.group">
+            <field name="code_prefix">2953</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_295"/>
+            <field name="name">سندات أخرى مجمدة</field>
+        </record>
+        <record id="grp_coa_lb_2955" model="account.group">
+            <field name="code_prefix">2955</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_295"/>
+            <field name="name">قروض ممنوحة طويلة ومتوسطة الأجل</field>
+        </record>
+        <record id="grp_coa_lb_2959" model="account.group">
+            <field name="code_prefix">2959</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_295"/>
+            <field name="name">ذمم مدينة أخرى مجمدة</field>
+        </record>
+
+        <record id="grp_coa_lb_311" model="account.group">
+            <field name="code_prefix">311</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_31"/>
+            <field name="name">مواد أولية</field>
+        </record>
+        <record id="grp_coa_lb_315" model="account.group">
+            <field name="code_prefix">315</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_31"/>
+            <field name="name">مواد ولوازم إستهلاكية أخرى</field>
+        </record>
+        <record id="grp_coa_lb_3251" model="account.group">
+            <field name="code_prefix">3251</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_325"/>
+            <field name="name">نفايات مواد استهلاكية</field>
+        </record>
+        <record id="grp_coa_lb_3256" model="account.group">
+            <field name="code_prefix">3256</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_325"/>
+            <field name="name">نفايات عبوات</field>
+        </record>
+        <record id="grp_coa_lb_331" model="account.group">
+            <field name="code_prefix">331</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_33"/>
+            <field name="name">منتجات قيد الصنع</field>
+        </record>
+        <record id="grp_coa_lb_332" model="account.group">
+            <field name="code_prefix">332</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_33"/>
+            <field name="name">أشغال قيد التنفيذ</field>
+        </record>
+        <record id="grp_coa_lb_335" model="account.group">
+            <field name="code_prefix">335</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_33"/>
+            <field name="name">دراسات قيد الأعداد</field>
+        </record>
+        <record id="grp_coa_lb_336" model="account.group">
+            <field name="code_prefix">336</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_33"/>
+            <field name="name">خدمات قيد التقديم</field>
+        </record>
+        <record id="grp_coa_lb_351" model="account.group">
+            <field name="code_prefix">351</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_35"/>
+            <field name="name">منتجات وسطية</field>
+        </record>
+        <record id="grp_coa_lb_355" model="account.group">
+            <field name="code_prefix">355</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_35"/>
+            <field name="name">منتجات تامة الصنع</field>
+        </record>
+        <record id="grp_coa_lb_358" model="account.group">
+            <field name="code_prefix">358</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_35"/>
+            <field name="name">فضلات الإنتاج</field>
+        </record>
+        <record id="grp_coa_lb_371" model="account.group">
+            <field name="code_prefix">371</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_37"/>
+            <field name="name">مخزون البضائع(بداية المدة)</field>
+        </record>
+        <record id="grp_coa_lb_372" model="account.group">
+            <field name="code_prefix">372</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_37"/>
+            <field name="name">مخزون البضائع(نهاية المدة)</field>
+        </record>
+        <record id="grp_coa_lb_391" model="account.group">
+            <field name="code_prefix">391</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_39"/>
+            <field name="name">مؤونات هبوط أسعار مخزون المواد الأولية والإستهلاكي</field>
+        </record>
+        <record id="grp_coa_lb_393" model="account.group">
+            <field name="code_prefix">393</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_39"/>
+            <field name="name">مؤونات هبوط أسعار الإنتاج قيد الصنع</field>
+        </record>
+        <record id="grp_coa_lb_395" model="account.group">
+            <field name="code_prefix">395</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_39"/>
+            <field name="name">مؤونات هبوط أسعار الإنتاج المخزون</field>
+        </record>
+        <record id="grp_coa_lb_397" model="account.group">
+            <field name="code_prefix">397</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_39"/>
+            <field name="name">مؤونات هبوط أسعار البضاعة المخزونة</field>
+        </record>
+
+        <record id="grp_coa_lb_4711" model="account.group">
+            <field name="code_prefix">4711</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_471"/>
+            <field name="name">اعباء ما قبل الاستثمار</field>
+        </record>
+        <record id="grp_coa_lb_4712" model="account.group">
+            <field name="code_prefix">4712</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_471"/>
+            <field name="name">التصليحات الكبيرة الواجب استهلاكها</field>
+        </record>
+        <record id="grp_coa_lb_4713" model="account.group">
+            <field name="code_prefix">4713</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_471"/>
+            <field name="name">علاوات تسديد السندات</field>
+        </record>
+        <record id="grp_coa_lb_4719" model="account.group">
+            <field name="code_prefix">4719</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_471"/>
+            <field name="name">اعباء اخرى واجب توزيعها على عدة دورات</field>
+        </record>
+        <record id="grp_coa_lb_472" model="account.group">
+            <field name="code_prefix">472</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_47"/>
+            <field name="name">اعباء محتسبة مسبقا</field>
+        </record>
+        <record id="grp_coa_lb_473" model="account.group">
+            <field name="code_prefix">473</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_47"/>
+            <field name="name">ايرادات محتسبة مسبقا</field>
+        </record>
+        <record id="grp_coa_lb_4751" model="account.group">
+            <field name="code_prefix">4751</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_475"/>
+            <field name="name">الزيادة في الذمم المدينة</field>
+        </record>
+        <record id="grp_coa_lb_4752" model="account.group">
+            <field name="code_prefix">4752</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_475"/>
+            <field name="name">التدني في الذمم الدائنة</field>
+        </record>
+        <record id="grp_coa_lb_4758" model="account.group">
+            <field name="code_prefix">4758</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_475"/>
+            <field name="name">فروقات معوضة بفرق الصرف</field>
+        </record>
+        <record id="grp_coa_lb_4761" model="account.group">
+            <field name="code_prefix">4761</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_476"/>
+            <field name="name">التدني في الذمم المدينة</field>
+        </record>
+        <record id="grp_coa_lb_4762" model="account.group">
+            <field name="code_prefix">4762</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_476"/>
+            <field name="name">الزيادة في الذمم الدائنة</field>
+        </record>
+        <record id="grp_coa_lb_4768" model="account.group">
+            <field name="code_prefix">4768</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_476"/>
+            <field name="name">فروقات معوضة بفرق الصرف</field>
+        </record>
+        <record id="grp_coa_lb_481" model="account.group">
+            <field name="code_prefix">481</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_48"/>
+            <field name="name">حسابات التوزيع الدورى للأعباء</field>
+        </record>
+        <record id="grp_coa_lb_482" model="account.group">
+            <field name="code_prefix">482</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_48"/>
+            <field name="name">حسابات التوزيع الدورى للأيرادات</field>
+        </record>
+        <record id="grp_coa_lb_483" model="account.group">
+            <field name="code_prefix">483</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_48"/>
+            <field name="name">.............</field>
+        </record>
+
+        <record id="grp_coa_lb_501" model="account.group">
+            <field name="code_prefix">501</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_50"/>
+            <field name="name">اسهم صادرة عن الشركة ومعادشراؤهامن قبلها</field>
+        </record>
+        <record id="grp_coa_lb_502" model="account.group">
+            <field name="code_prefix">502</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_50"/>
+            <field name="name">سندات تمنح حامليها حق الملكية</field>
+        </record>
+        <record id="grp_coa_lb_505" model="account.group">
+            <field name="code_prefix">505</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_50"/>
+            <field name="name">سندات دين وقسائم صادرة عن الشركة</field>
+        </record>
+        <record id="grp_coa_lb_506" model="account.group">
+            <field name="code_prefix">506</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_50"/>
+            <field name="name">سندات تمنح حامليها حقوق الدائنين</field>
+        </record>
+        <record id="grp_coa_lb_511" model="account.group">
+            <field name="code_prefix">511</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_51"/>
+            <field name="name">شكات وقسائم برسم القبض</field>
+        </record>
+
+        <record id="grp_coa_lb_519" model="account.group">
+            <field name="code_prefix">519</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_51"/>
+            <field name="name">مؤسسات التمويل</field>
+        </record>
+        <!--<record id="grp_coa_lb_531" model="account.group">-->
+            <!--<field name="code_prefix">531</field>-->
+            <!--<field name="parent_id" ref="l10n_lb.grp_coa_lb_53"/>-->
+            <!--<field name="name">الصنـــدوق</field>-->
+        <!--</record>-->
+        <record id="grp_coa_lb_59" model="account.group">
+            <field name="code_prefix">59</field>
+            <field name="parent_id" ref="l10n_lb.grp_coa_lb_5"/>
+            <field name="name">مؤونات هبوط اسعار سندات التوظيف</field>
+        </record>
+
+        <record id='grp_coa_lb_6011' model="account.group">
+            <field name="code_prefix">6011</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_601'/>
+            <field name='name'>البضاعة</field>
+        </record>
+
+        <record id='grp_coa_lb_6012' model="account.group">
+            <field name="code_prefix">6012</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_601'/>
+            <field name='name'>العبوات</field>
+        </record>
+
+        <record id='grp_coa_lb_60181' model="account.group">
+            <field name="code_prefix">60181</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_6018'/>
+            <field name='name'>نقليات</field>
+        </record>
+        <record id='grp_coa_lb_60182' model="account.group">
+            <field name="code_prefix">60182</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_6018'/>
+            <field name='name'>سمسرة و عمولات</field>
+        </record>
+        <record id='grp_coa_lb_60183' model="account.group">
+            <field name="code_prefix">60183</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_6018'/>
+            <field name='name'>تأمين على الشحن</field>
+        </record>
+        <record id='grp_coa_lb_60184' model="account.group">
+            <field name="code_prefix">60184</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_6018'/>
+            <field name='name'>اتعاب مخلصي البضاعة</field>
+        </record>
+        <record id='grp_coa_lb_60185' model="account.group">
+            <field name="code_prefix">60185</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_6018'/>
+            <field name='name'>رسوم جمركية</field>
+        </record>
+        <record id='grp_coa_lb_6019' model="account.group">
+            <field name="code_prefix">6019</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_601'/>
+            <field name='name'>حسومات مكتسبة</field>
+        </record>
+
+        <record id='grp_coa_lb_6051' model="account.group">
+            <field name="code_prefix">6051</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_605'/>
+            <field name='name'>مخزون اول المدة</field>
+        </record>
+        <record id='grp_coa_lb_6052' model="account.group">
+            <field name="code_prefix">6052</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_605'/>
+            <field name='name'>مخزون آخر المدة</field>
+        </record>
+
+        <record id='grp_coa_lb_61111' model="account.group">
+            <field name="code_prefix">61111</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_6111'/>
+            <field name='name'>مواد اولية أ</field>
+        </record>
+        <record id='grp_coa_lb_61112' model="account.group">
+            <field name="code_prefix">61112</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_6111'/>
+            <field name='name'>مواد اولية ب</field>
+        </record>
+
+        <record id='grp_coa_lb_61121' model="account.group">
+            <field name="code_prefix">61121</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_6112'/>
+            <field name='name'>محروقات</field>
+        </record>
+        <record id='grp_coa_lb_61122' model="account.group">
+            <field name="code_prefix">61122</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_6112'/>
+            <field name='name'>مواد الصيانة</field>
+        </record>
+        <record id='grp_coa_lb_61123' model="account.group">
+            <field name="code_prefix">61123</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_6112'/>
+            <field name='name'>لوازم للمشغل و المصنع</field>
+        </record>
+        <record id='grp_coa_lb_61124' model="account.group">
+            <field name="code_prefix">61124</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_6112'/>
+            <field name='name'>لوازم للمخزن</field>
+        </record>
+        <record id='grp_coa_lb_61125' model="account.group">
+            <field name="code_prefix">61125</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_6112'/>
+            <field name='name'>لوازم مكتبية</field>
+        </record>
+
+        <record id='grp_coa_lb_61131' model="account.group">
+            <field name="code_prefix">61131</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_6113'/>
+            <field name='name'>عبوات لا تسترد</field>
+        </record>
+        <record id='grp_coa_lb_61132' model="account.group">
+            <field name="code_prefix">61132</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_6113'/>
+            <field name='name'>عبوات تسترد ويعاد استعمالها</field>
+        </record>
+        <record id='grp_coa_lb_61133' model="account.group">
+            <field name="code_prefix">61133</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_6113'/>
+            <field name='name'>عبوات تستعمل على أوجه مختلفة</field>
+        </record>
+
+        <record id='grp_coa_lb_61181' model="account.group">
+            <field name="code_prefix">61181</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_6118'/>
+            <field name='name'>نقليات</field>
+        </record>
+        <record id='grp_coa_lb_61182' model="account.group">
+            <field name="code_prefix">61182</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_6118'/>
+            <field name='name'>سمسرة وعمولات</field>
+        </record>
+        <record id='grp_coa_lb_61183' model="account.group">
+            <field name="code_prefix">61183</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_6118'/>
+            <field name='name'>تأمين على الشحن</field>
+        </record>
+        <record id='grp_coa_lb_61184' model="account.group">
+            <field name="code_prefix">61184</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_6118'/>
+            <field name='name'>اتعاب مخلصي البضاعة</field>
+        </record>
+        <record id='grp_coa_lb_61185' model="account.group">
+            <field name="code_prefix">61185</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_6118'/>
+            <field name='name'>رسوم جمركية</field>
+        </record>
+        <record id='grp_coa_lb_6119' model="account.group">
+            <field name="code_prefix">6119</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_611'/>
+            <field name='name'>حسومات مكتسبة (بالتفصيل)</field>
+        </record>
+
+        <record id='grp_coa_lb_6151' model="account.group">
+            <field name="code_prefix">6151</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_615'/>
+            <field name='name'>مخزون اول المدة</field>
+        </record>
+        <record id='grp_coa_lb_6152' model="account.group">
+            <field name="code_prefix">6152</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_615'/>
+            <field name='name'>مخزون آخر المدة</field>
+        </record>
+
+        <record id='grp_coa_lb_6211' model="account.group">
+            <field name="code_prefix">6211</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_621'/>
+            <field name='name'>ملتزم ثانوى أ</field>
+        </record>
+        <record id='grp_coa_lb_6212' model="account.group">
+            <field name="code_prefix">6212</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_621'/>
+            <field name='name'>ملتزم ثانوى ب</field>
+        </record>
+        <record id='grp_coa_lb_6219' model="account.group">
+            <field name="code_prefix">6219</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_621'/>
+            <field name='name'>حسومات مكتسبةعلى مشتريات من ملتزمين ثانو</field>
+        </record>
+
+        <record id='grp_coa_lb_6251' model="account.group">
+            <field name="code_prefix">6251</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_625'/>
+            <field name='name'>ايجار - قرض اموال منقولة</field>
+        </record>
+        <record id='grp_coa_lb_6252' model="account.group">
+            <field name="code_prefix">6252</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_625'/>
+            <field name='name'>ايجار - قرض اموال غير منقولة</field>
+        </record>
+        <record id='grp_coa_lb_6253' model="account.group">
+            <field name="code_prefix">6253</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_625'/>
+            <field name='name'>حقوق الامتياز</field>
+        </record>
+        <record id='grp_coa_lb_6254' model="account.group">
+            <field name="code_prefix">6254</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_625'/>
+            <field name='name'>براءات</field>
+        </record>
+        <record id='grp_coa_lb_6255' model="account.group">
+            <field name="code_prefix">6255</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_625'/>
+            <field name='name'>اجازات</field>
+        </record>
+        <record id='grp_coa_lb_6256' model="account.group">
+            <field name="code_prefix">6256</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_625'/>
+            <field name='name'>علامات</field>
+        </record>
+        <record id='grp_coa_lb_6257' model="account.group">
+            <field name="code_prefix">6257</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_625'/>
+            <field name='name'>اساليب</field>
+        </record>
+        <record id='grp_coa_lb_6258' model="account.group">
+            <field name="code_prefix">6258</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_625'/>
+            <field name='name'>حقوق وقيم مماثلة</field>
+        </record>
+
+        <record id='grp_coa_lb_62611' model="account.group">
+            <field name="code_prefix">62611</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_6261'/>
+            <field name='name'>نفقات النقل للموجودات</field>
+        </record>
+        <record id='grp_coa_lb_62612' model="account.group">
+            <field name="code_prefix">62612</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_6261'/>
+            <field name='name'>نفقات النقل المشترك للمستخدمين</field>
+        </record>
+        <record id='grp_coa_lb_62615' model="account.group">
+            <field name="code_prefix">62615</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_6261'/>
+            <field name='name'>نفقات البريد والاتصالات السلكية ولاسلكية</field>
+        </record>
+        <record id='grp_coa_lb_6262' model="account.group">
+            <field name="code_prefix">6262</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_626'/>
+            <field name='name'>الصيانة و التصليحات</field>
+        </record>
+
+        <record id='grp_coa_lb_62631' model="account.group">
+            <field name="code_prefix">62631</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_6263'/>
+            <field name='name'>الايجارات</field>
+        </record>
+        <record id='grp_coa_lb_62632' model="account.group">
+            <field name="code_prefix">62632</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_6263'/>
+            <field name='name'>اعباء تأجيرية اخرى</field>
+        </record>
+
+        <record id='grp_coa_lb_62641' model="account.group">
+            <field name="code_prefix">62641</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_6264'/>
+            <field name='name'>تشريفات</field>
+        </record>
+        <record id='grp_coa_lb_62642' model="account.group">
+            <field name="code_prefix">62642</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_6264'/>
+            <field name='name'>نقل وانتقال</field>
+        </record>
+        <record id='grp_coa_lb_62643' model="account.group">
+            <field name="code_prefix">62643</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_6264'/>
+            <field name='name'>اطعام المستخدمين</field>
+        </record>
+
+        <record id='grp_coa_lb_62651' model="account.group">
+            <field name="code_prefix">62651</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_6265'/>
+            <field name='name'>المستخدمون المؤقتون</field>
+        </record>
+        <record id='grp_coa_lb_62652' model="account.group">
+            <field name="code_prefix">62652</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_6265'/>
+            <field name='name'>اجور الوسطاء</field>
+        </record>
+        <record id='grp_coa_lb_62653' model="account.group">
+            <field name="code_prefix">62653</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_6265'/>
+            <field name='name'>بدلات اتعاب</field>
+        </record>
+
+        <record id='grp_coa_lb_62661' model="account.group">
+            <field name="code_prefix">62661</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_6266'/>
+            <field name='name'>الاعداد والتدريب</field>
+        </record>
+        <record id='grp_coa_lb_62662' model="account.group">
+            <field name="code_prefix">62662</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_6266'/>
+            <field name='name'>التوثيق</field>
+        </record>
+        <record id='grp_coa_lb_6267' model="account.group">
+            <field name="code_prefix">6267</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_626'/>
+            <field name='name'>الدراسات والبحوث</field>
+        </record>
+        <record id='grp_coa_lb_6268' model="account.group">
+            <field name="code_prefix">6268</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_626'/>
+            <field name='name'>اقساط التأمين</field>
+        </record>
+
+        <record id='grp_coa_lb_62691' model="account.group">
+            <field name="code_prefix">62691</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_6269'/>
+            <field name='name'>خدمات صحية</field>
+        </record>
+        <record id='grp_coa_lb_62692' model="account.group">
+            <field name="code_prefix">62692</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_6269'/>
+            <field name='name'>خدمات مالية.مصاريف علىسندات واوراق مالية</field>
+        </record>
+
+        <record id='grp_coa_lb_6311' model="account.group">
+            <field name="code_prefix">6311</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_631'/>
+            <field name='name'>الرواتب</field>
+        </record>
+        <record id='grp_coa_lb_6312' model="account.group">
+            <field name="code_prefix">6312</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_631'/>
+            <field name='name'>الأجور</field>
+        </record>
+        <record id='grp_coa_lb_6314' model="account.group">
+            <field name="code_prefix">6314</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_631'/>
+            <field name='name'>العمولات الثابتة</field>
+        </record>
+        <record id='grp_coa_lb_6316' model="account.group">
+            <field name="code_prefix">6316</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_631'/>
+            <field name='name'>بدلات مدفوعةلمديرين لهم اغلبية بملكية مؤ</field>
+        </record>
+        <record id='grp_coa_lb_6317' model="account.group">
+            <field name="code_prefix">6317</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_631'/>
+            <field name='name'>البدلات المدفوعة لاعضاء مجلس الادارة</field>
+        </record>
+
+        <record id='grp_coa_lb_6351' model="account.group">
+            <field name="code_prefix">6351</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_635'/>
+            <field name='name'>التعويضات العائلية</field>
+        </record>
+        <record id='grp_coa_lb_6352' model="account.group">
+            <field name="code_prefix">6352</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_635'/>
+            <field name='name'>مرض وامومة</field>
+        </record>
+        <record id='grp_coa_lb_6353' model="account.group">
+            <field name="code_prefix">6353</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_635'/>
+            <field name='name'>تعويض نهاية الخدمة</field>
+        </record>
+        <record id='grp_coa_lb_6354' model="account.group">
+            <field name="code_prefix">6354</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_635'/>
+            <field name='name'>تعويضات النقل</field>
+        </record>
+        <record id='grp_coa_lb_6355' model="account.group">
+            <field name="code_prefix">6355</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_635'/>
+            <field name='name'>منح مدرسية</field>
+        </record>
+
+        <record id='grp_coa_lb_641' model="account.group">
+            <field name="code_prefix">641</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_64'/>
+            <field name='name'>على الرواتب والاجور وبدلات الاتعاب</field>
+        </record>
+        <record id='grp_coa_lb_642' model="account.group">
+            <field name="code_prefix">642</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_64'/>
+            <field name='name'>ضرائب ورسوم للبلديات</field>
+        </record>
+        <record id='grp_coa_lb_643' model="account.group">
+            <field name="code_prefix">643</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_64'/>
+            <field name='name'>ضرائب على المبيعات غير قابلة للأسترداد</field>
+        </record>
+        <record id='grp_coa_lb_644' model="account.group">
+            <field name="code_prefix">644</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_64'/>
+            <field name='name'>رسوم تسجيل</field>
+        </record>
+        <record id='grp_coa_lb_645' model="account.group">
+            <field name="code_prefix">645</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_64'/>
+            <field name='name'>ضرائب و رسوم و مدفوعات مماثلة اخرى</field>
+        </record>
+        <record id='grp_coa_lb_6454' model="account.group">
+            <field name="code_prefix">6454</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_645'/>
+            <field name='name'>Withholding Tax 2.5%</field>
+        </record>
+        <record id='grp_coa_lb_6455' model="account.group">
+            <field name="code_prefix">6455</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_645'/>
+            <field name='name'>Withholding Tax 7.5%</field>
+        </record>
+
+        <record id='grp_coa_lb_6511' model="account.group">
+            <field name="code_prefix">6511</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_651'/>
+            <field name='name'>اصول ثابتة غير مادية</field>
+        </record>
+        <record id='grp_coa_lb_6512' model="account.group">
+            <field name="code_prefix">6512</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_651'/>
+            <field name='name'>اصول ثابتة مادية</field>
+        </record>
+        <record id='grp_coa_lb_6515' model="account.group">
+            <field name="code_prefix">6515</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_651'/>
+            <field name='name'>أعباء للتوزيع على عدة دورات</field>
+        </record>
+
+        <record id='grp_coa_lb_6551' model="account.group">
+            <field name="code_prefix">6551</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_655'/>
+            <field name='name'>مؤونات هبوط اسعاراصول الثابتة غيرالمادية</field>
+        </record>
+        <record id='grp_coa_lb_6552' model="account.group">
+            <field name="code_prefix">6552</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_655'/>
+            <field name='name'>مؤونات هبوط اسعار الاصول الثابتة المادية</field>
+        </record>
+        <record id='grp_coa_lb_6553' model="account.group">
+            <field name="code_prefix">6553</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_655'/>
+            <field name='name'>مؤونات هبوط اسعار المخزون وقيد الصنع</field>
+        </record>
+        <record id='grp_coa_lb_6554' model="account.group">
+            <field name="code_prefix">6554</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_655'/>
+            <field name='name'>مؤونات هبوط قيم الذمم المدينة</field>
+        </record>
+        <record id='grp_coa_lb_6555' model="account.group">
+            <field name="code_prefix">6555</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_655'/>
+            <field name='name'>مؤونات لمواجهة مخاطرواعباءعائدةللأستثمار</field>
+        </record>
+
+        <record id='grp_coa_lb_6611' model="account.group">
+            <field name="code_prefix">6611</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_661'/>
+            <field name='name'>بدلات الحضور</field>
+        </record>
+        <record id='grp_coa_lb_6612' model="account.group">
+            <field name="code_prefix">6612</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_661'/>
+            <field name='name'>خسارة على ذمم استثمار مدينة ثبت هلاكها</field>
+        </record>
+        <record id='grp_coa_lb_665' model="account.group">
+            <field name="code_prefix">665</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_66'/>
+            <field name='name'>حصة المؤسسة من الخسائر على عمليات مشتركة</field>
+        </record>
+
+        <record id='grp_coa_lb_6731' model="account.group">
+            <field name="code_prefix">6731</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_673'/>
+            <field name='name'>فوائد على الذمم الدائنة والقروض</field>
+        </record>
+        <record id='grp_coa_lb_6732' model="account.group">
+            <field name="code_prefix">6732</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_673'/>
+            <field name='name'>فوائدعلىالحسابات الجاريةوالودائع الدائنة</field>
+        </record>
+        <record id='grp_coa_lb_6733' model="account.group">
+            <field name="code_prefix">6733</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_673'/>
+            <field name='name'>فوائد السندات المربوطة بكفالات</field>
+        </record>
+        <record id='grp_coa_lb_6734' model="account.group">
+            <field name="code_prefix">6734</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_673'/>
+            <field name='name'>فوائد الذمم الدائنة الاخرى</field>
+        </record>
+        <record id='grp_coa_lb_6735' model="account.group">
+            <field name="code_prefix">6735</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_673'/>
+            <field name='name'>الخصم الممنوح من المؤسسة</field>
+        </record>
+        <record id='grp_coa_lb_6736' model="account.group">
+            <field name="code_prefix">6736</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_673'/>
+            <field name='name'>فوائد مصرفية وفوائد على عمليات التمويل</field>
+        </record>
+
+        <record id='grp_coa_lb_6751' model="account.group">
+            <field name="code_prefix">6751</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_675'/>
+            <field name='name'>فروقات على عمليات عادية</field>
+        </record>
+        <record id='grp_coa_lb_6752' model="account.group">
+            <field name="code_prefix">6752</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_675'/>
+            <field name='name'>فروقات على عمليات رأسمالية</field>
+        </record>
+        <record id='grp_coa_lb_676' model="account.group">
+            <field name="code_prefix">676</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_67'/>
+            <field name='name'>أعباءصافيةعلى عمليات تفرغ عن سندات توظيف</field>
+        </record>
+
+        <record id='grp_coa_lb_6791' model="account.group">
+            <field name="code_prefix">6791</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_679'/>
+            <field name='name'>استهلاك علاوات التسديد</field>
+        </record>
+        <record id='grp_coa_lb_6792' model="account.group">
+            <field name="code_prefix">6792</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_679'/>
+            <field name='name'>مؤونات هبوط اسعار الاصول الثابتة المالية</field>
+        </record>
+        <record id='grp_coa_lb_6794' model="account.group">
+            <field name="code_prefix">6794</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_679'/>
+            <field name='name'>مؤونات هبوط اسعار سندات التوظيف</field>
+        </record>
+        <record id='grp_coa_lb_6795' model="account.group">
+            <field name="code_prefix">6795</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_679'/>
+            <field name='name'>مؤونات لمواجهة المخاطر والاعباء المالية</field>
+        </record>
+
+        <record id='grp_coa_lb_6811' model="account.group">
+            <field name="code_prefix">6811</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_681'/>
+            <field name='name'>اصول ثابتة غير مادية</field>
+        </record>
+        <record id='grp_coa_lb_6812' model="account.group">
+            <field name="code_prefix">6812</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_681'/>
+            <field name='name'>اصول ثابتة مادية</field>
+        </record>
+        <record id='grp_coa_lb_6815' model="account.group">
+            <field name="code_prefix">6815</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_681'/>
+            <field name='name'>اصول ثابتة مالية</field>
+        </record>
+
+        <record id='grp_coa_lb_68511' model="account.group">
+            <field name="code_prefix">68511</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_6851'/>
+            <field name='name'>هبــات</field>
+        </record>
+        <record id='grp_coa_lb_68512' model="account.group">
+            <field name="code_prefix">68512</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_6851'/>
+            <field name='name'>اعانات ممنوحة</field>
+        </record>
+        <record id='grp_coa_lb_68513' model="account.group">
+            <field name="code_prefix">68513</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_6851'/>
+            <field name='name'>غرامات ضريبية وجزائية</field>
+        </record>
+        <record id='grp_coa_lb_68514' model="account.group">
+            <field name="code_prefix">68514</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_6851'/>
+            <field name='name'>غرامات على صفقات</field>
+        </record>
+        <record id='grp_coa_lb_68515' model="account.group">
+            <field name="code_prefix">68515</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_6851'/>
+            <field name='name'>ذمم مدينة اصبحت هالكة</field>
+        </record>
+        <record id='grp_coa_lb_68516' model="account.group">
+            <field name="code_prefix">68516</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_6851'/>
+            <field name='name'>عمليات ادارية اخرى</field>
+        </record>
+
+        <record id='grp_coa_lb_68551' model="account.group">
+            <field name="code_prefix">68551</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_6855'/>
+            <field name='name'>اعباء ناتجة عن موجب تطبيق مؤشر اسعار</field>
+        </record>
+        <record id='grp_coa_lb_68552' model="account.group">
+            <field name="code_prefix">68552</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_6855'/>
+            <field name='name'>جوائز تسديد</field>
+        </record>
+        <record id='grp_coa_lb_68553' model="account.group">
+            <field name="code_prefix">68553</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_6855'/>
+            <field name='name'>اعباءناتجة عن استردادالمؤسسةلأسهم وسندات</field>
+        </record>
+
+        <record id='grp_coa_lb_6891' model="account.group">
+            <field name="code_prefix">6891</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_689'/>
+            <field name='name'>استهلاك استثنائي على اصول ثابتة</field>
+        </record>
+        <record id='grp_coa_lb_6892' model="account.group">
+            <field name="code_prefix">6892</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_689'/>
+            <field name='name'>مؤونات هبوط اسعار استثنائي</field>
+        </record>
+        <record id='grp_coa_lb_6895' model="account.group">
+            <field name="code_prefix">6895</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_689'/>
+            <field name='name'>مؤونات لمواجهة مخاطرواعباءخارج الاستثمار</field>
+        </record>
+        <record id='grp_coa_lb_69' model="account.group">
+            <field name="code_prefix">69</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_6'/>
+            <field name='name'>الضرائب على الاربـاح</field>
+        </record>
+
+        <record id='grp_coa_lb_701' model="account.group">
+            <field name="code_prefix">701</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_70'/>
+            <field name='name'>مبيعات البضائع - فواتيــر</field>
+        </record>
+
+        <record id='grp_coa_lb_709' model="account.group">
+            <field name="code_prefix">709</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_70'/>
+            <field name='name'>حسومات ممنوحة</field>
+        </record>
+
+        <record id='grp_coa_lb_7111' model="account.group">
+            <field name="code_prefix">7111</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_711'/>
+            <field name='name'>مبيعات المنتجات التامة الصنع</field>
+        </record>
+        <record id='grp_coa_lb_7112' model="account.group">
+            <field name="code_prefix">7112</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_711'/>
+            <field name='name'>مبيعات المنتجات الوسيطة</field>
+        </record>
+        <record id='grp_coa_lb_7113' model="account.group">
+            <field name="code_prefix">7113</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_711'/>
+            <field name='name'>مبيعات فضلات الانتاج</field>
+        </record>
+        <record id='grp_coa_lb_712' model="account.group">
+            <field name="code_prefix">712</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_71'/>
+            <field name='name'>أشغـــال</field>
+        </record>
+        <record id='grp_coa_lb_713' model="account.group">
+            <field name="code_prefix">713</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_71'/>
+            <field name='name'>خدمــات</field>
+        </record>
+        <record id='grp_coa_lb_717' model="account.group">
+            <field name="code_prefix">717</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_71'/>
+            <field name='name'>ايرادات النشاطات الفرعية</field>
+        </record>
+
+        <record id='grp_coa_lb_7191' model="account.group">
+            <field name="code_prefix">7191</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_719'/>
+            <field name='name'>على بيع المنتجات</field>
+        </record>
+        <record id='grp_coa_lb_7192' model="account.group">
+            <field name="code_prefix">7192</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_719'/>
+            <field name='name'>على بيع الاشغال</field>
+        </record>
+        <record id='grp_coa_lb_7193' model="account.group">
+            <field name="code_prefix">7193</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_719'/>
+            <field name='name'>على بيع الخدمات</field>
+        </record>
+        <record id='grp_coa_lb_7197' model="account.group">
+            <field name="code_prefix">7197</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_719'/>
+            <field name='name'>على بيع نشاطات فرعية</field>
+        </record>
+
+        <record id='grp_coa_lb_7211' model="account.group">
+            <field name="code_prefix">7211</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_721'/>
+            <field name='name'>منتجات قيد الصنع</field>
+        </record>
+        <record id='grp_coa_lb_7212' model="account.group">
+            <field name="code_prefix">7212</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_721'/>
+            <field name='name'>اشغال قيد التنفيذ</field>
+        </record>
+
+        <record id='grp_coa_lb_7225' model="account.group">
+            <field name="code_prefix">7225</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_722'/>
+            <field name='name'>دراسات قيد الاعداد</field>
+        </record>
+        <record id='grp_coa_lb_7226' model="account.group">
+            <field name="code_prefix">7226</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_722'/>
+            <field name='name'>خدمات قيد التنفيذ</field>
+        </record>
+
+        <record id='grp_coa_lb_7251' model="account.group">
+            <field name="code_prefix">7251</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_725'/>
+            <field name='name'>منتجات وسيطة</field>
+        </record>
+        <record id='grp_coa_lb_7255' model="account.group">
+            <field name="code_prefix">7255</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_725'/>
+            <field name='name'>منتجات تامة الصنع</field>
+        </record>
+        <record id='grp_coa_lb_7258' model="account.group">
+            <field name="code_prefix">7258</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_725'/>
+            <field name='name'>فضلات الانتاج</field>
+        </record>
+
+        <record id='grp_coa_lb_731' model="account.group">
+            <field name="code_prefix">731</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_73'/>
+            <field name='name'>اصول ثابتة غير مادية</field>
+        </record>
+        <record id='grp_coa_lb_732' model="account.group">
+            <field name="code_prefix">732</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_73'/>
+            <field name='name'>اصول ثابتة مادية</field>
+        </record>
+
+        <record id='grp_coa_lb_741' model="account.group">
+            <field name="code_prefix">741</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_74'/>
+            <field name='name'>للبضائع</field>
+        </record>
+        <record id='grp_coa_lb_742' model="account.group">
+            <field name="code_prefix">742</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_74'/>
+            <field name='name'>للأنتاج</field>
+        </record>
+
+        <record id='grp_coa_lb_752' model="account.group">
+            <field name="code_prefix">752</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_75'/>
+            <field name='name'>استردادات من مؤونات هبوط اسعاراصول ثابتة</field>
+        </record>
+        <record id='grp_coa_lb_753' model="account.group">
+            <field name="code_prefix">753</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_75'/>
+            <field name='name'>استرداد من مؤونات هبوط اسعاراصول متداولة</field>
+        </record>
+
+        <record id='grp_coa_lb_7611' model="account.group">
+            <field name="code_prefix">7611</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_761'/>
+            <field name='name'>اتاوى:امتيازات براءات اجازات علامات الخ.</field>
+        </record>
+        <record id='grp_coa_lb_7612' model="account.group">
+            <field name="code_prefix">7612</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_761'/>
+            <field name='name'>ايرادات الابنية غيرالمخصصة للنشاط المهني</field>
+        </record>
+        <record id='grp_coa_lb_7613' model="account.group">
+            <field name="code_prefix">7613</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_761'/>
+            <field name='name'>بدلات حضور وتعويضات أ.م.الادارة,المديرين</field>
+        </record>
+        <record id='grp_coa_lb_7619' model="account.group">
+            <field name="code_prefix">7619</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_761'/>
+            <field name='name'>اعباء استثمار محولة الى حسابات اخرى</field>
+        </record>
+
+        <record id='grp_coa_lb_7651' model="account.group">
+            <field name="code_prefix">7651</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_765'/>
+            <field name='name'>حصص الاعباء الصافية التي جرى تحويلها(.)</field>
+        </record>
+        <record id='grp_coa_lb_7655' model="account.group">
+            <field name="code_prefix">7655</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_765'/>
+            <field name='name'>حصص الايرادات الصافية المقررة ( . )</field>
+        </record>
+
+        <record id='grp_coa_lb_7711' model="account.group">
+            <field name="code_prefix">7711</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_771'/>
+            <field name='name'>عائدات سندات المشاركة</field>
+        </record>
+        <record id='grp_coa_lb_7716' model="account.group">
+            <field name="code_prefix">7716</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_771'/>
+            <field name='name'>عائدات المشاركات الاخرى</field>
+        </record>
+        <record id='grp_coa_lb_7717' model="account.group">
+            <field name="code_prefix">7717</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_771'/>
+            <field name='name'>عائدات الذمم المدينة المرتبطة بمشاركات</field>
+        </record>
+
+        <record id='grp_coa_lb_7721' model="account.group">
+            <field name="code_prefix">7721</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_772'/>
+            <field name='name'>عائدات سندات التوظيف</field>
+        </record>
+        <record id='grp_coa_lb_7723' model="account.group">
+            <field name="code_prefix">7723</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_772'/>
+            <field name='name'>عائدات السندات المجمدة</field>
+        </record>
+        <record id='grp_coa_lb_7725' model="account.group">
+            <field name="code_prefix">7725</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_772'/>
+            <field name='name'>عائدات الذمم المدينة المجمدة</field>
+        </record>
+        <record id='grp_coa_lb_7726' model="account.group">
+            <field name="code_prefix">7726</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_772'/>
+            <field name='name'>عائدات الذمم المدينة التجارية</field>
+        </record>
+        <record id='grp_coa_lb_7727' model="account.group">
+            <field name="code_prefix">7727</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_772'/>
+            <field name='name'>عائدات الذمم المدينة المختلفة</field>
+        </record>
+
+        <record id='grp_coa_lb_7731' model="account.group">
+            <field name="code_prefix">7731</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_773'/>
+            <field name='name'>عائدات القروض الممنوحة</field>
+        </record>
+        <record id='grp_coa_lb_7733' model="account.group">
+            <field name="code_prefix">7733</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_773'/>
+            <field name='name'>الخصم الممنوح للمؤسسة</field>
+        </record>
+
+        <record id='grp_coa_lb_7751' model="account.group">
+            <field name="code_prefix">7751</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_775'/>
+            <field name='name'>على عمليات جارية</field>
+        </record>
+        <record id='grp_coa_lb_7755' model="account.group">
+            <field name="code_prefix">7755</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_775'/>
+            <field name='name'>على عمليات رأسمالية</field>
+        </record>
+
+        <record id='grp_coa_lb_7781' model="account.group">
+            <field name="code_prefix">7781</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_778'/>
+            <field name='name'>ايرادات صافية على بيع سندات توظيف</field>
+        </record>
+        <record id='grp_coa_lb_7789' model="account.group">
+            <field name="code_prefix">7789</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_778'/>
+            <field name='name'>اعباء مالية محولة الى حسابات اخرى</field>
+        </record>
+
+        <record id='grp_coa_lb_7793' model="account.group">
+            <field name="code_prefix">7793</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_779'/>
+            <field name='name'>استردادات من مؤونات هبوط الاسعار</field>
+        </record>
+        <record id='grp_coa_lb_7795' model="account.group">
+            <field name="code_prefix">7795</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_779'/>
+            <field name='name'>استردادات من مؤونات المخاطر والأعباء</field>
+        </record>
+
+        <record id='grp_coa_lb_7811' model="account.group">
+            <field name="code_prefix">7811</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_781'/>
+            <field name='name'>اصول ثابتة غير مادية</field>
+        </record>
+        <record id='grp_coa_lb_7812' model="account.group">
+            <field name="code_prefix">7812</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_781'/>
+            <field name='name'>اصول ثابتة مادية</field>
+        </record>
+        <record id='grp_coa_lb_7815' model="account.group">
+            <field name="code_prefix">7815</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_781'/>
+            <field name='name'>اصول ثابتة مالية</field>
+        </record>
+        <record id='grp_coa_lb_782' model="account.group">
+            <field name="code_prefix">782</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_78'/>
+            <field name='name'>اعانات للتوظيفات محولة الى نتيجة الدورة</field>
+        </record>
+
+        <record id='grp_coa_lb_7881' model="account.group">
+            <field name="code_prefix">7881</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_788'/>
+            <field name='name'>ايرادات استثنائية على عمليات عادية</field>
+        </record>
+        <record id='grp_coa_lb_7888' model="account.group">
+            <field name="code_prefix">7888</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_788'/>
+            <field name='name'>ايرادات اخرىعلى عمليات رأسماليةاستثنائية</field>
+        </record>
+        <record id='grp_coa_lb_7889' model="account.group">
+            <field name="code_prefix">7889</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_788'/>
+            <field name='name'>اعباء استثنائية محولة الى حسابات اخرى</field>
+        </record>
+
+        <record id='grp_coa_lb_7891' model="account.group">
+            <field name="code_prefix">7891</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_789'/>
+            <field name='name'>استردادات من مؤونات هبوط الاسعار</field>
+        </record>
+        <record id='grp_coa_lb_7895' model="account.group">
+            <field name="code_prefix">7895</field>
+            <field name="parent_id" ref='l10n_lb.grp_coa_lb_789'/>
+            <field name='name'>استردادات من مؤونات المخاطر و الأعباء</field>
+        </record>
+
+    </data>
+</odoo>

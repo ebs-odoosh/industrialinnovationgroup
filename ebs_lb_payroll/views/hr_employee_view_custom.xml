@@ -1,0 +1,30 @@
+<odoo>
+    <data>
+
+
+        <record id="custom_hr_employee_view" model="ir.ui.view">
+            <field name="name">custom_hr_employee_view</field>
+            <field name="model">hr.employee</field>
+            <field name="priority">32</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//div[@name='button_box']" position="inside">
+                    <button id="hr_eos_amount" class="oe_stat_button" disabled="1" >
+
+
+                                <div class="o_stat_info" attrs="{'invisible': [('hr_presence_state', '!=', 'present')]}">
+                                    <span class="o_stat_value">
+                                        <field name="eos_amount"/>
+                                    </span>
+                                    <span class="o_stat_text">End of Service Amount</span>
+                                </div>
+                            </button>
+                </xpath>
+
+            </field>
+
+        </record>
+
+    </data>
+</odoo>

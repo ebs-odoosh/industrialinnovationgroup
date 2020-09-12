@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <!-- Account Tax Group -->
+        <record id="auto_gen_acc_map_ar" model="account.auto.generate.mapping">
+            <field name="type">ar</field>
+			<field name="related_account" ref="l10n_lb.grp_coa_lb_4111"/>
+            <field name="account_type" ref="account.data_account_type_receivable"/>
+			<field name="start_number">411100001</field>
+			<field name="next_number">411100001</field>
+        </record>
+		
+		 <record id="auto_gen_acc_map_vats" model="account.auto.generate.mapping">
+            <field name="type">vats</field>
+			<field name="related_account" ref="l10n_lb.grp_coa_lb_442700"/>
+            <field name="account_type" ref="account.data_account_type_current_liabilities"/>
+			<field name="start_number">442700001</field>
+			<field name="next_number">442700001</field>
+        </record>
+		
+		
+		<record id="auto_gen_acc_map_vatp" model="account.auto.generate.mapping">
+            <field name="type">vatp</field>
+			<field name="related_account" ref="l10n_lb.grp_coa_lb_44210"/>
+            <field name="account_type" ref="account.data_account_type_current_liabilities"/>
+			<field name="start_number">44210001</field>
+			<field name="next_number">44210001</field>
+        </record>
+		
+		<record id="auto_gen_acc_map_vata" model="account.auto.generate.mapping">
+            <field name="type">vata</field>
+			<field name="related_account" ref="l10n_lb.grp_coa_lb_44213"/>
+            <field name="account_type" ref="account.data_account_type_current_liabilities"/>
+			<field name="start_number">44213001</field>
+			<field name="next_number">44213001</field>
+        </record>
+		
+		
+		<record id="auto_gen_acc_map_vatc" model="account.auto.generate.mapping">
+            <field name="type">vatc</field>
+			<field name="related_account" ref="l10n_lb.grp_coa_lb_44216"/>
+            <field name="account_type" ref="account.data_account_type_current_liabilities"/>
+			<field name="start_number">44216001</field>
+			<field name="next_number">44216001</field>
+        </record>
+		
+		
+		<record id="auto_gen_acc_map_apc" model="account.auto.generate.mapping">
+            <field name="type">apc</field>
+			<field name="related_account" ref="l10n_lb.grp_coa_lb_4651"/>
+            <field name="account_type" ref="account.data_account_type_payable"/>
+			<field name="start_number">46510001</field>
+			<field name="next_number">46510001</field>
+        </record>
+		
+		
+		<record id="auto_gen_acc_map_apa" model="account.auto.generate.mapping">
+            <field name="type">apa</field>
+			<field name="related_account" ref="l10n_lb.grp_coa_lb_4031"/>
+            <field name="account_type" ref="account.data_account_type_payable"/>
+			<field name="start_number">40310001</field>
+			<field name="next_number">40310001</field>
+        </record>
+		
+		<record id="auto_gen_acc_map_app" model="account.auto.generate.mapping">
+            <field name="type">app</field>
+			<field name="related_account" ref="l10n_lb.grp_coa_lb_4011"/>
+            <field name="account_type" ref="account.data_account_type_payable"/>
+			<field name="start_number">40110001</field>
+			<field name="next_number">40110001</field>
+        </record>
+		
+		
+    </data>
+</odoo>

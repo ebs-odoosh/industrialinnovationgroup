@@ -1,0 +1,234 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<odoo>
+    <data>
+        <template id="account_searchpanel_css" name="account_searchpanel_css" inherit_id="web.assets_backend">
+            <xpath expr="." position="inside">
+                <link rel="stylesheet" type="text/scss" href="/l10n_lb/static/src/scss/account_searchpanel.scss"/>
+            </xpath>
+        </template>
+
+        <record id="custom_search_panel_view" model="ir.ui.view">
+            <field name="name">Custom Search Panel</field>
+            <field name="model">account.account</field>
+            <!--            <field name="mode">primary</field>-->
+            <field name="priority">20</field>
+            <field name="inherit_id" ref="account.view_account_search"/>
+            <field name="arch" type="xml">
+                <xpath expr="//search/searchpanel" position="replace">
+                    <searchpanel class="account_root">
+                        <field name="group_id" icon="fa-filter"/>
+                    </searchpanel>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="custom_account_move_line_search" model="ir.ui.view">
+            <field name="name">custom.account.move.line.search</field>
+            <field name="model">account.move.line</field>
+            <field name="priority">20</field>
+            <field name="inherit_id" ref="account.view_account_move_line_filter_with_root_selection"/>
+            <field name="arch" type="xml">
+                <xpath expr="//search/searchpanel" position="replace">
+                    <searchpanel class="account_root">
+                        <field name="account_group_id" icon="fa-filter"/>
+                    </searchpanel>
+                </xpath>
+            </field>
+        </record>
+
+
+
+
+
+          <record id="custom_account_tax_view" model="ir.ui.view">
+            <field name="name">custom.account.tax.view</field>
+            <field name="model">account.tax</field>
+            <field name="inherit_id" ref="account.view_tax_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='amount_type']" position="after">
+                    <field name="res_partner"   />
+                </xpath>
+            </field>
+        </record>
+
+          <record id="custom_account_group_view" model="ir.ui.view">
+            <field name="name">custom.account.group.view</field>
+            <field name="model">account.group</field>
+            <field name="inherit_id" ref="account.view_account_group_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='parent_id']" position="after">
+                    <field name="closing_account"   />
+                </xpath>
+            </field>
+        </record>
+
+        <record id="custom_vendor_window" model="ir.actions.act_window">
+            <field name="name">Vendors</field>
+            <field name="res_model">res.partner</field>
+            <field name="view_mode">kanban,tree,form,activity</field>
+            <!--            <field name="search_view_id" ref="base.view_res_partner_filter"/>-->
+            <field name="context">{
+                'search_default_supplier': 1,
+                'res_partner_search_mode':'supplier',
+                'default_is_company': True,
+                'default_supplier_rank': 1,
+                'default_is_supplier':True
+                }
+            </field>
+            <field name="domain">[('is_supplier','=',True)]</field>
+        </record>
+
+
+        <record id="custom_customer_window" model="ir.actions.act_window">
+            <field name="name">Customers</field>
+            <field name="res_model">res.partner</field>
+            <field name="view_mode">kanban,tree,form,activity</field>
+            <!--            <field name="search_view_id" ref="base.view_res_partner_filter"/>-->
+            <field name="domain">[('is_customer','=',True)]</field>
+            <field name="context">{
+                'search_default_customer': 1,
+                'res_partner_search_mode':'customer',
+                'default_is_company': True,
+                'default_customer_rank': 1,
+                'default_is_customer':True
+                }
+            </field>
+        </record>
+
+
+        <record id="add_default_vat_settings" model="ir.ui.view">
+            <field name="name">add.default.vat.settings</field>
+            <field name="model">res.config.settings</field>
+            <field name="priority" eval="50"/>
+            <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='sale_tax_id']/.." position="before">
+                    <div class="row">
+                        <label string="Default VAT Amount" for="vat_amount_default" class="col-lg-3 o_light_label"/>
+                        <field name="vat_amount_default"/>
+                    </div>
+                </xpath>
+
+                 <xpath expr="//field[@name='sale_tax_id']/.." position="attributes">
+                   <attribute name="invisible">1</attribute>
+                </xpath>
+                 <xpath expr="//field[@name='purchase_tax_id']/.." position="attributes">
+                   <attribute name="invisible">1</attribute>
+                </xpath>
+            </field>
+        </record>
+
+
+
+
+         <record id="account_group_form_custom_ebs" model="ir.ui.view">
+            <field name="name">account.group.form.custom.ebs</field>
+            <field name="model">account.group</field>
+            <field name="inherit_id" ref="account.view_account_group_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="after">
+                    <field name="name_en"/>
+                    <field name="name_fr"/>
+                </xpath>
+            </field>
+        </record>
+
+
+        <record id="account_group_tree_custom_ebs" model="ir.ui.view">
+            <field name="name">account.group.tree.custom.ebs</field>
+            <field name="model">account.group</field>
+            <field name="inherit_id" ref="account.view_account_group_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="after">
+                    <field name="name_en" optional="hide"/>
+                    <field name="name_fr" optional="hide"/>
+                </xpath>
+            </field>
+        </record>
+
+
+         <record id="account_account_form_custom_ebs" model="ir.ui.view">
+            <field name="name">account.account.form.custom.ebs</field>
+            <field name="model">account.account</field>
+            <field name="inherit_id" ref="account.view_account_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="after">
+                    <field name="name_en"/>
+                    <field name="name_fr"/>
+                </xpath>
+            </field>
+        </record>
+
+
+        <record id="account_account_tree_custom_ebs" model="ir.ui.view">
+            <field name="name">account.account.tree.custom.ebs</field>
+            <field name="model">account.account</field>
+            <field name="inherit_id" ref="account.view_account_list"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="after">
+                    <field name="reconcile" optional="hide"/>
+                    <field name="name_en" optional="hide"/>
+                    <field name="name_fr" optional="hide"/>
+                </xpath>
+            </field>
+        </record>
+
+
+        <!-- explicit list view definition -->
+        <!--
+        <record model="ir.ui.view" id="budget_app.list">
+          <field name="name">budget_app list</field>
+          <field name="model">budget_app.budget_app</field>
+          <field name="arch" type="xml">
+            <tree>
+              <field name="name"/>
+              <field name="value"/>
+              <field name="value2"/>
+            </tree>
+          </field>
+        </record>
+        -->
+
+        <!-- actions opening views on models -->
+        <!--
+        <record model="ir.actions.act_window" id="budget_app.action_window">
+          <field name="name">budget_app window</field>
+          <field name="res_model">budget_app.budget_app</field>
+          <field name="view_mode">tree,form</field>
+        </record>
+        -->
+
+        <!-- server action to the one above -->
+        <!--
+        <record model="ir.actions.server" id="budget_app.action_server">
+          <field name="name">budget_app server</field>
+          <field name="model_id" ref="model_budget_app_budget_app"/>
+          <field name="state">code</field>
+          <field name="code">
+            action = {
+              "type": "ir.actions.act_window",
+              "view_mode": "tree,form",
+              "res_model": self._name,
+            }
+          </field>
+        </record>
+        -->
+
+        <!-- Top menu item -->
+        <!--
+        <menuitem name="budget_app" id="budget_app.menu_root"/>
+        -->
+        <!-- menu categories -->
+        <!--
+        <menuitem name="Menu 1" id="budget_app.menu_1" parent="budget_app.menu_root"/>
+        <menuitem name="Menu 2" id="budget_app.menu_2" parent="budget_app.menu_root"/>
+        -->
+        <!-- actions -->
+        <!--
+        <menuitem name="List" id="budget_app.menu_1_list" parent="budget_app.menu_1"
+                  action="budget_app.action_window"/>
+        <menuitem name="Server to list" id="budget_app" parent="budget_app.menu_2"
+                  action="budget_app.action_server"/>
+        -->
+    </data>
+</odoo>

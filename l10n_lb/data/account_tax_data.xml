@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+
+    <!-- Account Tags -->
+    <!--<record id="" model="account.account.tag">-->
+    <!--<field name="name"></field>-->
+    <!--<field name="applicability">taxes</field>-->
+    <!--</record>-->
+
+
+    <record id="tva_11_sale_exc" model="account.tax.template">
+        <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        <field name="name">VAT 11%</field>
+        <field name="description">VAT 11%</field>
+        <field name="amount" eval="11.0"/>
+        <field name="amount_type">percent</field>
+<!--        <field name="refund_account_id" ref="pcg_4427"/>-->
+<!--        <field name="account_id" ref="pcg_4427"/>-->
+        <field name="sequence" eval="10"/>
+        <field name="type_tax_use">sale</field>
+        <!--<field name="tag_ids" eval="[]"/>-->
+        <field name="tax_group_id" ref="tax_group_tva_11"/>
+    </record>
+
+    <record id="tva_11_sale_inc" model="account.tax.template">
+        <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        <field name="name">VAT 11% INC</field>
+        <field name="description">VAT 11% INC</field>
+        <field name="price_include" eval="1"/>
+        <field name="amount" eval="11.0"/>
+        <field name="amount_type">percent</field>
+<!--        <field name="refund_account_id" ref="pcg_4427"/>-->
+<!--        <field name="account_id" ref="pcg_4427"/>-->
+        <field name="sequence" eval="11"/>
+        <field name="type_tax_use">sale</field>
+        <!--<field name="tag_ids" eval="[]"/>-->
+        <field name="tax_group_id" ref="tax_group_tva_11"/>
+    </record>
+
+    <record id="tva_withholding_75" model="account.tax.template">
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+            <field name="name">Withholding Tax 7.5%</field>
+            <field name="description">Withholding Tax 7.5%</field>
+            <field name="amount" eval="7.5"/>
+            <field name="amount_type">percent</field>
+<!--            <field name="refund_account_id" ref="pcg_4411"/>-->
+<!--            <field name="account_id" ref="pcg_4411"/>-->
+            <field name="sequence" eval="1"/>
+            <field name="type_tax_use">purchase</field>
+            <field name="is_withholding_tax" eval="1"/>
+            <field name="withholding_expense_account_id" ref="pcg_64550001"/>
+        </record>
+        <record id="tva_withholding_75_inc" model="account.tax.template">
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+            <field name="name">Withholding Tax Inc 7.5%</field>
+            <field name="description">Withholding Tax Inc 7.5%</field>
+            <field name="amount" eval="7.5"/>
+            <field name="amount_type">percent</field>
+<!--            <field name="refund_account_id" ref="pcg_4411"/>-->
+<!--            <field name="account_id" ref="pcg_4411"/>-->
+            <field name="sequence" eval="1"/>
+            <field name="type_tax_use">purchase</field>
+            <field name="price_include" eval="1"/>
+            <field name="is_withholding_tax" eval="1"/>
+            <field name="withholding_expense_account_id" ref="pcg_64550001"/>
+        </record>
+        <record id="tva_withholding_225" model="account.tax.template">
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+            <field name="name">Withholding Tax 2.25%</field>
+            <field name="description">Withholding Tax 7.5%</field>
+            <field name="amount" eval="2.25"/>
+            <field name="amount_type">percent</field>
+<!--            <field name="refund_account_id" ref="pcg_4411"/>-->
+<!--            <field name="account_id" ref="pcg_4411"/>-->
+            <field name="sequence" eval="1"/>
+            <field name="type_tax_use">purchase</field>
+            <field name="is_withholding_tax" eval="1"/>
+            <field name="withholding_expense_account_id" ref="pcg_64540001"/>
+        </record>
+        <record id="tva_withholding_225_inc" model="account.tax.template">
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+            <field name="name">Withholding Tax Inc 2.25%</field>
+            <field name="description">Withholding Tax Inc 7.5%</field>
+            <field name="amount" eval="2.25"/>
+            <field name="amount_type">percent</field>
+<!--            <field name="refund_account_id" ref="pcg_4411"/>-->
+<!--            <field name="account_id" ref="pcg_4411"/>-->
+            <field name="sequence" eval="1"/>
+            <field name="type_tax_use">purchase</field>
+            <field name="price_include" eval="1"/>
+            <field name="is_withholding_tax" eval="1"/>
+            <field name="withholding_expense_account_id" ref="pcg_64540001"/>
+        </record>
+
+    <record id="tva_11_purchase_a" model="account.tax.template">
+        <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        <field name="name">VAT Purchases A 11%</field>
+        <field name="description">VAT Purchases A 11%</field>
+        <field name="amount" eval="11.0"/>
+        <field name="amount_type">percent</field>
+<!--        <field name="refund_account_id" ref="pcg_44210"/>-->
+<!--        <field name="account_id" ref="pcg_44210"/>-->
+        <field name="sequence" eval="1"/>
+        <field name="type_tax_use">purchase</field>
+        <!--<field name="tag_ids" eval="[]"/>-->
+        <field name="tax_group_id" ref="tax_group_tva_11"/>
+    </record>
+    <record id="tva_11_purchase_b" model="account.tax.template">
+        <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        <field name="name">VAT Purchases B 11%</field>
+        <field name="description">VAT Purchases B 11%</field>
+        <field name="amount" eval="11.0"/>
+        <field name="amount_type">percent</field>
+<!--        <field name="refund_account_id" ref="pcg_44211"/>-->
+<!--        <field name="account_id" ref="pcg_44211"/>-->
+        <field name="sequence" eval="2"/>
+        <field name="type_tax_use">purchase</field>
+        <!--<field name="tag_ids" eval="[]"/>-->
+        <field name="tax_group_id" ref="tax_group_tva_11"/>
+    </record>
+    <record id="tva_11_purchase_c" model="account.tax.template">
+        <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        <field name="name">VAT Purchases C 11%</field>
+        <field name="description">VAT Purchases C 11%</field>
+        <field name="amount" eval="11.0"/>
+        <field name="amount_type">percent</field>
+<!--        <field name="refund_account_id" ref="pcg_44212"/>-->
+<!--        <field name="account_id" ref="pcg_44212"/>-->
+        <field name="sequence" eval="3"/>
+        <field name="type_tax_use">purchase</field>
+        <!--<field name="tag_ids" eval="[]"/>-->
+        <field name="tax_group_id" ref="tax_group_tva_11"/>
+    </record>
+    <record id="tva_11_assets_a" model="account.tax.template">
+        <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        <field name="name">VAT Assets A 11%</field>
+        <field name="description">VAT Assets A 11%</field>
+        <field name="amount" eval="11.0"/>
+        <field name="amount_type">percent</field>
+<!--        <field name="refund_account_id" ref="pcg_44213"/>-->
+<!--        <field name="account_id" ref="pcg_44213"/>-->
+        <field name="sequence" eval="4"/>
+        <field name="type_tax_use">purchase</field>
+        <!--<field name="tag_ids" eval="[]"/>-->
+        <field name="tax_group_id" ref="tax_group_tva_11"/>
+    </record>
+    <record id="tva_11_assets_b" model="account.tax.template">
+        <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        <field name="name">VAT Assets B 11%</field>
+        <field name="description">VAT Assets B 11%</field>
+        <field name="amount" eval="11.0"/>
+        <field name="amount_type">percent</field>
+<!--        <field name="refund_account_id" ref="pcg_44214"/>-->
+<!--        <field name="account_id" ref="pcg_44214"/>-->
+        <field name="sequence" eval="5"/>
+        <field name="type_tax_use">purchase</field>
+        <!--<field name="tag_ids" eval="[]"/>-->
+        <field name="tax_group_id" ref="tax_group_tva_11"/>
+    </record>
+    <record id="tva_11_assets_c" model="account.tax.template">
+        <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        <field name="name">VAT Assets C 11%</field>
+        <field name="description">VAT Assets C 11%</field>
+        <field name="amount" eval="11.0"/>
+        <field name="amount_type">percent</field>
+<!--        <field name="refund_account_id" ref="pcg_44215"/>-->
+<!--        <field name="account_id" ref="pcg_44215"/>-->
+        <field name="sequence" eval="6"/>
+        <field name="type_tax_use">purchase</field>
+        <!--<field name="tag_ids" eval="[]"/>-->
+        <field name="tax_group_id" ref="tax_group_tva_11"/>
+    </record>
+    <record id="tva_11_expenses_a" model="account.tax.template">
+        <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        <field name="name">VAT Expenses A 11%</field>
+        <field name="description">VAT Expenses A 11%</field>
+        <field name="amount" eval="11.0"/>
+        <field name="amount_type">percent</field>
+<!--        <field name="refund_account_id" ref="pcg_44216"/>-->
+<!--        <field name="account_id" ref="pcg_44216"/>-->
+        <field name="sequence" eval="7"/>
+        <field name="type_tax_use">purchase</field>
+        <!--<field name="tag_ids" eval="[]"/>-->
+        <field name="tax_group_id" ref="tax_group_tva_11"/>
+    </record>
+    <record id="tva_11_expenses_b" model="account.tax.template">
+        <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        <field name="name">VAT Expenses B 11%</field>
+        <field name="description">VAT Expenses B 11%</field>
+        <field name="amount" eval="11.0"/>
+        <field name="amount_type">percent</field>
+<!--        <field name="refund_account_id" ref="pcg_44217"/>-->
+<!--        <field name="account_id" ref="pcg_44217"/>-->
+        <field name="sequence" eval="8"/>
+        <field name="type_tax_use">purchase</field>
+        <!--<field name="tag_ids" eval="[]"/>-->
+        <field name="tax_group_id" ref="tax_group_tva_11"/>
+    </record>
+    <record id="tva_11_expenses_c" model="account.tax.template">
+        <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        <field name="name">VAT Expenses C 11%</field>
+        <field name="description">VAT Expenses C 11%</field>
+        <field name="amount" eval="11.0"/>
+        <field name="amount_type">percent</field>
+<!--        <field name="refund_account_id" ref="pcg_44218"/>-->
+<!--        <field name="account_id" ref="pcg_44218"/>-->
+        <field name="sequence" eval="9"/>
+        <field name="type_tax_use">purchase</field>
+        <!--<field name="tag_ids" eval="[]"/>-->
+        <field name="tax_group_id" ref="tax_group_tva_11"/>
+    </record>
+
+    <!--<record id="pcg_6011" model="account.account.template">-->
+        <!--<field name="tax_ids" eval="[(6,0,[ref('tva_acq_normale')])]"/>-->
+    <!--</record>-->
+</odoo>

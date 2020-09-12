@@ -1,0 +1,3090 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--<record id="account_fr_tag_salaires" model="account.account.tag">-->
+    <!--<field name="name">Salaires</field>-->
+    <!--<field name="applicability">accounts</field>-->
+    <!--</record>-->
+
+
+    <!--<delete model="account.account" search="[('code','in',['5301','5121'])]"/>-->
+
+    <data noupdate="0">
+        <menuitem id="account_reports_lb_statements_menu"
+                  name="Lebanon"
+                  parent="account.menu_finance_reports"
+                  sequence="0"
+                  groups="account.group_account_user"/>
+
+        <!--
+            Plan comptable général pour la France.
+            Prend en compte les arrêtés du CRC publiés au Journal officiel
+            jusqu'à décembre 2007
+
+            Version du fichier : 12-04-2008
+
+            Utilise les 'account types' de addons/account/data/data_account_type.xml
+          -->
+
+
+        <!-- Account Templates -->
+
+        <!--receivable-->
+        <!--data_account_type_receivable-->
+        <!--payable-->
+        <!--data_account_type_payable-->
+        <!--liquidity-->
+        <!--data_account_type_liquidity ( Bank and Cash )-->
+        <!--data_account_type_credit_card ( Credit Card )-->
+        <!--other-->
+        <!--data_account_type_current_assets-->
+        <!--data_account_type_non_current_assets-->
+        <!--data_account_type_prepayments-->
+        <!--data_account_type_fixed_assets-->
+        <!--data_account_type_current_liabilities-->
+        <!--data_account_type_non_current_liabilities-->
+        <!--data_account_type_equity-->
+        <!--data_unaffected_earnings-->
+        <!--data_account_type_other_income-->
+        <!--data_account_type_revenue-->
+        <!--data_account_type_depreciation-->
+        <!--data_account_type_expenses-->
+        <!--data_account_type_direct_costs-->
+
+
+        <!--<record id="pcg_" model="account.account.template">-->
+        <!--<field name="code"></field>-->
+        <!--<field name="group_id" ref="l10n_lb.grp_coa_lb_"/>-->
+        <!--<field name="name"></field>-->
+        <!--<field name="user_type_id" ref="account.data_account_type_other_income"/>-->
+        <!--<field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>-->
+        <!--</record>-->
+
+
+        <record id="pcg_10110001" model="account.account.template">
+            <field name="name">رأس المال المكتتب غير المستدعى</field>
+            <field name="code">10110001</field>
+            <field name="user_type_id" ref="account.data_account_type_equity"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_1011"/>
+        </record>
+
+        <record id="pcg_10120001" model="account.account.template">
+            <field name="name">رأس المال المكتتب المستدعى وغير المدفوع</field>
+            <field name="code">10120001</field>
+            <field name="user_type_id" ref="account.data_account_type_equity"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_1012"/>
+        </record>
+
+        <record id="pcg_10130001" model="account.account.template">
+            <field name="name">رأس المال المكتتب المستدعى والمدفوع</field>
+            <field name="code">10130001</field>
+            <field name="user_type_id" ref="account.data_account_type_equity"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_1013"/>
+        </record>
+
+        <record id="pcg_10210001" model="account.account.template">
+            <field name="name">علاوات الإصدار</field>
+            <field name="code">10210001</field>
+            <field name="user_type_id" ref="account.data_account_type_equity"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_1021"/>
+        </record>
+
+        <record id="pcg_10220001" model="account.account.template">
+            <field name="name">علاوات الإندماج</field>
+            <field name="code">10220001</field>
+            <field name="user_type_id" ref="account.data_account_type_equity"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_1022"/>
+        </record>
+
+        <record id="pcg_10230001" model="account.account.template">
+            <field name="name">علاوات المقدمات</field>
+            <field name="code">10230001</field>
+            <field name="user_type_id" ref="account.data_account_type_equity"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_1023"/>
+        </record>
+
+        <record id="pcg_10240001" model="account.account.template">
+            <field name="name">علاوات تحويل السندات إلى أسهم</field>
+            <field name="code">10240001</field>
+            <field name="user_type_id" ref="account.data_account_type_equity"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_1024"/>
+        </record>
+
+        <record id="pcg_10310001" model="account.account.template">
+            <field name="name">فروقات اعادة تخمين الاصول الثابتة غير القابلة للاستهلاك</field>
+            <field name="code">10310001</field>
+            <field name="user_type_id" ref="account.data_account_type_equity"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_1031"/>
+        </record>
+
+        <record id="pcg_10320001" model="account.account.template">
+            <field name="name">فروقات اعادة تخمين الاصول الثابتة القابلة للاستهلاك</field>
+            <field name="code">10320001</field>
+            <field name="user_type_id" ref="account.data_account_type_equity"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_1032"/>
+        </record>
+
+        <record id="pcg_10900001" model="account.account.template">
+            <field name="name">الحساب الشخصي لصاحب المؤسسة</field>
+            <field name="code">10900001</field>
+            <field name="user_type_id" ref="account.data_account_type_equity"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_109"/>
+        </record>
+
+        <record id="pcg_11100001" model="account.account.template">
+            <field name="code">11100001</field>
+            <field name="name">إحتياطي قانوني</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_111"/>
+            <field name="user_type_id" ref="account.data_account_type_equity"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+
+        <record id="pcg_11200001" model="account.account.template">
+            <field name="code">11200001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_112"/>
+            <field name="name">إحتياطات نظامية وتعاقدية</field>
+            <field name="user_type_id" ref="account.data_account_type_equity"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+
+        <record id="pcg_11900001" model="account.account.template">
+            <field name="code">11900001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_119"/>
+            <field name="name">إحتياطات اخرى</field>
+            <field name="user_type_id" ref="account.data_account_type_equity"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+
+        <record id="pcg_12100001" model="account.account.template">
+            <field name="code">12100001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_121"/>
+            <field name="name">نتائج سابقة مدورة دائنة</field>
+            <field name="user_type_id" ref="account.data_account_type_equity"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+
+        <record id="pcg_12500001" model="account.account.template">
+            <field name="code">12500001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_125"/>
+            <field name="name">نتائج سابقة مدورة مدينة</field>
+            <field name="user_type_id" ref="account.data_account_type_equity"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+
+        <record id="pcg_13100001" model="account.account.template">
+            <field name="code">13100001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_131"/>
+            <field name="name">الهامش التجاري القائم</field>
+            <field name="user_type_id" ref="account.data_account_type_equity"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+
+        <record id="pcg_13200001" model="account.account.template">
+            <field name="code">13200001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_132"/>
+            <field name="name">القيمة المضافة</field>
+            <field name="user_type_id" ref="account.data_account_type_equity"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+
+        <record id="pcg_13300001" model="account.account.template">
+            <field name="code">13300001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_133"/>
+            <field name="name">الفائض غير الصافي للإستثمار</field>
+            <field name="user_type_id" ref="account.data_account_type_equity"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+
+        <record id="pcg_13400001" model="account.account.template">
+            <field name="code">13400001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_134"/>
+            <field name="name">نتيجة الإستثمار (خارج الأعباء والإيرادات المالية)</field>
+            <field name="user_type_id" ref="account.data_account_type_equity"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+
+        <record id="pcg_13500001" model="account.account.template">
+            <field name="code">13500001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_135"/>
+            <field name="name">النتيجة الجارية قبل الضريبة</field>
+            <field name="user_type_id" ref="account.data_account_type_equity"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+
+        <record id="pcg_13600001" model="account.account.template">
+            <field name="code">13600001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_136"/>
+            <field name="name">النتيجة خارج الإستثمار</field>
+            <field name="user_type_id" ref="account.data_account_type_equity"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+
+        <record id="pcg_13800001" model="account.account.template">
+            <field name="code">13800001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_138"/>
+            <field name="name">نتيجة الدورة - أرباح</field>
+            <field name="user_type_id" ref="account.data_account_type_equity"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+
+        <record id="pcg_13900001" model="account.account.template">
+            <field name="code">13900001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_139"/>
+            <field name="name">نتيجة الدورة - خسائر</field>
+            <field name="user_type_id" ref="account.data_account_type_equity"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+
+        <record id="pcg_14100001" model="account.account.template">
+            <field name="code">14100001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_141"/>
+            <field name="name">إعانات للتوظيفات مقبوضة</field>
+            <field name="user_type_id" ref="account.data_account_type_equity"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+
+        <record id="pcg_14500001" model="account.account.template">
+            <field name="code">14500001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_145"/>
+            <field name="name">إعانات للتوظيفات محولة للنتائج</field>
+            <field name="user_type_id" ref="account.data_account_type_equity"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+
+        <record id="pcg_15110001" model="account.account.template">
+            <field name="code">15110001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_1511"/>
+            <field name="name">مؤونات أخطار المنازعات والإحتمالات المختلفة</field>
+            <field name="user_type_id" ref="account.data_account_type_equity"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+
+        <record id="pcg_15120001" model="account.account.template">
+            <field name="code">15120001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_1512"/>
+            <field name="name">مؤونات لقاء الضمانات المعطاة للزبائن</field>
+            <field name="user_type_id" ref="account.data_account_type_equity"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+
+        <record id="pcg_15130001" model="account.account.template">
+            <field name="code">15130001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_1513"/>
+            <field name="name">مؤونات مواجهة خسائر سعر الصرف</field>
+            <field name="user_type_id" ref="account.data_account_type_equity"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+
+        <record id="pcg_15140001" model="account.account.template">
+            <field name="code">15140001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_1514"/>
+            <field name="name">مؤونات مواجهة خسائر على عقود لأجل</field>
+            <field name="user_type_id" ref="account.data_account_type_equity"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+
+        <record id="pcg_15150001" model="account.account.template">
+            <field name="code">15150001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_1515"/>
+            <field name="name">مؤونات مواجهة الغرامات والجزاءات</field>
+            <field name="user_type_id" ref="account.data_account_type_equity"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+
+        <record id="pcg_15510001" model="account.account.template">
+            <field name="code">15510001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_1551"/>
+            <field name="name">مؤونات الأعباء الواجب توزيعها على عدة دورات مالية</field>
+            <field name="user_type_id" ref="account.data_account_type_equity"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+
+        <record id="pcg_15520001" model="account.account.template">
+            <field name="code">15520001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_1552"/>
+            <field name="name">مؤونات لمواجهة معاشات التعاقد والموجبات المماثلة</field>
+            <field name="user_type_id" ref="account.data_account_type_equity"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+
+        <record id="pcg_15530001" model="account.account.template">
+            <field name="code">15530001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_1553"/>
+            <field name="name">مؤونات للضرائب</field>
+            <field name="user_type_id" ref="account.data_account_type_equity"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+
+        <record id="pcg_16100001" model="account.account.template">
+            <field name="code">16100001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_161"/>
+            <field name="name">قروض لقاء سندات دين</field>
+            <field name="user_type_id" ref="account.data_account_type_equity"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+
+        <record id="pcg_16200001" model="account.account.template">
+            <field name="code">16200001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_162"/>
+            <field name="name">قروض من مؤسسات التسليف</field>
+            <field name="user_type_id" ref="account.data_account_type_equity"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+
+        <record id="pcg_16810001" model="account.account.template">
+            <field name="code">16810001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_1681"/>
+            <field name="name">اوراق دفع ناجمة عن شراء المؤسسة التجارية</field>
+            <field name="user_type_id" ref="account.data_account_type_equity"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+
+        <record id="pcg_16820001" model="account.account.template">
+            <field name="code">16820001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_1682"/>
+            <field name="name">ودائع وكفالات</field>
+            <field name="user_type_id" ref="account.data_account_type_equity"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+
+        <record id="pcg_16830001" model="account.account.template">
+            <field name="code">16830001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_1683"/>
+            <field name="name">سلفات دولة</field>
+            <field name="user_type_id" ref="account.data_account_type_equity"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+
+        <record id="pcg_16840001" model="account.account.template">
+            <field name="code">16840001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_1684"/>
+            <field name="name">دخل لمدى الحياة متراكم</field>
+            <field name="user_type_id" ref="account.data_account_type_equity"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+
+        <record id="pcg_16890001" model="account.account.template">
+            <field name="code">16890001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_1689"/>
+            <field name="name">ديون اخرى طويلة ومتوسطة الاجل</field>
+            <field name="user_type_id" ref="account.data_account_type_equity"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+
+        <record id="pcg_18110001" model="account.account.template">
+            <field name="code">18110001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_1811"/>
+            <field name="name">رصيد مدور</field>
+            <field name="user_type_id" ref="account.data_account_type_equity"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+
+        <record id="pcg_18150001" model="account.account.template">
+            <field name="code">18150001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_1815"/>
+            <field name="name">حركات الدورة المالية</field>
+            <field name="user_type_id" ref="account.data_account_type_equity"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+
+        <record id="pcg_1860001" model="account.account.template">
+            <field name="code">1860001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_186"/>
+            <field name="name">الاموال والخدمات المتبادلة بين الفروع(أعباء)</field>
+            <field name="user_type_id" ref="account.data_account_type_equity"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+
+        <record id="pcg_1870001" model="account.account.template">
+            <field name="code">1870001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_187"/>
+            <field name="name">الأموال والخدمات المتبادلة بين الفروع(إيرادات)</field>
+            <field name="user_type_id" ref="account.data_account_type_equity"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+
+        <record id="pcg_1910001" model="account.account.template">
+            <field name="code">1910001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_191"/>
+            <field name="name">تحديد الهامش التجاري القائم</field>
+            <field name="user_type_id" ref="account.data_account_type_equity"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+
+        <record id="pcg_1920001" model="account.account.template">
+            <field name="code">1920001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_192"/>
+            <field name="name">تحديد القيمة المضافة</field>
+            <field name="user_type_id" ref="account.data_account_type_equity"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+
+        <record id="pcg_1930001" model="account.account.template">
+            <field name="code">1930001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_193"/>
+            <field name="name">تحديد الفائض غير الصافي للإستثمار</field>
+            <field name="user_type_id" ref="account.data_account_type_equity"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+
+        <record id="pcg_1940001" model="account.account.template">
+            <field name="code">1940001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_194"/>
+            <field name="name">تحديد نتيجة الإستثمار(قبل الأعباء والإيرادات المالية)</field>
+            <field name="user_type_id" ref="account.data_account_type_equity"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+
+        <record id="pcg_1950001" model="account.account.template">
+            <field name="code">1950001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_195"/>
+            <field name="name">تحديد النتيجة الجارية قبل الضريبة</field>
+            <field name="user_type_id" ref="account.data_account_type_equity"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+
+        <record id="pcg_1960001" model="account.account.template">
+            <field name="code">1960001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_196"/>
+            <field name="name">تحديد النتيجة خارج الإستثمار</field>
+            <field name="user_type_id" ref="account.data_account_type_equity"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+
+        <record id="pcg_1970001" model="account.account.template">
+            <field name="code">1970001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_197"/>
+            <field name="name">تحديد نتيجة الدورة المالية</field>
+            <field name="user_type_id" ref="account.data_account_type_equity"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+
+
+        <record id="pcg_21100001" model="account.account.template">
+            <field name="code">21100001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_211"/>
+            <field name="name">المؤسسات التجارية - الخلو، الشهرة، الزبائن.....</field>
+            <field name="user_type_id" ref="account.data_account_type_fixed_assets"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_21200001" model="account.account.template">
+            <field name="code">21200001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_212"/>
+            <field name="name">مصاريف التأسيس</field>
+            <field name="user_type_id" ref="account.data_account_type_fixed_assets"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_21300001" model="account.account.template">
+            <field name="code">21300001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_213"/>
+            <field name="name">مصاريف البحوث والتطوير</field>
+            <field name="user_type_id" ref="account.data_account_type_fixed_assets"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_21400001" model="account.account.template">
+            <field name="code">21400001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_214"/>
+            <field name="name">براءات الإختراع-الإجازات-العلامات والقيم المماثلة</field>
+            <field name="user_type_id" ref="account.data_account_type_fixed_assets"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_21910001" model="account.account.template">
+            <field name="code">21910001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_2191"/>
+            <field name="name">.............</field>
+            <field name="user_type_id" ref="account.data_account_type_fixed_assets"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_21980001" model="account.account.template">
+            <field name="code">21980001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_2198"/>
+            <field name="name">سلفات ودفعات على حساب تقديم أصول ثابتة مادية</field>
+            <field name="user_type_id" ref="account.data_account_type_fixed_assets"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_22110001" model="account.account.template">
+            <field name="code">22110001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_2211"/>
+            <field name="name">الاراضي الفراغ</field>
+            <field name="user_type_id" ref="account.data_account_type_fixed_assets"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_22120001" model="account.account.template">
+            <field name="code">22120001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_2212"/>
+            <field name="name">الاراضي المبنية</field>
+            <field name="user_type_id" ref="account.data_account_type_fixed_assets"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_22130001" model="account.account.template">
+            <field name="code">22130001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_2213"/>
+            <field name="name">الاراضي برسم الإستثمار الجوفي - مناجم- مقاليع...</field>
+            <field name="user_type_id" ref="account.data_account_type_fixed_assets"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_22140001" model="account.account.template">
+            <field name="code">22140001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_2214"/>
+            <field name="name">استصلاح وتنظيم الأراضي</field>
+            <field name="user_type_id" ref="account.data_account_type_fixed_assets"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_22310001" model="account.account.template">
+            <field name="code">22310001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_2231"/>
+            <field name="name">الابنية</field>
+            <field name="user_type_id" ref="account.data_account_type_fixed_assets"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_22320001" model="account.account.template">
+            <field name="code">22320001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_2232"/>
+            <field name="name">الاراضي المبنية</field>
+            <field name="user_type_id" ref="account.data_account_type_fixed_assets"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_22330001" model="account.account.template">
+            <field name="code">22330001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_2233"/>
+            <field name="name">انشاءات البنية التحتية - سدود - مدارج المطارات...</field>
+            <field name="user_type_id" ref="account.data_account_type_fixed_assets"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_22340001" model="account.account.template">
+            <field name="code">22340001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_2234"/>
+            <field name="name">انشاءات على أراضي الغير</field>
+            <field name="user_type_id" ref="account.data_account_type_fixed_assets"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_22410001" model="account.account.template">
+            <field name="code">22410001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_2241"/>
+            <field name="name">تجهيزات متخصصة</field>
+            <field name="user_type_id" ref="account.data_account_type_fixed_assets"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_22420001" model="account.account.template">
+            <field name="code">22420001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_2242"/>
+            <field name="name">تجهيزات ذات طبيعة خاصة</field>
+            <field name="user_type_id" ref="account.data_account_type_fixed_assets"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_22430001" model="account.account.template">
+            <field name="code">22430001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_2243"/>
+            <field name="name">المعدات الصناعية</field>
+            <field name="user_type_id" ref="account.data_account_type_fixed_assets"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_22440001" model="account.account.template">
+            <field name="code">22440001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_2244"/>
+            <field name="name">الأدوات الصناعية</field>
+            <field name="user_type_id" ref="account.data_account_type_fixed_assets"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_22500001" model="account.account.template">
+            <field name="code">22500001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_225"/>
+            <field name="name">اليات النقل</field>
+            <field name="user_type_id" ref="account.data_account_type_fixed_assets"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_22610001" model="account.account.template">
+            <field name="code">22610001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_2261"/>
+            <field name="name">تجهيزات داخلية, ديكور وتحسينات مختلفة</field>
+            <field name="user_type_id" ref="account.data_account_type_fixed_assets"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_22621001" model="account.account.template">
+            <field name="code">22621001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_22621"/>
+            <field name="name">ادوات مكتبية</field>
+            <field name="user_type_id" ref="account.data_account_type_fixed_assets"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_22622001" model="account.account.template">
+            <field name="code">22622001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_22622"/>
+            <field name="name">ادوات معلوماتية وبرامج</field>
+            <field name="user_type_id" ref="account.data_account_type_fixed_assets"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_22630001" model="account.account.template">
+            <field name="code">22630001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_2263"/>
+            <field name="name">اثاث ومفروشات</field>
+            <field name="user_type_id" ref="account.data_account_type_fixed_assets"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_22640001" model="account.account.template">
+            <field name="code">22640001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_2264"/>
+            <field name="name">استثمارات زراعية</field>
+            <field name="user_type_id" ref="account.data_account_type_fixed_assets"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_22650001" model="account.account.template">
+            <field name="code">22650001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_2265"/>
+            <field name="name">عبوات قابلة لإعادة الإستعمال</field>
+            <field name="user_type_id" ref="account.data_account_type_fixed_assets"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_22710001" model="account.account.template">
+            <field name="code">22710001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_2271"/>
+            <field name="name">اراضي</field>
+            <field name="user_type_id" ref="account.data_account_type_fixed_assets"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_22720001" model="account.account.template">
+            <field name="code">22720001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_2272"/>
+            <field name="name">ابنية</field>
+            <field name="user_type_id" ref="account.data_account_type_fixed_assets"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_22740001" model="account.account.template">
+            <field name="code">22740001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_2274"/>
+            <field name="name">تجهيزات فنية, معدات وادوات صناعية</field>
+            <field name="user_type_id" ref="account.data_account_type_fixed_assets"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_22760001" model="account.account.template">
+            <field name="code">22760001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_2276"/>
+            <field name="name">اصول ثابتة مادية أخرى</field>
+            <field name="user_type_id" ref="account.data_account_type_fixed_assets"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_22800001" model="account.account.template">
+            <field name="code">22800001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_228"/>
+            <field name="name">سلفات ودفعات على حساب شراء أصول ثابتة مادية</field>
+            <field name="user_type_id" ref="account.data_account_type_fixed_assets"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_25100001" model="account.account.template">
+            <field name="code">25100001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_251"/>
+            <field name="name">سندات مشا ركة</field>
+            <field name="user_type_id" ref="account.data_account_type_non_current_assets"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_25210001" model="account.account.template">
+            <field name="code">25210001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_2521"/>
+            <field name="name">ذمم مدينة مرتبطة بمشاركات محلية</field>
+            <field name="user_type_id" ref="account.data_account_type_non_current_assets"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_25290001" model="account.account.template">
+            <field name="code">25290001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_2529"/>
+            <field name="name">ذمم مدينة مرتبطة بمشاركات اخرى</field>
+            <field name="user_type_id" ref="account.data_account_type_non_current_assets"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_25310001" model="account.account.template">
+            <field name="code">25310001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_2531"/>
+            <field name="name">سندات ملكية - اسهم. حصص شراكة</field>
+            <field name="user_type_id" ref="account.data_account_type_non_current_assets"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_25350001" model="account.account.template">
+            <field name="code">25350001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_2535"/>
+            <field name="name">سندات دين - سندات. قسائم</field>
+            <field name="user_type_id" ref="account.data_account_type_non_current_assets"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_25510001" model="account.account.template">
+            <field name="code">25510001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_2551"/>
+            <field name="name">قروض للشركاء</field>
+            <field name="user_type_id" ref="account.data_account_type_non_current_assets"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_25520001" model="account.account.template">
+            <field name="code">25520001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_2552"/>
+            <field name="name">قروض للمستخدمين</field>
+            <field name="user_type_id" ref="account.data_account_type_non_current_assets"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_25580001" model="account.account.template">
+            <field name="code">25580001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_2558"/>
+            <field name="name">قروض أخرى</field>
+            <field name="user_type_id" ref="account.data_account_type_non_current_assets"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_25900001" model="account.account.template">
+            <field name="code">25900001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_259"/>
+            <field name="name">ذمم مدينة أخرى مجمدة</field>
+            <field name="user_type_id" ref="account.data_account_type_non_current_assets"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_27000001" model="account.account.template">
+            <field name="code">27000001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_27"/>
+            <field name="name">فروقات إعادة التخمين</field>
+            <field name="user_type_id" ref="account.data_account_type_fixed_assets"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_28000001" model="account.account.template">
+            <field name="code">28000001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_280"/>
+            <field name="name">استهلاكات المؤسسة التجارية(الشهرة)</field>
+            <field name="user_type_id" ref="account.data_account_type_fixed_assets"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_28110001" model="account.account.template">
+            <field name="code">28110001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_2811"/>
+            <field name="name">مصاريف التأسيس</field>
+            <field name="user_type_id" ref="account.data_account_type_fixed_assets"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_28120001" model="account.account.template">
+            <field name="code">28120001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_2812"/>
+            <field name="name">مصاريف البحوث والتطوير</field>
+            <field name="user_type_id" ref="account.data_account_type_fixed_assets"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_28130001" model="account.account.template">
+            <field name="code">28130001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_2813"/>
+            <field name="name">براءات الإختراع-الإجازات والقيم المماثلة</field>
+            <field name="user_type_id" ref="account.data_account_type_fixed_assets"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_28190001" model="account.account.template">
+            <field name="code">28190001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_2819"/>
+            <field name="name">أصول ثابتة غير مادية أخرى</field>
+            <field name="user_type_id" ref="account.data_account_type_fixed_assets"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_28210001" model="account.account.template">
+            <field name="code">28210001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_2821"/>
+            <field name="name">اراضي برسم الإستثمار الجوفي</field>
+            <field name="user_type_id" ref="account.data_account_type_fixed_assets"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_28220001" model="account.account.template">
+            <field name="code">28220001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_2822"/>
+            <field name="name">الاراضي المبنية</field>
+            <field name="user_type_id" ref="account.data_account_type_fixed_assets"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_28230001" model="account.account.template">
+            <field name="code">28230001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_2823"/>
+            <field name="name">الأبنية</field>
+            <field name="user_type_id" ref="account.data_account_type_fixed_assets"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_28240001" model="account.account.template">
+            <field name="code">28240001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_2824"/>
+            <field name="name">التجهيزات الفنية,المعدات والأدوات الصناعية</field>
+            <field name="user_type_id" ref="account.data_account_type_fixed_assets"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_28250001" model="account.account.template">
+            <field name="code">28250001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_2825"/>
+            <field name="name">آليات النقل</field>
+            <field name="user_type_id" ref="account.data_account_type_fixed_assets"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_28260001" model="account.account.template">
+            <field name="code">28260001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_2826"/>
+            <field name="name">أصول ثابتة مادية أخرى</field>
+            <field name="user_type_id" ref="account.data_account_type_fixed_assets"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_29000001" model="account.account.template">
+            <field name="code">29000001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_290"/>
+            <field name="name">مؤونات هبوط قيمة(المؤسسة التجارية)</field>
+            <field name="user_type_id" ref="account.data_account_type_fixed_assets"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_29110001" model="account.account.template">
+            <field name="code">29110001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_2911"/>
+            <field name="name">علامات وقيم مماثلة</field>
+            <field name="user_type_id" ref="account.data_account_type_fixed_assets"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_29190001" model="account.account.template">
+            <field name="code">29190001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_2919"/>
+            <field name="name">أصول ثابتة غير مادية أخرى</field>
+            <field name="user_type_id" ref="account.data_account_type_fixed_assets"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_29210001" model="account.account.template">
+            <field name="code">29210001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_2921"/>
+            <field name="name">الاراضي(غير اراضي الاستثمار الجوفي)</field>
+            <field name="user_type_id" ref="account.data_account_type_fixed_assets"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_29260001" model="account.account.template">
+            <field name="code">29260001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_2926"/>
+            <field name="name">أصول ثابتة مادية أخرى</field>
+            <field name="user_type_id" ref="account.data_account_type_fixed_assets"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_29510001" model="account.account.template">
+            <field name="code">29510001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_2951"/>
+            <field name="name">سندات المشاركة</field>
+            <field name="user_type_id" ref="account.data_account_type_fixed_assets"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_29520001" model="account.account.template">
+            <field name="code">29520001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_2952"/>
+            <field name="name">ذمم مدينة مرتبطة بمشاركات</field>
+            <field name="user_type_id" ref="account.data_account_type_fixed_assets"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_29530001" model="account.account.template">
+            <field name="code">29530001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_2953"/>
+            <field name="name">سندات أخرى مجمدة</field>
+            <field name="user_type_id" ref="account.data_account_type_fixed_assets"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_29550001" model="account.account.template">
+            <field name="code">29550001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_2955"/>
+            <field name="name">قروض ممنوحة طويلة ومتوسطة الأجل</field>
+            <field name="user_type_id" ref="account.data_account_type_fixed_assets"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_29590001" model="account.account.template">
+            <field name="code">29590001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_2959"/>
+            <field name="name">ذمم مدينة أخرى مجمدة</field>
+            <field name="user_type_id" ref="account.data_account_type_fixed_assets"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+
+
+        <record id="pcg_31100001" model="account.account.template">
+            <field name="code">31100001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_311"/>
+            <field name="name">مواد أولية</field>
+            <field name="user_type_id" ref="account.data_account_type_current_assets"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_31500001" model="account.account.template">
+            <field name="code">31500001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_315"/>
+            <field name="name">مواد ولوازم إستهلاكية أخرى</field>
+            <field name="user_type_id" ref="account.data_account_type_current_assets"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_32510001" model="account.account.template">
+            <field name="code">32510001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_3251"/>
+            <field name="name">نفايات مواد استهلاكية</field>
+            <field name="user_type_id" ref="account.data_account_type_current_assets"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_32560001" model="account.account.template">
+            <field name="code">32560001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_3256"/>
+            <field name="name">نفايات عبوات</field>
+            <field name="user_type_id" ref="account.data_account_type_current_assets"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_33100001" model="account.account.template">
+            <field name="code">33100001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_331"/>
+            <field name="name">منتجات قيد الصنع</field>
+            <field name="user_type_id" ref="account.data_account_type_current_assets"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_33200001" model="account.account.template">
+            <field name="code">33200001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_332"/>
+            <field name="name">أشغال قيد التنفيذ</field>
+            <field name="user_type_id" ref="account.data_account_type_current_assets"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_33500001" model="account.account.template">
+            <field name="code">33500001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_335"/>
+            <field name="name">دراسات قيد الأعداد</field>
+            <field name="user_type_id" ref="account.data_account_type_current_assets"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_33600001" model="account.account.template">
+            <field name="code">33600001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_336"/>
+            <field name="name">خدمات قيد التقديم</field>
+            <field name="user_type_id" ref="account.data_account_type_current_assets"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_35100001" model="account.account.template">
+            <field name="code">35100001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_351"/>
+            <field name="name">منتجات وسطية</field>
+            <field name="user_type_id" ref="account.data_account_type_current_assets"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_35500001" model="account.account.template">
+            <field name="code">35500001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_355"/>
+            <field name="name">منتجات تامة الصنع</field>
+            <field name="user_type_id" ref="account.data_account_type_current_assets"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_35800001" model="account.account.template">
+            <field name="code">35800001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_358"/>
+            <field name="name">فضلات الإنتاج</field>
+            <field name="user_type_id" ref="account.data_account_type_current_assets"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_37100001" model="account.account.template">
+            <field name="code">37100001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_371"/>
+            <field name="name">مخزون البضائع(بداية المدة)</field>
+            <field name="user_type_id" ref="account.data_account_type_current_assets"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_37200001" model="account.account.template">
+            <field name="code">37200001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_372"/>
+            <field name="name">مخزون البضائع(نهاية المدة)</field>
+            <field name="user_type_id" ref="account.data_account_type_current_assets"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_39100001" model="account.account.template">
+            <field name="code">39100001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_391"/>
+            <field name="name">مؤونات هبوط أسعار مخزون المواد الأولية والإستهلاكي</field>
+            <field name="user_type_id" ref="account.data_account_type_current_assets"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_39300001" model="account.account.template">
+            <field name="code">39300001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_393"/>
+            <field name="name">مؤونات هبوط أسعار الإنتاج قيد الصنع</field>
+            <field name="user_type_id" ref="account.data_account_type_current_assets"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_39500001" model="account.account.template">
+            <field name="code">39500001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_395"/>
+            <field name="name">مؤونات هبوط أسعار الإنتاج المخزون</field>
+            <field name="user_type_id" ref="account.data_account_type_current_assets"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_39700001" model="account.account.template">
+            <field name="code">39700001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_397"/>
+            <field name="name">مؤونات هبوط أسعار البضاعة المخزونة</field>
+            <field name="user_type_id" ref="account.data_account_type_current_assets"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+
+
+        <record id="pcg_4011_pay" model="account.account.template">
+            <field name="code">4011</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_401"/>
+            <field name="name">فواتير (الموردون)</field>
+            <field name="user_type_id" ref="account.data_account_type_payable"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+            <field name="reconcile" eval="True"/>
+            <field name="with_auxiliaries" eval="True"/>
+        </record>
+        <record id="pcg_4015" model="account.account.template">
+            <field name="code">4015</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_401"/>
+            <field name="name">اوراق الدفع</field>
+            <field name="user_type_id" ref="account.data_account_type_payable"/>
+            <field name="reconcile" eval="True"/>
+            <field name="with_auxiliaries" eval="True"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_4018" model="account.account.template">
+            <field name="code">4018</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_401"/>
+            <field name="name">فواتير لم تصل بعد</field>
+            <field name="user_type_id" ref="account.data_account_type_payable"/>
+            <field name="reconcile" eval="True"/>
+            <field name="with_auxiliaries" eval="True"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_4019" model="account.account.template">
+            <field name="code">4019</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_401"/>
+            <field name="name">حسومات مكتسبة</field>
+            <field name="user_type_id" ref="account.data_account_type_payable"/>
+            <field name="reconcile" eval="True"/>
+            <field name="with_auxiliaries" eval="True"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_4031" model="account.account.template">
+            <field name="code">4031</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_403"/>
+            <field name="name">فواتير</field>
+            <field name="user_type_id" ref="account.data_account_type_payable"/>
+            <field name="reconcile" eval="True"/>
+            <field name="with_auxiliaries" eval="True"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_4035" model="account.account.template">
+            <field name="code">4035</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_403"/>
+            <field name="name">اوراق الدفع</field>
+            <field name="user_type_id" ref="account.data_account_type_payable"/>
+            <field name="reconcile" eval="True"/>
+            <field name="with_auxiliaries" eval="True"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_4038" model="account.account.template">
+            <field name="code">4038</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_403"/>
+            <field name="name">فواتير لم تصل بعد</field>
+            <field name="user_type_id" ref="account.data_account_type_payable"/>
+            <field name="reconcile" eval="True"/>
+            <field name="with_auxiliaries" eval="True"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_4039" model="account.account.template">
+            <field name="code">4039</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_403"/>
+            <field name="name">حسومات مكتسبة</field>
+            <field name="user_type_id" ref="account.data_account_type_payable"/>
+            <field name="reconcile" eval="True"/>
+            <field name="with_auxiliaries" eval="True"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_409" model="account.account.template">
+            <field name="code">409</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_40"/>
+            <field name="name">سلفات ودفعات على حساب طلبيات للإستثمار (صدفة مدين)</field>
+            <field name="user_type_id" ref="account.data_account_type_payable"/>
+            <field name="reconcile" eval="True"/>
+            <field name="with_auxiliaries" eval="True"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_4111_recv" model="account.account.template">
+            <field name="code">4111</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_411"/>
+            <field name="name">زبائن عاديون</field>
+            <field name="user_type_id" ref="account.data_account_type_receivable"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+            <field name="reconcile" eval="True"/>
+            <field name="with_auxiliaries" eval="True"/>
+        </record>
+        <record id="pcg_4111_recv_pos" model="account.account.template">
+            <field name="code">4112</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_411"/>
+            <field name="name">pos زبائن عاديون</field>
+            <field name="user_type_id" ref="account.data_account_type_receivable"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+            <field name="reconcile" eval="True"/>
+            <field name="with_auxiliaries" eval="True"/>
+        </record>
+        <record id="pcg_4115" model="account.account.template">
+            <field name="code">4115</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_411"/>
+            <field name="name">زبائن مشكوك بتحصيل ديونهم</field>
+            <field name="user_type_id" ref="account.data_account_type_receivable"/>
+            <field name="reconcile" eval="True"/>
+            <field name="with_auxiliaries" eval="True"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_4119" model="account.account.template">
+            <field name="code">4119</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_411"/>
+            <field name="name">حسومات ممنوحة من المؤسسة</field>
+            <field name="user_type_id" ref="account.data_account_type_receivable"/>
+            <field name="reconcile" eval="True"/>
+            <field name="with_auxiliaries" eval="True"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_413" model="account.account.template">
+            <field name="code">413</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_41"/>
+            <field name="name">أوراق قبض - زبائن</field>
+            <field name="user_type_id" ref="account.data_account_type_receivable"/>
+            <field name="reconcile" eval="True"/>
+            <field name="with_auxiliaries" eval="True"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_415" model="account.account.template">
+            <field name="code">415</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_41"/>
+            <field name="name">ذمم مدينة على أشغال لم تبلغ مرحلة تحرير فواتير بها</field>
+            <field name="user_type_id" ref="account.data_account_type_receivable"/>
+            <field name="reconcile" eval="True"/>
+            <field name="with_auxiliaries" eval="True"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_418" model="account.account.template">
+            <field name="code">418</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_41"/>
+            <field name="name">فواتير قيد الإعداد</field>
+            <field name="user_type_id" ref="account.data_account_type_receivable"/>
+            <field name="reconcile" eval="True"/>
+            <field name="with_auxiliaries" eval="True"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_419" model="account.account.template">
+            <field name="code">419</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_41"/>
+            <field name="name">سلفات ومقبوضات على حساب طلبيات قيد التنفيذ</field>
+            <field name="user_type_id" ref="account.data_account_type_receivable"/>
+            <field name="reconcile" eval="True"/>
+            <field name="with_auxiliaries" eval="True"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_421" model="account.account.template">
+            <field name="code">421</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_42"/>
+            <field name="name">مدفوعات متوجبة للمستخدمين</field>
+            <field name="user_type_id" ref="account.data_account_type_payable"/>
+            <field name="reconcile" eval="True"/>
+            <field name="with_auxiliaries" eval="True"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_4281" model="account.account.template">
+            <field name="code">4281</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_428"/>
+            <field name="name">سلفات مدفوعة للمستخدمين</field>
+            <field name="user_type_id" ref="account.data_account_type_payable"/>
+            <field name="reconcile" eval="True"/>
+            <field name="with_auxiliaries" eval="True"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_4282" model="account.account.template">
+            <field name="code">4282</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_428"/>
+            <field name="name">حجوزات</field>
+            <field name="user_type_id" ref="account.data_account_type_payable"/>
+            <field name="reconcile" eval="True"/>
+            <field name="with_auxiliaries" eval="True"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_4311" model="account.account.template">
+            <field name="code">4311</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_431"/>
+            <field name="name">تقديمات برم الدفع</field>
+            <field name="user_type_id" ref="account.data_account_type_payable"/>
+            <field name="reconcile" eval="True"/>
+            <field name="with_auxiliaries" eval="True"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_4315" model="account.account.template">
+            <field name="code">4315</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_431"/>
+            <field name="name">اوراق الدفع - مؤسسات الضمان الاجتماعي</field>
+            <field name="user_type_id" ref="account.data_account_type_payable"/>
+            <field name="reconcile" eval="True"/>
+            <field name="with_auxiliaries" eval="True"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_4318" model="account.account.template">
+            <field name="code">4318</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_431"/>
+            <field name="name">أعباء يجب لحظها - مؤسسات الضمان</field>
+            <field name="user_type_id" ref="account.data_account_type_payable"/>
+            <field name="reconcile" eval="True"/>
+            <field name="with_auxiliaries" eval="True"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_438" model="account.account.template">
+            <field name="code">438</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_43"/>
+            <field name="name">ذمم مدينة تجاه مؤسسات الضمان الإجتماعي</field>
+            <field name="user_type_id" ref="account.data_account_type_payable"/>
+            <field name="reconcile" eval="True"/>
+            <field name="with_auxiliaries" eval="True"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+
+
+        <record id="pcg_4411" model="account.account.template">
+            <field name="code">4411</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_441"/>
+            <field name="name">ضرائب ورسوم متوجبة</field>
+            <field name="user_type_id" ref="account.data_account_type_current_liabilities"/>
+            <field name="with_auxiliaries" eval="True"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_4415" model="account.account.template">
+            <field name="code">4415</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_441"/>
+            <field name="name">أوراق دفع</field>
+            <field name="user_type_id" ref="account.data_account_type_payable"/>
+            <field name="reconcile" eval="True"/>
+            <field name="with_auxiliaries" eval="True"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_4418" model="account.account.template">
+            <field name="code">4418</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_441"/>
+            <field name="name">ضرائب ورسوم -أعباء يجب لحظها</field>
+            <field name="user_type_id" ref="account.data_account_type_payable"/>
+            <field name="reconcile" eval="True"/>
+            <field name="with_auxiliaries" eval="True"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_44210" model="account.account.template">
+            <field name="code">44210</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_4421"/>
+            <field name="name">الضريبة على القيمة المضافة-مشتريات أ</field>
+            <field name="user_type_id" ref="account.data_account_type_current_assets"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+            <field name="with_auxiliaries" eval="True"/>
+        </record>
+        <record id="pcg_44211" model="account.account.template">
+            <field name="code">44211</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_4421"/>
+            <field name="name">الضريبة على القيمة المضافة-مشتريات ب</field>
+            <field name="user_type_id" ref="account.data_account_type_current_assets"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+            <field name="with_auxiliaries" eval="True"/>
+        </record>
+        <record id="pcg_44212" model="account.account.template">
+            <field name="code">44212</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_4421"/>
+            <field name="name">الضريبة على القيمة المضافة-مشتريات ج</field>
+            <field name="user_type_id" ref="account.data_account_type_current_assets"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+            <field name="with_auxiliaries" eval="True"/>
+        </record>
+        <record id="pcg_44213" model="account.account.template">
+            <field name="code">44213</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_4421"/>
+            <field name="name">الضريبة على القيمة المضافة-أصول أ</field>
+            <field name="user_type_id" ref="account.data_account_type_current_assets"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+            <field name="with_auxiliaries" eval="True"/>
+        </record>
+        <record id="pcg_44214" model="account.account.template">
+            <field name="code">44214</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_4421"/>
+            <field name="name">الضريبة على القيمة المضافة-أصول ب</field>
+            <field name="user_type_id" ref="account.data_account_type_current_assets"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+            <field name="with_auxiliaries" eval="True"/>
+        </record>
+        <record id="pcg_44215" model="account.account.template">
+            <field name="code">44215</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_4421"/>
+            <field name="name">الضريبة على القيمة المضافة-أصول ج</field>
+            <field name="user_type_id" ref="account.data_account_type_current_assets"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+            <field name="with_auxiliaries" eval="True"/>
+        </record>
+        <record id="pcg_44216" model="account.account.template">
+            <field name="code">44216</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_4421"/>
+            <field name="name">الضريبة على القيمة المضافة-نفقات أ</field>
+            <field name="user_type_id" ref="account.data_account_type_current_assets"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+            <field name="with_auxiliaries" eval="True"/>
+        </record>
+        <record id="pcg_44217" model="account.account.template">
+            <field name="code">44217</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_4421"/>
+            <field name="name">الضريبة على القيمة المضافة-نفقات ب</field>
+            <field name="user_type_id" ref="account.data_account_type_current_assets"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+            <field name="with_auxiliaries" eval="True"/>
+        </record>
+        <record id="pcg_44218" model="account.account.template">
+            <field name="code">44218</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_4421"/>
+            <field name="name">الضريبة على القيمة المضافة-نفقات ج</field>
+            <field name="user_type_id" ref="account.data_account_type_current_assets"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+            <field name="with_auxiliaries" eval="True"/>
+        </record>
+
+
+        <record id="pcg_4425" model="account.account.template">
+            <field name="code">4425</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_442"/>
+            <field name="name">الضريبة على القيمة المضافة المتوجب دفعها</field>
+            <field name="user_type_id" ref="account.data_account_type_current_liabilities"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+            <field name="with_auxiliaries" eval="True"/>
+        </record>
+        <record id="pcg_4426" model="account.account.template">
+            <field name="code">4426</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_442"/>
+            <field name="name">الضريبة على القيمة المضافة للاسترجاع</field>
+            <field name="user_type_id" ref="account.data_account_type_current_assets"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+            <field name="with_auxiliaries" eval="True"/>
+        </record>
+        <record id="pcg_4427" model="account.account.template">
+            <field name="code">4427</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_442"/>
+            <field name="name">الضريبة على القيمة المضافة المحصلة</field>
+            <field name="user_type_id" ref="account.data_account_type_current_liabilities"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+            <field name="with_auxiliaries" eval="True"/>
+        </record>
+        <record id="pcg_4429" model="account.account.template">
+            <field name="code">4429</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_442"/>
+            <field name="name">الضريبة على القيمة المضافة المطلوب استرجاعها</field>
+            <field name="user_type_id" ref="account.data_account_type_current_assets"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+            <field name="with_auxiliaries" eval="True"/>
+        </record>
+        <record id="pcg_4431" model="account.account.template">
+            <field name="code">4431</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_443"/>
+            <field name="name">الضرائب على الارباح</field>
+            <field name="user_type_id" ref="account.data_account_type_payable"/>
+            <field name="reconcile" eval="True"/>
+            <field name="with_auxiliaries" eval="True"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_445" model="account.account.template">
+            <field name="code">445</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_44"/>
+            <field name="name">الدولة والمؤسسات العامة(ذمم دائمة اخرى)</field>
+            <field name="user_type_id" ref="account.data_account_type_payable"/>
+            <field name="reconcile" eval="True"/>
+            <field name="with_auxiliaries" eval="True"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_4491" model="account.account.template">
+            <field name="code">4491</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_449"/>
+            <field name="name">إعانات مستحقة غير مقبوضة</field>
+            <field name="user_type_id" ref="account.data_account_type_receivable"/>
+            <field name="reconcile" eval="True"/>
+            <field name="with_auxiliaries" eval="True"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_4497" model="account.account.template">
+            <field name="code">4497</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_449"/>
+            <field name="name">ذمم مدينة أخرى - الدولة والمؤسسات العامة</field>
+            <field name="user_type_id" ref="account.data_account_type_receivable"/>
+            <field name="reconcile" eval="True"/>
+            <field name="with_auxiliaries" eval="True"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_4498" model="account.account.template">
+            <field name="code">4498</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_449"/>
+            <field name="name">ايرادات مستحقة غير مقبوضة</field>
+            <field name="user_type_id" ref="account.data_account_type_receivable"/>
+            <field name="reconcile" eval="True"/>
+            <field name="with_auxiliaries" eval="True"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_45111" model="account.account.template">
+            <field name="code">45111</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_4511"/>
+            <field name="name">الشركة الام</field>
+            <field name="user_type_id" ref="account.data_account_type_payable"/>
+            <field name="reconcile" eval="True"/>
+            <field name="with_auxiliaries" eval="True"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_45112" model="account.account.template">
+            <field name="code">45112</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_4511"/>
+            <field name="name">الشركات التابعة</field>
+            <field name="user_type_id" ref="account.data_account_type_payable"/>
+            <field name="reconcile" eval="True"/>
+            <field name="with_auxiliaries" eval="True"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_45113" model="account.account.template">
+            <field name="code">45113</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_4511"/>
+            <field name="name">الشركات المشاركة</field>
+            <field name="user_type_id" ref="account.data_account_type_payable"/>
+            <field name="reconcile" eval="True"/>
+            <field name="with_auxiliaries" eval="True"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_45114" model="account.account.template">
+            <field name="code">45114</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_4511"/>
+            <field name="name">الشركات الداخلة في عدة مجموعات</field>
+            <field name="user_type_id" ref="account.data_account_type_payable"/>
+            <field name="reconcile" eval="True"/>
+            <field name="with_auxiliaries" eval="True"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_4515" model="account.account.template">
+            <field name="code">4515</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_451"/>
+            <field name="name">شركاء اخرون</field>
+            <field name="user_type_id" ref="account.data_account_type_payable"/>
+            <field name="reconcile" eval="True"/>
+            <field name="with_auxiliaries" eval="True"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_4518" model="account.account.template">
+            <field name="code">4518</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_451"/>
+            <field name="name">عمليات مشتركة</field>
+            <field name="user_type_id" ref="account.data_account_type_payable"/>
+            <field name="reconcile" eval="True"/>
+            <field name="with_auxiliaries" eval="True"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_453" model="account.account.template">
+            <field name="code">453</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_45"/>
+            <field name="name">أنصبة أرباح برسم الدفع</field>
+            <field name="user_type_id" ref="account.data_account_type_payable"/>
+            <field name="reconcile" eval="True"/>
+            <field name="with_auxiliaries" eval="True"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_4551" model="account.account.template">
+            <field name="code">4551</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_455"/>
+            <field name="name">حسابات المقدمات للشركة</field>
+            <field name="user_type_id" ref="account.data_account_type_payable"/>
+            <field name="reconcile" eval="True"/>
+            <field name="with_auxiliaries" eval="True"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_4552" model="account.account.template">
+            <field name="code">4552</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_455"/>
+            <field name="name">حسابات إسترداد رأس المال</field>
+            <field name="user_type_id" ref="account.data_account_type_payable"/>
+            <field name="reconcile" eval="True"/>
+            <field name="with_auxiliaries" eval="True"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_4557" model="account.account.template">
+            <field name="code">4557</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_455"/>
+            <field name="name">ذمم أخرى دائنة</field>
+            <field name="user_type_id" ref="account.data_account_type_payable"/>
+            <field name="reconcile" eval="True"/>
+            <field name="with_auxiliaries" eval="True"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_4591" model="account.account.template">
+            <field name="code">4591</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_459"/>
+            <field name="name">رأس المال المكتتب غير المستدعى</field>
+            <field name="user_type_id" ref="account.data_account_type_payable"/>
+            <field name="reconcile" eval="True"/>
+            <field name="with_auxiliaries" eval="True"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_4592" model="account.account.template">
+            <field name="code">4592</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_459"/>
+            <field name="name">رأس المال المكتتب المستدعي وغيرالمدفوع</field>
+            <field name="user_type_id" ref="account.data_account_type_payable"/>
+            <field name="reconcile" eval="True"/>
+            <field name="with_auxiliaries" eval="True"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_4597" model="account.account.template">
+            <field name="code">4597</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_459"/>
+            <field name="name">ذمم أخرى مدينة</field>
+            <field name="user_type_id" ref="account.data_account_type_receivable"/>
+            <field name="reconcile" eval="True"/>
+            <field name="with_auxiliaries" eval="True"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_4611" model="account.account.template">
+            <field name="code">4611</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_461"/>
+            <field name="name">ذمم دائنة متعلقة بالعبوات والمعدات الموضوعة أمانة</field>
+            <field name="user_type_id" ref="account.data_account_type_payable"/>
+            <field name="reconcile" eval="True"/>
+            <field name="with_auxiliaries" eval="True"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_4619" model="account.account.template">
+            <field name="code">4619</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_461"/>
+            <field name="name">حسابات دائنة مختلفة-إستثمار</field>
+            <field name="user_type_id" ref="account.data_account_type_payable"/>
+            <field name="reconcile" eval="True"/>
+            <field name="with_auxiliaries" eval="True"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_4631" model="account.account.template">
+            <field name="code">4631</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_463"/>
+            <field name="name">سندات مشاركة غير محررة</field>
+            <field name="user_type_id" ref="account.data_account_type_payable"/>
+            <field name="reconcile" eval="True"/>
+            <field name="with_auxiliaries" eval="True"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_4633" model="account.account.template">
+            <field name="code">4633</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_463"/>
+            <field name="name">سندات أخرى مجمدة غير محررة</field>
+            <field name="user_type_id" ref="account.data_account_type_payable"/>
+            <field name="reconcile" eval="True"/>
+            <field name="with_auxiliaries" eval="True"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_4651" model="account.account.template">
+            <field name="code">4651</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_465"/>
+            <field name="name">ذمم دائنة على أمتلاك سندات التوظيف</field>
+            <field name="user_type_id" ref="account.data_account_type_payable"/>
+            <field name="reconcile" eval="True"/>
+            <field name="with_auxiliaries" eval="True"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_4652" model="account.account.template">
+            <field name="code">4652</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_465"/>
+            <field name="name">سندات الدين</field>
+            <field name="user_type_id" ref="account.data_account_type_payable"/>
+            <field name="reconcile" eval="True"/>
+            <field name="with_auxiliaries" eval="True"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_4653" model="account.account.template">
+            <field name="code">4653</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_465"/>
+            <field name="name">اقساط برسم الدفع على سندات توظيف</field>
+            <field name="user_type_id" ref="account.data_account_type_payable"/>
+            <field name="reconcile" eval="True"/>
+            <field name="with_auxiliaries" eval="True"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_4659" model="account.account.template">
+            <field name="code">4659</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_465"/>
+            <field name="name">دائنون مختلفون ( خارج الاستثمار )</field>
+            <field name="user_type_id" ref="account.data_account_type_payable"/>
+            <field name="reconcile" eval="True"/>
+            <field name="with_auxiliaries" eval="True"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_4681" model="account.account.template">
+            <field name="code">4681</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_468"/>
+            <field name="name">ذمم مدينة متعلقة بالمعدات الواجب اعادتها</field>
+            <field name="user_type_id" ref="account.data_account_type_receivable"/>
+            <field name="reconcile" eval="True"/>
+            <field name="with_auxiliaries" eval="True"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_4689" model="account.account.template">
+            <field name="code">4689</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_468"/>
+            <field name="name">حسابات اخرى مدينة مختلفة للأستثمار</field>
+            <field name="user_type_id" ref="account.data_account_type_receivable"/>
+            <field name="reconcile" eval="True"/>
+            <field name="with_auxiliaries" eval="True"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_4691" model="account.account.template">
+            <field name="code">4691</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_469"/>
+            <field name="name">ذمم مدينة على بيع اصول ثابتةوسندات توظيف</field>
+            <field name="user_type_id" ref="account.data_account_type_receivable"/>
+            <field name="reconcile" eval="True"/>
+            <field name="with_auxiliaries" eval="True"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_4699" model="account.account.template">
+            <field name="code">4699</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_469"/>
+            <field name="name">حسابات اخرى مدينة مختلفة خارج الاستثمار</field>
+            <field name="user_type_id" ref="account.data_account_type_receivable"/>
+            <field name="reconcile" eval="True"/>
+            <field name="with_auxiliaries" eval="True"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_47110001" model="account.account.template">
+            <field name="code">47110001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_4711"/>
+            <field name="name">اعباء ما قبل الاستثمار</field>
+            <field name="user_type_id" ref="account.data_account_type_prepayments"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_47120001" model="account.account.template">
+            <field name="code">47120001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_4712"/>
+            <field name="name">التصليحات الكبيرة الواجب استهلاكها</field>
+            <field name="user_type_id" ref="account.data_account_type_prepayments"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_47130001" model="account.account.template">
+            <field name="code">47130001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_4713"/>
+            <field name="name">علاوات تسديد السندات</field>
+            <field name="user_type_id" ref="account.data_account_type_prepayments"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_47190001" model="account.account.template">
+            <field name="code">47190001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_4719"/>
+            <field name="name">اعباء اخرى واجب توزيعها على عدة دورات</field>
+            <field name="user_type_id" ref="account.data_account_type_prepayments"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_47200001" model="account.account.template">
+            <field name="code">47200001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_472"/>
+            <field name="name">اعباء محتسبة مسبقا</field>
+            <field name="user_type_id" ref="account.data_account_type_prepayments"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_47300001" model="account.account.template">
+            <field name="code">47300001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_473"/>
+            <field name="name">ايرادات محتسبة مسبقا</field>
+            <field name="user_type_id" ref="account.data_account_type_prepayments"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_47510001" model="account.account.template">
+            <field name="code">47510001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_4751"/>
+            <field name="name">الزيادة في الذمم المدينة</field>
+            <field name="user_type_id" ref="account.data_account_type_prepayments"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_47520001" model="account.account.template">
+            <field name="code">47520001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_4752"/>
+            <field name="name">التدني في الذمم الدائنة</field>
+            <field name="user_type_id" ref="account.data_account_type_prepayments"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_47580001" model="account.account.template">
+            <field name="code">47580001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_4758"/>
+            <field name="name">فروقات معوضة بفرق الصرف</field>
+            <field name="user_type_id" ref="account.data_account_type_prepayments"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_47610001" model="account.account.template">
+            <field name="code">47610001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_4761"/>
+            <field name="name">التدني في الذمم المدينة</field>
+            <field name="user_type_id" ref="account.data_account_type_prepayments"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_47620001" model="account.account.template">
+            <field name="code">47620001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_4762"/>
+            <field name="name">الزيادة في الذمم الدائنة</field>
+            <field name="user_type_id" ref="account.data_account_type_prepayments"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_47680001" model="account.account.template">
+            <field name="code">47680001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_4768"/>
+            <field name="name">فروقات معوضة بفرق الصرف</field>
+            <field name="user_type_id" ref="account.data_account_type_prepayments"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_48100001" model="account.account.template">
+            <field name="code">48100001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_481"/>
+            <field name="name">حسابات التوزيع الدورى للأعباء</field>
+            <field name="user_type_id" ref="account.data_account_type_other_income"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_48200001" model="account.account.template">
+            <field name="code">48200001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_482"/>
+            <field name="name">حسابات التوزيع الدورى للأيرادات</field>
+            <field name="user_type_id" ref="account.data_account_type_other_income"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_48300001" model="account.account.template">
+            <field name="code">48300001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_483"/>
+            <field name="name">.............</field>
+            <field name="user_type_id" ref="account.data_account_type_other_income"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_491" model="account.account.template">
+            <field name="code">491</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_49"/>
+            <field name="name">مؤونات هبوط قيم الذمم المدينة (الزبائن)</field>
+            <field name="user_type_id" ref="account.data_account_type_receivable"/>
+            <field name="reconcile" eval="True"/>
+            <field name="with_auxiliaries" eval="True"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_495" model="account.account.template">
+            <field name="code">495</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_49"/>
+            <field name="name">مؤونات هبوط قيم حسابات الشركاء</field>
+            <field name="user_type_id" ref="account.data_account_type_receivable"/>
+            <field name="reconcile" eval="True"/>
+            <field name="with_auxiliaries" eval="True"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_4968" model="account.account.template">
+            <field name="code">4968</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_496"/>
+            <field name="name">مدينون مختلفون ( للأستثمار )</field>
+            <field name="user_type_id" ref="account.data_account_type_payable"/>
+            <field name="reconcile" eval="True"/>
+            <field name="with_auxiliaries" eval="True"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_4969" model="account.account.template">
+            <field name="code">4969</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_496"/>
+            <field name="name">مدينون مختلفون ( خارج الأستثمار )</field>
+            <field name="user_type_id" ref="account.data_account_type_payable"/>
+            <field name="reconcile" eval="True"/>
+            <field name="with_auxiliaries" eval="True"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+
+
+        <record id="pcg_50100001" model="account.account.template">
+            <field name="code">50100001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_501"/>
+            <field name="name">اسهم صادرة عن الشركة ومعادشراؤهامن قبلها</field>
+            <field name="user_type_id" ref="account.data_account_type_liquidity"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_50200001" model="account.account.template">
+            <field name="code">50200001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_502"/>
+            <field name="name">سندات تمنح حامليها حق الملكية</field>
+            <field name="user_type_id" ref="account.data_account_type_liquidity"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_50500001" model="account.account.template">
+            <field name="code">50500001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_505"/>
+            <field name="name">سندات دين وقسائم صادرة عن الشركة</field>
+            <field name="user_type_id" ref="account.data_account_type_liquidity"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_50600001" model="account.account.template">
+            <field name="code">50600001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_506"/>
+            <field name="name">سندات تمنح حامليها حقوق الدائنين</field>
+            <field name="user_type_id" ref="account.data_account_type_liquidity"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_51100001" model="account.account.template">
+            <field name="code">51100001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_511"/>
+            <field name="name">شكات وقسائم برسم القبض</field>
+            <field name="user_type_id" ref="account.data_account_type_liquidity"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+
+
+        <record id="pcg_51900001" model="account.account.template">
+            <field name="code">51900001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_519"/>
+            <field name="name">مؤسسات التمويل</field>
+            <field name="user_type_id" ref="account.data_account_type_liquidity"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_53000001" model="account.account.template">
+            <field name="code">53000001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_53"/>
+            <field name="name">الصنـــدوق</field>
+            <field name="user_type_id" ref="account.data_account_type_liquidity"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+        <record id="pcg_59000001" model="account.account.template">
+            <field name="code">59000001</field>
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_59"/>
+            <field name="name">مؤونات هبوط اسعار سندات التوظيف</field>
+            <field name="user_type_id" ref="account.data_account_type_liquidity"/>
+            <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>
+        </record>
+
+        <record id='pcg_60110001' model='account.account.template'>
+            <field name='code'>60110001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_6011'/>
+            <field name='name'>البضاعة</field>
+            <field name='user_type_id' ref='account.data_account_type_direct_costs'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+
+        <record id='pcg_60120001' model='account.account.template'>
+            <field name='code'>60120001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_6012'/>
+            <field name='name'>العبوات</field>
+            <field name='user_type_id' ref='account.data_account_type_direct_costs'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+
+        <record id='pcg_60181001' model='account.account.template'>
+            <field name='code'>60181001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_60181'/>
+            <field name='name'>نقليات</field>
+            <field name='user_type_id' ref='account.data_account_type_direct_costs'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_60182001' model='account.account.template'>
+            <field name='code'>60182001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_60182'/>
+            <field name='name'>سمسرة و عمولات</field>
+            <field name='user_type_id' ref='account.data_account_type_direct_costs'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_60183001' model='account.account.template'>
+            <field name='code'>60183001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_60183'/>
+            <field name='name'>تأمين على الشحن</field>
+            <field name='user_type_id' ref='account.data_account_type_direct_costs'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_60184001' model='account.account.template'>
+            <field name='code'>60184001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_60184'/>
+            <field name='name'>اتعاب مخلصي البضاعة</field>
+            <field name='user_type_id' ref='account.data_account_type_direct_costs'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_60185001' model='account.account.template'>
+            <field name='code'>60185001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_60185'/>
+            <field name='name'>رسوم جمركية</field>
+            <field name='user_type_id' ref='account.data_account_type_direct_costs'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_60190001' model='account.account.template'>
+            <field name='code'>60190001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_6019'/>
+            <field name='name'>حسومات مكتسبة</field>
+            <field name='user_type_id' ref='account.data_account_type_direct_costs'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+
+        <record id='pcg_60510001' model='account.account.template'>
+            <field name='code'>60510001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_6051'/>
+            <field name='name'>مخزون اول المدة</field>
+            <field name='user_type_id' ref='account.data_account_type_direct_costs'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_60520001' model='account.account.template'>
+            <field name='code'>60520001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_6052'/>
+            <field name='name'>مخزون آخر المدة</field>
+            <field name='user_type_id' ref='account.data_account_type_direct_costs'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+
+        <record id='pcg_61111001' model='account.account.template'>
+            <field name='code'>61111001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_61111'/>
+            <field name='name'>مواد اولية أ</field>
+            <field name='user_type_id' ref='account.data_account_type_direct_costs'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_61112001' model='account.account.template'>
+            <field name='code'>61112001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_61112'/>
+            <field name='name'>مواد اولية ب</field>
+            <field name='user_type_id' ref='account.data_account_type_direct_costs'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+
+        <record id='pcg_61121001' model='account.account.template'>
+            <field name='code'>61121001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_61121'/>
+            <field name='name'>محروقات</field>
+            <field name='user_type_id' ref='account.data_account_type_direct_costs'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_61122001' model='account.account.template'>
+            <field name='code'>61122001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_61122'/>
+            <field name='name'>مواد الصيانة</field>
+            <field name='user_type_id' ref='account.data_account_type_direct_costs'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_61123001' model='account.account.template'>
+            <field name='code'>61123001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_61123'/>
+            <field name='name'>لوازم للمشغل و المصنع</field>
+            <field name='user_type_id' ref='account.data_account_type_direct_costs'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_61124001' model='account.account.template'>
+            <field name='code'>61124001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_61124'/>
+            <field name='name'>لوازم للمخزن</field>
+            <field name='user_type_id' ref='account.data_account_type_direct_costs'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_61125001' model='account.account.template'>
+            <field name='code'>61125001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_61125'/>
+            <field name='name'>لوازم مكتبية</field>
+            <field name='user_type_id' ref='account.data_account_type_direct_costs'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+
+        <record id='pcg_61131001' model='account.account.template'>
+            <field name='code'>61131001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_61131'/>
+            <field name='name'>عبوات لا تسترد</field>
+            <field name='user_type_id' ref='account.data_account_type_direct_costs'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_61132001' model='account.account.template'>
+            <field name='code'>61132001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_61132'/>
+            <field name='name'>عبوات تسترد ويعاد استعمالها</field>
+            <field name='user_type_id' ref='account.data_account_type_direct_costs'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_61133001' model='account.account.template'>
+            <field name='code'>61133001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_61133'/>
+            <field name='name'>عبوات تستعمل على أوجه مختلفة</field>
+            <field name='user_type_id' ref='account.data_account_type_direct_costs'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+
+        <record id='pcg_61181001' model='account.account.template'>
+            <field name='code'>61181001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_61181'/>
+            <field name='name'>نقليات</field>
+            <field name='user_type_id' ref='account.data_account_type_direct_costs'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_61182001' model='account.account.template'>
+            <field name='code'>61182001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_61182'/>
+            <field name='name'>سمسرة وعمولات</field>
+            <field name='user_type_id' ref='account.data_account_type_direct_costs'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_61183001' model='account.account.template'>
+            <field name='code'>61183001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_61183'/>
+            <field name='name'>تأمين على الشحن</field>
+            <field name='user_type_id' ref='account.data_account_type_direct_costs'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_61184001' model='account.account.template'>
+            <field name='code'>61184001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_61184'/>
+            <field name='name'>اتعاب مخلصي البضاعة</field>
+            <field name='user_type_id' ref='account.data_account_type_direct_costs'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_61185001' model='account.account.template'>
+            <field name='code'>61185001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_61185'/>
+            <field name='name'>رسوم جمركية</field>
+            <field name='user_type_id' ref='account.data_account_type_direct_costs'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_61190001' model='account.account.template'>
+            <field name='code'>61190001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_6119'/>
+            <field name='name'>حسومات مكتسبة (بالتفصيل)</field>
+            <field name='user_type_id' ref='account.data_account_type_direct_costs'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+
+        <record id='pcg_61510001' model='account.account.template'>
+            <field name='code'>61510001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_6151'/>
+            <field name='name'>مخزون اول المدة</field>
+            <field name='user_type_id' ref='account.data_account_type_direct_costs'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_61520001' model='account.account.template'>
+            <field name='code'>61520001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_6152'/>
+            <field name='name'>مخزون آخر المدة</field>
+            <field name='user_type_id' ref='account.data_account_type_direct_costs'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+
+        <record id='pcg_62110001' model='account.account.template'>
+            <field name='code'>62110001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_6211'/>
+            <field name='name'>ملتزم ثانوى أ</field>
+            <field name='user_type_id' ref='account.data_account_type_expenses'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_62120001' model='account.account.template'>
+            <field name='code'>62120001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_6212'/>
+            <field name='name'>ملتزم ثانوى ب</field>
+            <field name='user_type_id' ref='account.data_account_type_expenses'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_62190001' model='account.account.template'>
+            <field name='code'>62190001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_6219'/>
+            <field name='name'>حسومات مكتسبةعلى مشتريات من ملتزمين ثانو</field>
+            <field name='user_type_id' ref='account.data_account_type_expenses'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+
+        <record id='pcg_62510001' model='account.account.template'>
+            <field name='code'>62510001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_6251'/>
+            <field name='name'>ايجار - قرض اموال منقولة</field>
+            <field name='user_type_id' ref='account.data_account_type_expenses'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_62520001' model='account.account.template'>
+            <field name='code'>62520001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_6252'/>
+            <field name='name'>ايجار - قرض اموال غير منقولة</field>
+            <field name='user_type_id' ref='account.data_account_type_expenses'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_62530001' model='account.account.template'>
+            <field name='code'>62530001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_6253'/>
+            <field name='name'>حقوق الامتياز</field>
+            <field name='user_type_id' ref='account.data_account_type_expenses'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_62540001' model='account.account.template'>
+            <field name='code'>62540001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_6254'/>
+            <field name='name'>براءات</field>
+            <field name='user_type_id' ref='account.data_account_type_expenses'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_62550001' model='account.account.template'>
+            <field name='code'>62550001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_6255'/>
+            <field name='name'>اجازات</field>
+            <field name='user_type_id' ref='account.data_account_type_expenses'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_62560001' model='account.account.template'>
+            <field name='code'>62560001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_6256'/>
+            <field name='name'>علامات</field>
+            <field name='user_type_id' ref='account.data_account_type_expenses'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_62570001' model='account.account.template'>
+            <field name='code'>62570001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_6257'/>
+            <field name='name'>اساليب</field>
+            <field name='user_type_id' ref='account.data_account_type_expenses'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_62580001' model='account.account.template'>
+            <field name='code'>62580001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_6258'/>
+            <field name='name'>حقوق وقيم مماثلة</field>
+            <field name='user_type_id' ref='account.data_account_type_expenses'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+
+        <record id='pcg_62611001' model='account.account.template'>
+            <field name='code'>62611001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_62611'/>
+            <field name='name'>نفقات النقل للموجودات</field>
+            <field name='user_type_id' ref='account.data_account_type_expenses'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_62612001' model='account.account.template'>
+            <field name='code'>62612001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_62612'/>
+            <field name='name'>نفقات النقل المشترك للمستخدمين</field>
+            <field name='user_type_id' ref='account.data_account_type_expenses'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_62615001' model='account.account.template'>
+            <field name='code'>62615001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_62615'/>
+            <field name='name'>نفقات البريد والاتصالات السلكية ولاسلكية</field>
+            <field name='user_type_id' ref='account.data_account_type_expenses'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_62620001' model='account.account.template'>
+            <field name='code'>62620001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_6262'/>
+            <field name='name'>الصيانة و التصليحات</field>
+            <field name='user_type_id' ref='account.data_account_type_expenses'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+
+        <record id='pcg_62631001' model='account.account.template'>
+            <field name='code'>62631001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_62631'/>
+            <field name='name'>الايجارات</field>
+            <field name='user_type_id' ref='account.data_account_type_expenses'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_62632001' model='account.account.template'>
+            <field name='code'>62632001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_62632'/>
+            <field name='name'>اعباء تأجيرية اخرى</field>
+            <field name='user_type_id' ref='account.data_account_type_expenses'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+
+        <record id='pcg_62641001' model='account.account.template'>
+            <field name='code'>62641001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_62641'/>
+            <field name='name'>تشريفات</field>
+            <field name='user_type_id' ref='account.data_account_type_expenses'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_62642001' model='account.account.template'>
+            <field name='code'>62642001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_62642'/>
+            <field name='name'>نقل وانتقال</field>
+            <field name='user_type_id' ref='account.data_account_type_expenses'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_62643001' model='account.account.template'>
+            <field name='code'>62643001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_62643'/>
+            <field name='name'>اطعام المستخدمين</field>
+            <field name='user_type_id' ref='account.data_account_type_expenses'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+
+        <record id='pcg_62651001' model='account.account.template'>
+            <field name='code'>62651001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_62651'/>
+            <field name='name'>المستخدمون المؤقتون</field>
+            <field name='user_type_id' ref='account.data_account_type_expenses'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_62652001' model='account.account.template'>
+            <field name='code'>62652001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_62652'/>
+            <field name='name'>اجور الوسطاء</field>
+            <field name='user_type_id' ref='account.data_account_type_expenses'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_62653001' model='account.account.template'>
+            <field name='code'>62653001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_62653'/>
+            <field name='name'>بدلات اتعاب</field>
+            <field name='user_type_id' ref='account.data_account_type_expenses'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+
+        <record id='pcg_62661001' model='account.account.template'>
+            <field name='code'>62661001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_62661'/>
+            <field name='name'>الاعداد والتدريب</field>
+            <field name='user_type_id' ref='account.data_account_type_expenses'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_62662001' model='account.account.template'>
+            <field name='code'>62662001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_62662'/>
+            <field name='name'>التوثيق</field>
+            <field name='user_type_id' ref='account.data_account_type_expenses'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_62670001' model='account.account.template'>
+            <field name='code'>62670001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_6267'/>
+            <field name='name'>الدراسات والبحوث</field>
+            <field name='user_type_id' ref='account.data_account_type_expenses'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_62680001' model='account.account.template'>
+            <field name='code'>62680001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_6268'/>
+            <field name='name'>اقساط التأمين</field>
+            <field name='user_type_id' ref='account.data_account_type_expenses'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+
+        <record id='pcg_62691001' model='account.account.template'>
+            <field name='code'>62691001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_62691'/>
+            <field name='name'>خدمات صحية</field>
+            <field name='user_type_id' ref='account.data_account_type_expenses'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_62692001' model='account.account.template'>
+            <field name='code'>62692001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_62692'/>
+            <field name='name'>خدمات مالية.مصاريف علىسندات واوراق مالية</field>
+            <field name='user_type_id' ref='account.data_account_type_expenses'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+
+        <record id='pcg_63110001' model='account.account.template'>
+            <field name='code'>63110001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_6311'/>
+            <field name='name'>الرواتب</field>
+            <field name='user_type_id' ref='account.data_account_type_expenses'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_63120001' model='account.account.template'>
+            <field name='code'>63120001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_6312'/>
+            <field name='name'>الأجور</field>
+            <field name='user_type_id' ref='account.data_account_type_expenses'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_63140001' model='account.account.template'>
+            <field name='code'>63140001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_6314'/>
+            <field name='name'>العمولات الثابتة</field>
+            <field name='user_type_id' ref='account.data_account_type_expenses'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_63160001' model='account.account.template'>
+            <field name='code'>63160001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_6316'/>
+            <field name='name'>بدلات مدفوعةلمديرين لهم اغلبية بملكية مؤ</field>
+            <field name='user_type_id' ref='account.data_account_type_expenses'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_63170001' model='account.account.template'>
+            <field name='code'>63170001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_6317'/>
+            <field name='name'>البدلات المدفوعة لاعضاء مجلس الادارة</field>
+            <field name='user_type_id' ref='account.data_account_type_expenses'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+
+        <record id='pcg_63510001' model='account.account.template'>
+            <field name='code'>63510001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_6351'/>
+            <field name='name'>التعويضات العائلية</field>
+            <field name='user_type_id' ref='account.data_account_type_expenses'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_63520001' model='account.account.template'>
+            <field name='code'>63520001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_6352'/>
+            <field name='name'>مرض وامومة</field>
+            <field name='user_type_id' ref='account.data_account_type_expenses'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_63530001' model='account.account.template'>
+            <field name='code'>63530001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_6353'/>
+            <field name='name'>تعويض نهاية الخدمة</field>
+            <field name='user_type_id' ref='account.data_account_type_expenses'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_63540001' model='account.account.template'>
+            <field name='code'>63540001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_6354'/>
+            <field name='name'>تعويضات النقل</field>
+            <field name='user_type_id' ref='account.data_account_type_expenses'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_63550001' model='account.account.template'>
+            <field name='code'>63550001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_6355'/>
+            <field name='name'>منح مدرسية</field>
+            <field name='user_type_id' ref='account.data_account_type_expenses'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+
+        <record id='pcg_64100001' model='account.account.template'>
+            <field name='code'>64100001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_641'/>
+            <field name='name'>على الرواتب والاجور وبدلات الاتعاب</field>
+            <field name='user_type_id' ref='account.data_account_type_expenses'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_64200001' model='account.account.template'>
+            <field name='code'>64200001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_642'/>
+            <field name='name'>ضرائب ورسوم للبلديات</field>
+            <field name='user_type_id' ref='account.data_account_type_expenses'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_64300001' model='account.account.template'>
+            <field name='code'>64300001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_643'/>
+            <field name='name'>ضرائب على المبيعات غير قابلة للأسترداد</field>
+            <field name='user_type_id' ref='account.data_account_type_expenses'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_64400001' model='account.account.template'>
+            <field name='code'>64400001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_644'/>
+            <field name='name'>رسوم تسجيل</field>
+            <field name='user_type_id' ref='account.data_account_type_expenses'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_64540001' model='account.account.template'>
+            <field name='code'>64540001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_6454'/>
+            <field name='name'>Withholding Tax 2.25%</field>
+            <field name='user_type_id' ref='account.data_account_type_expenses'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_64550001' model='account.account.template'>
+            <field name='code'>64550001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_6455'/>
+            <field name='name'>Withholding Tax 7.5%</field>
+            <field name='user_type_id' ref='account.data_account_type_expenses'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+
+        <record id='pcg_65110001' model='account.account.template'>
+            <field name='code'>65110001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_6511'/>
+            <field name='name'>اصول ثابتة غير مادية</field>
+            <field name='user_type_id' ref='account.data_account_type_depreciation'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_65120001' model='account.account.template'>
+            <field name='code'>65120001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_6512'/>
+            <field name='name'>اصول ثابتة مادية</field>
+            <field name='user_type_id' ref='account.data_account_type_depreciation'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_65150001' model='account.account.template'>
+            <field name='code'>65150001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_6515'/>
+            <field name='name'>أعباء للتوزيع على عدة دورات</field>
+            <field name='user_type_id' ref='account.data_account_type_depreciation'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+
+        <record id='pcg_65510001' model='account.account.template'>
+            <field name='code'>65510001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_6551'/>
+            <field name='name'>مؤونات هبوط اسعاراصول الثابتة غيرالمادية</field>
+            <field name='user_type_id' ref='account.data_account_type_depreciation'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_65520001' model='account.account.template'>
+            <field name='code'>65520001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_6552'/>
+            <field name='name'>مؤونات هبوط اسعار الاصول الثابتة المادية</field>
+            <field name='user_type_id' ref='account.data_account_type_depreciation'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_65530001' model='account.account.template'>
+            <field name='code'>65530001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_6553'/>
+            <field name='name'>مؤونات هبوط اسعار المخزون وقيد الصنع</field>
+            <field name='user_type_id' ref='account.data_account_type_depreciation'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_65540001' model='account.account.template'>
+            <field name='code'>65540001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_6554'/>
+            <field name='name'>مؤونات هبوط قيم الذمم المدينة</field>
+            <field name='user_type_id' ref='account.data_account_type_depreciation'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_65550001' model='account.account.template'>
+            <field name='code'>65550001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_6555'/>
+            <field name='name'>مؤونات لمواجهة مخاطرواعباءعائدةللأستثمار</field>
+            <field name='user_type_id' ref='account.data_account_type_depreciation'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+
+        <record id='pcg_66110001' model='account.account.template'>
+            <field name='code'>66110001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_6611'/>
+            <field name='name'>بدلات الحضور</field>
+            <field name='user_type_id' ref='account.data_account_type_expenses'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_66120001' model='account.account.template'>
+            <field name='code'>66120001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_6612'/>
+            <field name='name'>خسارة على ذمم استثمار مدينة ثبت هلاكها</field>
+            <field name='user_type_id' ref='account.data_account_type_expenses'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_66500001' model='account.account.template'>
+            <field name='code'>66500001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_665'/>
+            <field name='name'>حصة المؤسسة من الخسائر على عمليات مشتركة</field>
+            <field name='user_type_id' ref='account.data_account_type_expenses'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+
+        <record id='pcg_67310001' model='account.account.template'>
+            <field name='code'>67310001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_6731'/>
+            <field name='name'>فوائد على الذمم الدائنة والقروض</field>
+            <field name='user_type_id' ref='account.data_account_type_expenses'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_67320001' model='account.account.template'>
+            <field name='code'>67320001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_6732'/>
+            <field name='name'>فوائدعلىالحسابات الجاريةوالودائع الدائنة</field>
+            <field name='user_type_id' ref='account.data_account_type_expenses'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_67330001' model='account.account.template'>
+            <field name='code'>67330001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_6733'/>
+            <field name='name'>فوائد السندات المربوطة بكفالات</field>
+            <field name='user_type_id' ref='account.data_account_type_expenses'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_67340001' model='account.account.template'>
+            <field name='code'>67340001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_6734'/>
+            <field name='name'>فوائد الذمم الدائنة الاخرى</field>
+            <field name='user_type_id' ref='account.data_account_type_expenses'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_67350001' model='account.account.template'>
+            <field name='code'>67350001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_6735'/>
+            <field name='name'>الخصم الممنوح من المؤسسة</field>
+            <field name='user_type_id' ref='account.data_account_type_expenses'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_67360001' model='account.account.template'>
+            <field name='code'>67360001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_6736'/>
+            <field name='name'>فوائد مصرفية وفوائد على عمليات التمويل</field>
+            <field name='user_type_id' ref='account.data_account_type_expenses'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+
+        <record id='pcg_67510001' model='account.account.template'>
+            <field name='code'>67510001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_6751'/>
+            <field name='name'>فروقات على عمليات عادية</field>
+            <field name='user_type_id' ref='account.data_account_type_expenses'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_67520001' model='account.account.template'>
+            <field name='code'>67520001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_6752'/>
+            <field name='name'>فروقات على عمليات رأسمالية</field>
+            <field name='user_type_id' ref='account.data_account_type_expenses'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_67600001' model='account.account.template'>
+            <field name='code'>67600001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_676'/>
+            <field name='name'>أعباءصافيةعلى عمليات تفرغ عن سندات توظيف</field>
+            <field name='user_type_id' ref='account.data_account_type_expenses'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+
+        <record id='pcg_67910001' model='account.account.template'>
+            <field name='code'>67910001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_6791'/>
+            <field name='name'>استهلاك علاوات التسديد</field>
+            <field name='user_type_id' ref='account.data_account_type_expenses'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_67920001' model='account.account.template'>
+            <field name='code'>67920001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_6792'/>
+            <field name='name'>مؤونات هبوط اسعار الاصول الثابتة المالية</field>
+            <field name='user_type_id' ref='account.data_account_type_expenses'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_67940001' model='account.account.template'>
+            <field name='code'>67940001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_6794'/>
+            <field name='name'>مؤونات هبوط اسعار سندات التوظيف</field>
+            <field name='user_type_id' ref='account.data_account_type_expenses'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_67950001' model='account.account.template'>
+            <field name='code'>67950001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_6795'/>
+            <field name='name'>مؤونات لمواجهة المخاطر والاعباء المالية</field>
+            <field name='user_type_id' ref='account.data_account_type_expenses'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+
+        <record id='pcg_68110001' model='account.account.template'>
+            <field name='code'>68110001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_6811'/>
+            <field name='name'>اصول ثابتة غير مادية</field>
+            <field name='user_type_id' ref='account.data_account_type_expenses'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_68120001' model='account.account.template'>
+            <field name='code'>68120001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_6812'/>
+            <field name='name'>اصول ثابتة مادية</field>
+            <field name='user_type_id' ref='account.data_account_type_expenses'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_68150001' model='account.account.template'>
+            <field name='code'>68150001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_6815'/>
+            <field name='name'>اصول ثابتة مالية</field>
+            <field name='user_type_id' ref='account.data_account_type_expenses'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+
+        <record id='pcg_68511001' model='account.account.template'>
+            <field name='code'>68511001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_68511'/>
+            <field name='name'>هبــات</field>
+            <field name='user_type_id' ref='account.data_account_type_expenses'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_68512001' model='account.account.template'>
+            <field name='code'>68512001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_68512'/>
+            <field name='name'>اعانات ممنوحة</field>
+            <field name='user_type_id' ref='account.data_account_type_expenses'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_68513001' model='account.account.template'>
+            <field name='code'>68513001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_68513'/>
+            <field name='name'>غرامات ضريبية وجزائية</field>
+            <field name='user_type_id' ref='account.data_account_type_expenses'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_68514001' model='account.account.template'>
+            <field name='code'>68514001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_68514'/>
+            <field name='name'>غرامات على صفقات</field>
+            <field name='user_type_id' ref='account.data_account_type_expenses'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_68515001' model='account.account.template'>
+            <field name='code'>68515001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_68515'/>
+            <field name='name'>ذمم مدينة اصبحت هالكة</field>
+            <field name='user_type_id' ref='account.data_account_type_expenses'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_68516001' model='account.account.template'>
+            <field name='code'>68516001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_68516'/>
+            <field name='name'>عمليات ادارية اخرى</field>
+            <field name='user_type_id' ref='account.data_account_type_expenses'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+
+        <record id='pcg_68551001' model='account.account.template'>
+            <field name='code'>68551001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_68551'/>
+            <field name='name'>اعباء ناتجة عن موجب تطبيق مؤشر اسعار</field>
+            <field name='user_type_id' ref='account.data_account_type_expenses'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_68552001' model='account.account.template'>
+            <field name='code'>68552001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_68552'/>
+            <field name='name'>جوائز تسديد</field>
+            <field name='user_type_id' ref='account.data_account_type_expenses'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_68553001' model='account.account.template'>
+            <field name='code'>68553001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_68553'/>
+            <field name='name'>اعباءناتجة عن استردادالمؤسسةلأسهم وسندات</field>
+            <field name='user_type_id' ref='account.data_account_type_expenses'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+
+        <record id='pcg_68910001' model='account.account.template'>
+            <field name='code'>68910001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_6891'/>
+            <field name='name'>استهلاك استثنائي على اصول ثابتة</field>
+            <field name='user_type_id' ref='account.data_account_type_expenses'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_68920001' model='account.account.template'>
+            <field name='code'>68920001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_6892'/>
+            <field name='name'>مؤونات هبوط اسعار استثنائي</field>
+            <field name='user_type_id' ref='account.data_account_type_expenses'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_68950001' model='account.account.template'>
+            <field name='code'>68950001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_6895'/>
+            <field name='name'>مؤونات لمواجهة مخاطرواعباءخارج الاستثمار</field>
+            <field name='user_type_id' ref='account.data_account_type_expenses'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_69000001' model='account.account.template'>
+            <field name='code'>69000001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_69'/>
+            <field name='name'>الضرائب على الاربـاح</field>
+            <field name='user_type_id' ref='account.data_account_type_expenses'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+
+        <record id='pcg_70100001' model='account.account.template'>
+            <field name='code'>70100001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_701'/>
+            <field name='name'>مبيعات البضائع - فواتيــر</field>
+            <field name='user_type_id' ref='account.data_account_type_revenue'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+
+        <record id='pcg_70900001' model='account.account.template'>
+            <field name='code'>709</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_709'/>
+            <field name='name'>حسومات ممنوحة</field>
+            <field name='user_type_id' ref='account.data_account_type_revenue'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+
+        <record id='pcg_71110001' model='account.account.template'>
+            <field name='code'>71110001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_7111'/>
+            <field name='name'>مبيعات المنتجات التامة الصنع</field>
+            <field name='user_type_id' ref='account.data_account_type_revenue'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_71120001' model='account.account.template'>
+            <field name='code'>71120001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_7112'/>
+            <field name='name'>مبيعات المنتجات الوسيطة</field>
+            <field name='user_type_id' ref='account.data_account_type_revenue'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_71130001' model='account.account.template'>
+            <field name='code'>71130001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_7113'/>
+            <field name='name'>مبيعات فضلات الانتاج</field>
+            <field name='user_type_id' ref='account.data_account_type_revenue'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_71200001' model='account.account.template'>
+            <field name='code'>71200001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_712'/>
+            <field name='name'>أشغـــال</field>
+            <field name='user_type_id' ref='account.data_account_type_revenue'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_71300001' model='account.account.template'>
+            <field name='code'>71300001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_713'/>
+            <field name='name'>خدمــات</field>
+            <field name='user_type_id' ref='account.data_account_type_revenue'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_71700001' model='account.account.template'>
+            <field name='code'>71700001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_717'/>
+            <field name='name'>ايرادات النشاطات الفرعية</field>
+            <field name='user_type_id' ref='account.data_account_type_revenue'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+
+        <record id='pcg_71910001' model='account.account.template'>
+            <field name='code'>71910001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_7191'/>
+            <field name='name'>على بيع المنتجات</field>
+            <field name='user_type_id' ref='account.data_account_type_revenue'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_71920001' model='account.account.template'>
+            <field name='code'>71920001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_7192'/>
+            <field name='name'>على بيع الاشغال</field>
+            <field name='user_type_id' ref='account.data_account_type_revenue'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_71930001' model='account.account.template'>
+            <field name='code'>71930001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_7193'/>
+            <field name='name'>على بيع الخدمات</field>
+            <field name='user_type_id' ref='account.data_account_type_revenue'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_71970001' model='account.account.template'>
+            <field name='code'>71970001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_7197'/>
+            <field name='name'>على بيع نشاطات فرعية</field>
+            <field name='user_type_id' ref='account.data_account_type_revenue'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+
+        <record id='pcg_72110001' model='account.account.template'>
+            <field name='code'>72110001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_7211'/>
+            <field name='name'>منتجات قيد الصنع</field>
+            <field name='user_type_id' ref='account.data_account_type_revenue'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_72120001' model='account.account.template'>
+            <field name='code'>72120001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_7212'/>
+            <field name='name'>اشغال قيد التنفيذ</field>
+            <field name='user_type_id' ref='account.data_account_type_revenue'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+
+        <record id='pcg_72250001' model='account.account.template'>
+            <field name='code'>72250001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_7225'/>
+            <field name='name'>دراسات قيد الاعداد</field>
+            <field name='user_type_id' ref='account.data_account_type_revenue'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_72260001' model='account.account.template'>
+            <field name='code'>72260001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_7226'/>
+            <field name='name'>خدمات قيد التنفيذ</field>
+            <field name='user_type_id' ref='account.data_account_type_revenue'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+
+        <record id='pcg_72510001' model='account.account.template'>
+            <field name='code'>72510001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_7251'/>
+            <field name='name'>منتجات وسيطة</field>
+            <field name='user_type_id' ref='account.data_account_type_revenue'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_72550001' model='account.account.template'>
+            <field name='code'>72550001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_7255'/>
+            <field name='name'>منتجات تامة الصنع</field>
+            <field name='user_type_id' ref='account.data_account_type_revenue'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_72580001' model='account.account.template'>
+            <field name='code'>72580001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_7258'/>
+            <field name='name'>فضلات الانتاج</field>
+            <field name='user_type_id' ref='account.data_account_type_revenue'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+
+        <record id='pcg_73100001' model='account.account.template'>
+            <field name='code'>73100001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_731'/>
+            <field name='name'>اصول ثابتة غير مادية</field>
+            <field name='user_type_id' ref='account.data_account_type_revenue'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_73200001' model='account.account.template'>
+            <field name='code'>73200001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_732'/>
+            <field name='name'>اصول ثابتة مادية</field>
+            <field name='user_type_id' ref='account.data_account_type_revenue'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+
+        <record id='pcg_74100001' model='account.account.template'>
+            <field name='code'>74100001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_741'/>
+            <field name='name'>للبضائع</field>
+            <field name='user_type_id' ref='account.data_account_type_revenue'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_74200001' model='account.account.template'>
+            <field name='code'>74200001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_742'/>
+            <field name='name'>للأنتاج</field>
+            <field name='user_type_id' ref='account.data_account_type_revenue'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+
+        <record id='pcg_75200001' model='account.account.template'>
+            <field name='code'>75200001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_752'/>
+            <field name='name'>استردادات من مؤونات هبوط اسعاراصول ثابتة</field>
+            <field name='user_type_id' ref='account.data_account_type_revenue'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_75300001' model='account.account.template'>
+            <field name='code'>75300001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_753'/>
+            <field name='name'>استرداد من مؤونات هبوط اسعاراصول متداولة</field>
+            <field name='user_type_id' ref='account.data_account_type_revenue'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+
+        <record id='pcg_76110001' model='account.account.template'>
+            <field name='code'>76110001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_7611'/>
+            <field name='name'>اتاوى:امتيازات براءات اجازات علامات الخ.</field>
+            <field name='user_type_id' ref='account.data_account_type_other_income'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_76120001' model='account.account.template'>
+            <field name='code'>76120001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_7612'/>
+            <field name='name'>ايرادات الابنية غيرالمخصصة للنشاط المهني</field>
+            <field name='user_type_id' ref='account.data_account_type_other_income'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_76130001' model='account.account.template'>
+            <field name='code'>76130001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_7613'/>
+            <field name='name'>بدلات حضور وتعويضات أ.م.الادارة,المديرين</field>
+            <field name='user_type_id' ref='account.data_account_type_other_income'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_76190001' model='account.account.template'>
+            <field name='code'>76190001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_7619'/>
+            <field name='name'>اعباء استثمار محولة الى حسابات اخرى</field>
+            <field name='user_type_id' ref='account.data_account_type_other_income'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+
+        <record id='pcg_76510001' model='account.account.template'>
+            <field name='code'>76510001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_7651'/>
+            <field name='name'>حصص الاعباء الصافية التي جرى تحويلها(.)</field>
+            <field name='user_type_id' ref='account.data_account_type_other_income'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_76550001' model='account.account.template'>
+            <field name='code'>76550001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_7655'/>
+            <field name='name'>حصص الايرادات الصافية المقررة ( . )</field>
+            <field name='user_type_id' ref='account.data_account_type_other_income'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+
+        <record id='pcg_77110001' model='account.account.template'>
+            <field name='code'>77110001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_7711'/>
+            <field name='name'>عائدات سندات المشاركة</field>
+            <field name='user_type_id' ref='account.data_account_type_other_income'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_77160001' model='account.account.template'>
+            <field name='code'>77160001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_7716'/>
+            <field name='name'>عائدات المشاركات الاخرى</field>
+            <field name='user_type_id' ref='account.data_account_type_other_income'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_77170001' model='account.account.template'>
+            <field name='code'>77170001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_7717'/>
+            <field name='name'>عائدات الذمم المدينة المرتبطة بمشاركات</field>
+            <field name='user_type_id' ref='account.data_account_type_other_income'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+
+        <record id='pcg_77210001' model='account.account.template'>
+            <field name='code'>77210001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_7721'/>
+            <field name='name'>عائدات سندات التوظيف</field>
+            <field name='user_type_id' ref='account.data_account_type_other_income'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_77230001' model='account.account.template'>
+            <field name='code'>77230001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_7723'/>
+            <field name='name'>عائدات السندات المجمدة</field>
+            <field name='user_type_id' ref='account.data_account_type_other_income'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_77250001' model='account.account.template'>
+            <field name='code'>77250001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_7725'/>
+            <field name='name'>عائدات الذمم المدينة المجمدة</field>
+            <field name='user_type_id' ref='account.data_account_type_other_income'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_77260001' model='account.account.template'>
+            <field name='code'>77260001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_7726'/>
+            <field name='name'>عائدات الذمم المدينة التجارية</field>
+            <field name='user_type_id' ref='account.data_account_type_other_income'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_77270001' model='account.account.template'>
+            <field name='code'>77270001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_7727'/>
+            <field name='name'>عائدات الذمم المدينة المختلفة</field>
+            <field name='user_type_id' ref='account.data_account_type_other_income'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+
+        <record id='pcg_77310001' model='account.account.template'>
+            <field name='code'>77310001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_7731'/>
+            <field name='name'>عائدات القروض الممنوحة</field>
+            <field name='user_type_id' ref='account.data_account_type_other_income'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_77330001' model='account.account.template'>
+            <field name='code'>77330001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_7733'/>
+            <field name='name'>الخصم الممنوح للمؤسسة</field>
+            <field name='user_type_id' ref='account.data_account_type_other_income'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+
+        <record id='pcg_77510001' model='account.account.template'>
+            <field name='code'>77510001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_7751'/>
+            <field name='name'>على عمليات جارية</field>
+            <field name='user_type_id' ref='account.data_account_type_other_income'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_77550001' model='account.account.template'>
+            <field name='code'>77550001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_7755'/>
+            <field name='name'>على عمليات رأسمالية</field>
+            <field name='user_type_id' ref='account.data_account_type_other_income'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+
+        <record id='pcg_77810001' model='account.account.template'>
+            <field name='code'>77810001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_7781'/>
+            <field name='name'>ايرادات صافية على بيع سندات توظيف</field>
+            <field name='user_type_id' ref='account.data_account_type_other_income'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_77890001' model='account.account.template'>
+            <field name='code'>77890001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_7789'/>
+            <field name='name'>اعباء مالية محولة الى حسابات اخرى</field>
+            <field name='user_type_id' ref='account.data_account_type_other_income'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+
+        <record id='pcg_77930001' model='account.account.template'>
+            <field name='code'>77930001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_7793'/>
+            <field name='name'>استردادات من مؤونات هبوط الاسعار</field>
+            <field name='user_type_id' ref='account.data_account_type_other_income'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_77950001' model='account.account.template'>
+            <field name='code'>77950001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_7795'/>
+            <field name='name'>استردادات من مؤونات المخاطر والأعباء</field>
+            <field name='user_type_id' ref='account.data_account_type_other_income'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+
+        <record id='pcg_78110001' model='account.account.template'>
+            <field name='code'>78110001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_7811'/>
+            <field name='name'>اصول ثابتة غير مادية</field>
+            <field name='user_type_id' ref='account.data_account_type_other_income'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_78120001' model='account.account.template'>
+            <field name='code'>78120001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_7812'/>
+            <field name='name'>اصول ثابتة مادية</field>
+            <field name='user_type_id' ref='account.data_account_type_other_income'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_78150001' model='account.account.template'>
+            <field name='code'>78150001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_7815'/>
+            <field name='name'>اصول ثابتة مالية</field>
+            <field name='user_type_id' ref='account.data_account_type_other_income'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_78200001' model='account.account.template'>
+            <field name='code'>78200001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_782'/>
+            <field name='name'>اعانات للتوظيفات محولة الى نتيجة الدورة</field>
+            <field name='user_type_id' ref='account.data_account_type_other_income'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+
+        <record id='pcg_78810001' model='account.account.template'>
+            <field name='code'>78810001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_7881'/>
+            <field name='name'>ايرادات استثنائية على عمليات عادية</field>
+            <field name='user_type_id' ref='account.data_account_type_other_income'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_78880001' model='account.account.template'>
+            <field name='code'>78880001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_7888'/>
+            <field name='name'>ايرادات اخرىعلى عمليات رأسماليةاستثنائية</field>
+            <field name='user_type_id' ref='account.data_account_type_other_income'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_78890001' model='account.account.template'>
+            <field name='code'>78890001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_7889'/>
+            <field name='name'>اعباء استثنائية محولة الى حسابات اخرى</field>
+            <field name='user_type_id' ref='account.data_account_type_other_income'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+
+        <record id='pcg_78910001' model='account.account.template'>
+            <field name='code'>78910001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_7891'/>
+            <field name='name'>استردادات من مؤونات هبوط الاسعار</field>
+            <field name='user_type_id' ref='account.data_account_type_other_income'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+        <record id='pcg_78950001' model='account.account.template'>
+            <field name='code'>78950001</field>
+            <field name='group_id' ref='l10n_lb.grp_coa_lb_7895'/>
+            <field name='name'>استردادات من مؤونات المخاطر و الأعباء</field>
+            <field name='user_type_id' ref='account.data_account_type_other_income'/>
+            <field name='chart_template_id' ref='l10n_lb_pcg_chart_template'/>
+        </record>
+
+
+        <record id="l10n_lb_pcg_chart_template" model="account.chart.template">
+            <field name="property_account_receivable_id" ref="pcg_4111_recv"/>
+            <field name="property_account_payable_id" ref="pcg_4011_pay"/>
+            <field name="property_account_expense_categ_id" ref="pcg_60110001"/>
+            <field name="property_account_income_categ_id" ref="pcg_70100001"/>
+            <field name="income_currency_exchange_account_id" ref="pcg_77510001"/>
+            <field name="expense_currency_exchange_account_id" ref="pcg_67510001"/>
+            <field name="default_pos_receivable_account_id" ref="pcg_4111_recv_pos"/>
+            <field name="currency_id" ref="base.LBP"/>
+        </record>
+    </data>
+</odoo>

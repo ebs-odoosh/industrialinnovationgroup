@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="employee_custom_search" model="ir.ui.view">
+            <field name="name">employee_custom.search</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_filter"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="after">
+                    <field name="strata_id"/>
+                    <field name="system_id"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

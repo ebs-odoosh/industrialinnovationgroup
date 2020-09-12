@@ -1,0 +1,349 @@
+<odoo>
+    <data>
+        <!-- explicit list view definition -->
+        <record id="approval_category_view_form_inherit" model="ir.ui.view">
+            <field name="name">approval.category.view.form</field>
+            <field name="model">approval.category</field>
+            <field name="inherit_id" ref="approvals.approval_category_view_form"/>
+            <field name="arch" type="xml">
+                <field name="description" position="after">
+                    <field name="managers_only"/>
+                    <field name="is_requisition_request" widget="radio" options="{'horizontal': true}"/>
+                    <field name="is_termination_request" widget="radio" options="{'horizontal': true}"/>
+                    <field name="is_termination_extend_request" widget="radio" options="{'horizontal': true}"/>
+
+                </field>
+                <field name="is_manager_approver" position="before">
+                    <field name="is_head_department_approver"/>
+                </field>
+                <field name="approval_minimum" position="after">
+                    <field name="approval_sequence">
+                        <tree editable="bottom">
+                            <field name="sequence" widget="handle"/>
+                            <field name="user_id"/>
+                            <field name="approver_category"/>
+                            <field name="is_head_department_approver"/>
+                            <field name="is_manager_approver"/>
+                        </tree>
+                    </field>
+                </field>
+                <field name="requirer_document" position="before">
+
+                    <field name="has_vacancy_type" widget="radio" options="{'horizontal': true}"/>
+                    <field name="has_job_title" widget="radio" options="{'horizontal': true}"/>
+                    <field name="has_resignation_date" widget="radio" options="{'horizontal': true}"/>
+                    <field name="has_group" widget="radio" options="{'horizontal': true}"/>
+                    <field name="has_department" widget="radio" options="{'horizontal': true}"/>
+                    <field name="has_section" widget="radio" options="{'horizontal': true}"/>
+                    <field name="has_subsection" widget="radio" options="{'horizontal': true}"/>
+                    <field name="has_job_desc" widget="radio" options="{'horizontal': true}"/>
+                    <field name="has_replacement_employee_id" widget="radio" options="{'horizontal': true}"/>
+                    <field name="has_contract_type" widget="radio" options="{'horizontal': true}"/>
+                    <field name="has_requisition_type" widget="radio" options="{'horizontal': true}"/>
+                    <field name="has_related_employee_id" widget="radio" options="{'horizontal': true}"/>
+                    <field name="has_related_contract" widget="radio" options="{'horizontal': true}"/>
+                    <field name="has_grade" widget="radio" options="{'horizontal': true}"/>
+                    <field name="has_job_position" widget="radio" options="{'horizontal': true}"/>
+                </field>
+
+            </field>
+        </record>
+
+        <record id="approval_request_view_form_inherit" model="ir.ui.view">
+            <field name="name">approval.request.view.form</field>
+            <field name="model">approval.request</field>
+            <field name="inherit_id" ref="approvals.approval_request_view_form"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//field[@name='request_owner_id']" position="attributes">
+                    <attribute name="readonly">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='request_owner_id']" position="after">
+                    <field name="direct_employee_id"/>
+                </xpath>
+                <xpath expr="//field[@name='category_id']" position="attributes">
+                    <attribute name="readonly">1</attribute>
+                </xpath>
+
+                <xpath expr="//page[@name='description']" position="replace">
+                    <page string="Justification" name="description">
+                        <field name="reason" required="1"/>
+                    </page>
+                </xpath>
+
+                <field name="partner_id" position="after">
+
+                    <field name="is_requisition_request" invisible="1"/>
+                    <field name="is_termination_request" invisible="1"/>
+                    <field name="is_termination_extend_request" invisible="1"/>
+                    <field name="can_create_job" invisible="1"/>
+                    <field name="can_create_resign" invisible="1"/>
+                    <field name="can_extend_resign" invisible="1"/>
+                    <field name="has_vacancy_type" invisible="1"/>
+                    <field name="has_job_desc" invisible="1"/>
+                    <field name="has_replacement_employee_id" invisible="1"/>
+                    <field name="has_contract_type" invisible="1"/>
+                    <field name="has_requisition_type" invisible="1"/>
+                    <field name="has_job_title" invisible="1"/>
+                    <field name="has_group" invisible="1"/>
+                    <field name="has_department" invisible="1"/>
+                    <field name="has_section" invisible="1"/>
+                    <field name="has_subsection" invisible="1"/>
+                    <field name="has_related_employee_id" invisible="1"/>
+                    <field name="has_related_contract" invisible="1"/>
+                    <field name="has_grade" invisible="1"/>
+                    <field name="has_job_position" invisible="1"/>
+                    <field name="has_resignation_date" invisible="1"/>
+                    <field name="create_date"/>
+                    <field name="approval_date"/>
+
+
+                    <field name="vacancy_type"
+                           attrs="{'invisible':[('has_vacancy_type','==','no')], 'required': [('has_vacancy_type','==','required')]}"/>
+                    <field name="related_employee_id"
+                           attrs="{'invisible':[('has_related_employee_id','==','no')], 'required': [('has_related_employee_id','==','required')]}"/>
+                    <field name="related_resign_request" domain="[('state','=','active')]"
+                           attrs="{'invisible':[('is_termination_extend_request','==','no')], 'required': [('is_termination_extend_request','==','yes')]}"/>
+                    <field name="related_resign_date"
+                           attrs="{'invisible':[('is_termination_extend_request','==','no')], 'required': [('is_termination_extend_request','==','yes')]}"/>
+                    <field name="extend_till"
+                           attrs="{'invisible':[('is_termination_extend_request','==','no')], 'required': [('is_termination_extend_request','==','yes')]}"/>
+                    <field name="related_contract"
+                           attrs="{'invisible':[('has_related_contract','==','no')], 'required': [('has_related_contract','==','required')] ,'readonly':[('is_termination_request','=','yes')]}"/>
+                    <field name="resignation_date"
+                           attrs="{'invisible':[('has_resignation_date','==','no')], 'required': [('has_resignation_date','==','required')] ,'readonly':[('is_termination_request','=','yes')]}"/>
+                    <field name="job_position"
+                           attrs="{'invisible':[('has_job_position','==','no')], 'required': [('has_job_position','==','required')] , 'readonly':[('is_termination_request','=','yes')]}"/>
+                    <field name="job_title"
+                           attrs="{'invisible':[('has_job_title','==','no')], 'required': [('has_job_title','==','required')],'readonly':[('is_termination_request','=','yes')]}"/>
+                    <field name="grade"
+                           attrs="{'invisible':[('has_grade','==','no')], 'required': [('has_grade','==','required')],'readonly':[('is_termination_request','=','yes')]}"/>
+                    <field name="group"
+                           attrs="{'invisible':[('has_group','==','no')], 'required': [('has_group','==','required')],'readonly':[('is_termination_request','=','yes')]}"/>
+                    <field name="department"
+                           attrs="{'invisible':[('has_department','==','no')], 'required': [('has_department','==','required')],'readonly':[('is_termination_request','=','yes')]}"/>
+                    <field name="section"
+                           attrs="{'invisible':[('has_section','==','no')], 'required': [('has_section','==','required')],'readonly':[('is_termination_request','=','yes')]}"/>
+                    <field name="subsection"
+                           attrs="{'invisible':[('has_subsection','==','no')], 'required': [('has_subsection','==','required')],'readonly':[('is_termination_request','=','yes')]}"/>
+                    <field name="contract_type"
+                           attrs="{'invisible':[('has_contract_type','==','no')], 'required': [('has_contract_type','==','required')]}"/>
+                    <field name="requisition_type"
+                           attrs="{'invisible':[('has_requisition_type','==','no')], 'required': [('has_requisition_type','==','required')]}"/>
+                    <field name="replacement_employee_id"
+                           attrs="{'invisible':['|',('has_replacement_employee_id','==','no'),('requisition_type','!=','replace')], 'required': [('has_replacement_employee_id','==','required'),('requisition_type','==','replace')]}"/>
+
+                </field>
+
+                <button name="action_confirm" position="after">
+                    <button name="create_job_position" string="Create Job Position" type="object"
+                            attrs="{'invisible':[['can_create_job','==',False]]}"
+                            groups="hr_approvals.group_approval_category_manager_job_position"
+                            class="btn-primary"/>
+                    <button name="create_resignation" string="Create Resignation" type="object"
+                            attrs="{'invisible':[['can_create_resign','==',False]]}"
+                            groups="hr_approvals.group_approval_category_manager_resignation"
+                            class="btn-primary"/>
+                    <button name="extend_resignation" string="Extend Resignation" type="object"
+                            attrs="{'invisible':[['can_extend_resign','==',False]]}"
+                            groups="hr_approvals.group_approval_category_manager_resignation"
+                            class="btn-primary"/>
+                </button>
+
+                <field name="approver_ids" position="replace">
+                    <field name="approver_ids" mode="tree,kanban">
+                        <tree editable="bottom" decoration-success="status=='approved'"
+                              decoration-warning="status=='pending'" decoration-danger="status=='refused'">
+                            <field name="sequence"/>
+                            <field name="user_id" string="Approver" attrs="{'readonly':[('status','!=','new')]}"/>
+                            <field name="approver_category" attrs="{'readonly':[('status','!=','new')]}"/>
+                            <field name="approval_date"/>
+                            <field name="status"/>
+                        </tree>
+                        <kanban class="o_kanban_mobile">
+                            <field name="user_id"/>
+                            <field name="status"/>
+                            <templates>
+                                <t t-name="kanban-box">
+                                    <div class="oe_kanban_card oe_kanban_global_click">
+                                        <div class="o_kanban_content">
+                                            <t t-esc="record.user_id.value"/>
+                                            <t t-if="record.status.raw_value">
+                                                <t t-set="classname"
+                                                   t-value="{'approved': 'badge-success', 'pending': 'badge-warning', 'refused': 'badge-danger'}[record.status.raw_value] || 'badge-light'"/>
+                                                <span t-esc="record.status.raw_value"
+                                                      t-attf-class="float-right badge-pill {{ classname }}"/>
+                                            </t>
+                                        </div>
+                                    </div>
+                                </t>
+                            </templates>
+                        </kanban>
+                        <form>
+                            <group>
+                                <field name="user_id"/>
+                            </group>
+                        </form>
+                    </field>
+                </field>
+
+
+                <page name="description" position="before">
+                    <page name="job_description" string="Job Description"
+                          attrs="{'invisible':[('has_job_desc','==','no')]}">
+                        <field name="job_desc"
+                               attrs="{'invisible':[('has_job_desc','==','no')], 'required': [('has_job_desc','==','required')]}"/>
+
+                    </page>
+                </page>
+            </field>
+        </record>
+
+
+        <record id="view_hr_job_form_inherited_approval" model="ir.ui.view">
+            <field name="name">hr.job.form.inherited.approval</field>
+            <field name="model">hr.job</field>
+            <field name="inherit_id" ref="hr.view_hr_job_form"/>
+            <field name="arch" type="xml">
+
+                <group position="after">
+                    <group string="Requisition">
+                        <field name="related_requisition"/>
+                        <field name="requisition_job_title"/>
+                        <field name="vacancy_type"/>
+                        <field name="contract_type"/>
+                        <field name="requisition_type"/>
+                        <field name="replacement_employee_id"
+                               attrs="{'invisible':[('requisition_type','!=','replace')]}"/>
+
+                    </group>
+                </group>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="approval_request_tree">
+            <field name="name">approval_request_tree</field>
+            <field name="model">approval.request</field>
+            <field name="inherit_id" ref="approvals.approval_request_view_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='request_status']" position="after">
+                    <field name="create_date"/>
+                    <field name="approval_date"/>
+                </xpath>
+            </field>
+        </record>
+
+
+        <record id="view_resign_form_inherit" model="ir.ui.view">
+            <field name="name">hr.resignation.form.inherit</field>
+            <field name="model">hr.resignation</field>
+            <field name="inherit_id" ref="hr_contract_custom.view_resign_form"/>
+            <field name="arch" type="xml">
+                <field name="related_contract" position="after">
+                    <field name="related_approval"/>
+                    <field name="start_date"/>
+                    <field name="end_date"/>
+                </field>
+            </field>
+        </record>
+
+        <record id="view_resign_form_inherit" model="ir.ui.view">
+            <field name="name">hr.resignation.form.inherit</field>
+            <field name="model">hr.resignation</field>
+            <field name="inherit_id" ref="hr_contract_custom.view_resign_form"/>
+            <field name="arch" type="xml">
+                <field name="related_contract" position="after">
+                    <field name="related_approval"/>
+                    <field name="start_date"/>
+                    <field name="end_date"/>
+                </field>
+            </field>
+        </record>
+
+
+        <record id="view_resign_tree_inherit" model="ir.ui.view">
+            <field name="name">hr.resignation.tree.inherit</field>
+            <field name="model">hr.resignation</field>
+            <field name="inherit_id" ref="hr_contract_custom.view_resign_tree"/>
+            <field name="arch" type="xml">
+                <field name="related_contract" position="after">
+                    <field name="related_approval"/>
+                    <field name="start_date"/>
+                    <field name="end_date"/>
+                </field>
+            </field>
+        </record>
+
+
+        <record id=" hr_contract_job_offer_view_form_inherit" model="ir.ui.view">
+            <field name="name">hr.contract.form.inherit</field>
+            <field name="model">hr.contract</field>
+            <field name="inherit_id" ref="hr_contract_custom.hr_contract_job_offer_view_form"/>
+            <field name="arch" type="xml">
+                <field name="related_resign_request" position="replace">
+                    <field name="related_resign_request">
+                        <tree string="Resign Request">
+                            <field name="name"/>
+                            <field name="start_date"/>
+                            <field name="end_date"/>
+                            <field name="state"/>
+                        </tree>
+                    </field>
+                </field>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="approval_user_form">
+            <field name="name">approval_user_form</field>
+            <field name="model">res.users</field>
+            <field name="inherit_id" ref="approvals.res_users_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[1]" position="replace">
+                </xpath>
+            </field>
+        </record>
+
+
+        <!-- actions opening views on models -->
+        <!--
+        <record model="ir.actions.act_window" id="hr_approvals.action_window">
+          <field name="name">hr_approvals window</field>
+          <field name="res_model">hr_approvals.hr_approvals</field>
+          <field name="view_mode">tree,form</field>
+        </record>
+        -->
+
+        <!-- server action to the one above -->
+        <!--
+        <record model="ir.actions.server" id="hr_approvals.action_server">
+          <field name="name">hr_approvals server</field>
+          <field name="model_id" ref="model_hr_approvals_hr_approvals"/>
+          <field name="state">code</field>
+          <field name="code">
+            action = {
+              "type": "ir.actions.act_window",
+              "view_mode": "tree,form",
+              "res_model": self._name,
+            }
+          </field>
+        </record>
+        -->
+
+        <!-- Top menu item -->
+        <!--
+        <menuitem name="hr_approvals" id="hr_approvals.menu_root"/>
+        -->
+        <!-- menu categories -->
+        <!--
+        <menuitem name="Menu 1" id="hr_approvals.menu_1" parent="hr_approvals.menu_root"/>
+        <menuitem name="Menu 2" id="hr_approvals.menu_2" parent="hr_approvals.menu_root"/>
+        -->
+        <!-- actions -->
+        <!--
+        <menuitem name="List" id="hr_approvals.menu_1_list" parent="hr_approvals.menu_1"
+                  action="hr_approvals.action_window"/>
+        <menuitem name="Server to list" id="hr_approvals" parent="hr_approvals.menu_2"
+                  action="hr_approvals.action_server"/>
+        -->
+    </data>
+</odoo>

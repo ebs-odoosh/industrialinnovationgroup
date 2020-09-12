@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<odoo>
+    <data>
+        <record id="custom_res_partner_vat_type" model="ir.ui.view">
+            <field name="name">custom.res.partner.vat.type</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="priority" eval="100"/>
+            <field name="arch" type="xml">
+			
+			
+				<xpath expr="//field[@name='type']" position="before">
+                    <field name="is_customer"/>
+                    <field name="is_supplier"/>
+                </xpath>
+			
+                <xpath expr="//field[@name='is_supplier']" position="after">
+                    <field name="is_vendor_asset" attrs="{'invisible':[('is_supplier','=',False)]}"/>
+                    <field name="is_vendor_service_purchase" attrs="{'invisible':[('is_supplier','=',False)]}"/>
+                    <field name="is_vendor_charges" attrs="{'invisible':[('is_supplier','=',False)]}"/>
+                </xpath>
+
+                <xpath expr="//field[@name='property_account_payable_id']" position="after">
+                    <field name="sales_vat_account" attrs="{'invisible':[('is_customer','!=',True)]}"/>
+                    <field name="purchase_vat_account" attrs="{'invisible':[('is_supplier','!=',True)]}"/>
+                </xpath>
+                <xpath expr="//field[@name='property_account_payable_id']" position="attributes">
+                    <attribute name="attrs">{'invisible':[('is_supplier','!=',True)]}</attribute>
+                </xpath>
+
+                <xpath expr="//field[@name='property_account_receivable_id']" position="attributes">
+                    <attribute name="attrs">{'invisible':[('is_customer','!=',True)]}</attribute>
+                </xpath>
+            </field>
+        </record>
+
+
+    </data>
+</odoo>

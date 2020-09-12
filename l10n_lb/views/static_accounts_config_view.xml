@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<odoo>
+    <data>
+        <!--list view -->
+        <record id="static_accounts_config_tree" model="ir.ui.view">
+            <field name="name">Static Accounts Configuration Tree</field>
+            <field name="model">account.static.accounts.config</field>
+            <field name="arch" type="xml">
+                <tree editable="bottom">
+                    <field name="code"/>
+                     <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <!--window -->
+        <record id="static_accounts_config_window" model="ir.actions.act_window">
+            <field name="name">Static Accounts Configuration</field>
+            <field name="res_model">account.static.accounts.config</field>
+            <field name="view_mode">tree</field>
+        </record>
+        <!--menu -->
+
+
+    </data>
+</odoo>

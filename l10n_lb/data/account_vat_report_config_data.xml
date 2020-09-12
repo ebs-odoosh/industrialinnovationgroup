@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <!-- Account Tax Group -->
+        <record id="tva_report_config_pa" model="account.vat.report.config">
+            <field name="sequence">20</field>
+			<field name="final_step">False</field>
+			<field name="name">TVA Purchase Asset</field>
+			<field name="group" ref="l10n_lb.grp_coa_lb_44213"/>
+            <field name="account" ref="l10n_lb.acc_442601"/>
+        </record>
+		
+		 <record id="tva_report_config_ps" model="account.vat.report.config">
+            <field name="sequence">30</field>
+			<field name="final_step">False</field>
+			<field name="name">TVA Purchase Service</field>
+			<field name="group" ref="l10n_lb.grp_coa_lb_44210"/>
+            <field name="account" ref="l10n_lb.acc_442603"/>
+        </record>
+		
+		 <record id="tva_report_config_pc" model="account.vat.report.config">
+            <field name="sequence">40</field>
+			<field name="final_step">False</field>
+			<field name="name">TVA Purchase Charges</field>
+			<field name="group" ref="l10n_lb.grp_coa_lb_44216"/>
+            <field name="account" ref="l10n_lb.acc_442602"/>
+        </record>
+		
+		 <record id="tva_report_config_s" model="account.vat.report.config">
+            <field name="sequence">50</field>
+			<field name="final_step">False</field>
+			<field name="name">TVA Sales</field>
+			<field name="group" ref="l10n_lb.grp_coa_lb_442700"/>
+            <field name="account" ref="l10n_lb.acc_442701"/>
+        </record>
+		
+		
+		<record id="tva_report_config_ptm" model="account.vat.report.config">
+            <field name="sequence">60</field>
+			<field name="final_step">True</field>
+			<field name="name">Paid to MOF</field>
+            <field name="account" ref="l10n_lb.acc_442501"/>
+        </record>
+		
+    </data>
+</odoo>

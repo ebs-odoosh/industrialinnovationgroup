@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record model="color.class" id="color_class1">
+            <field name="name">Contractor - Persian Green</field>
+            <field name="color">#009999</field>
+        </record>
+        <record model="color.class" id="color_class2">
+            <field name="name">UAEN - Yellow</field>
+            <field name="color">#FFFF00</field>
+        </record>
+        <record model="color.class" id="color_class3">
+            <field name="name">Expat - White</field>
+            <field name="color">#FFFFFF</field>
+        </record>
+        <record model="color.class" id="color_class4">
+            <field name="name">Sub-Contractor - Pale Blue</field>
+            <field name="color">#BDD7EE</field>
+        </record>
+        <record model="color.class" id="color_class5">
+            <field name="name">Vacant - Apricot</field>
+            <field name="color">#F8CBAD</field>
+        </record>
+        <record model="color.class" id="color_class6">
+            <field name="name">Departure/Leaver - Red</field>
+            <field name="color">#FF0000</field>
+        </record>
+    </data>
+</odoo>

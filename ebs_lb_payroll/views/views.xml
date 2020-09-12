@@ -1,0 +1,129 @@
+<odoo>
+    <data>
+
+
+        <record id="custom_hr_employee_view" model="ir.ui.view">
+            <field name="name">custom.hr.employee.view</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//field[@name='marital']//.." position="replace">
+
+                </xpath>
+                <xpath expr="//field[@name='children']//.." position="replace">
+
+                </xpath>
+
+                <xpath expr="//page[@name='personal_information']//group[1]//group[last()]" position="after">
+                    <group string="Marital Status">
+                        <field name="marital"/>
+                        <field name="spouse_complete_name"
+                               attrs="{'invisible': [('marital', 'not in', ['married', 'cohabitant'])]}"
+                               groups="hr.group_hr_user"/>
+                        <field name="spouse_birthdate"
+                               attrs="{'invisible': [('marital', 'not in', ['married', 'cohabitant'])]}"
+                               groups="hr.group_hr_user"/>
+                    </group>
+                </xpath>
+
+
+                <xpath expr="//field[@name='address_home_id']" position="replace">
+                    <field name="address_home_id"
+                           context="{'show_address': 1,'default_type': 'private','form_view_ref': 'base.res_partner_view_form_private'}"
+                           options="{&quot;always_reload&quot;: True}"/>
+                </xpath>
+
+
+                <xpath expr="//page[@name='personal_information']//group[1]//group[last()]" position="after">
+                    <group string="Dependant">
+                        <field name="emp_childs" attrs="{'invisible': [('marital', '=', 'single')]}">
+                            <tree>
+                                <field name="name"/>
+                                <field name="date_of_birth"/>
+                            </tree>
+                            <form>
+                                <sheet>
+                                    <group name="group_top">
+                                        <group name="group_left">
+                                            <field name="name"/>
+                                            <field name="date_of_birth"/>
+                                        </group>
+                                        <group name="group_right">
+                                            <field name="is_student"/>
+                                        </group>
+                                    </group>
+                                </sheet>
+                            </form>
+                        </field>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="custom_hr_salary_rule_view" model="ir.ui.view">
+            <field name="name">custom.hr.salary.rule.view</field>
+            <field name="model">hr.salary.rule</field>
+            <field name="inherit_id" ref="hr_payroll.hr_salary_rule_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='appears_on_payslip']" position="after">
+                    <field name="istaxable" invisible="True"/>
+                    <field name="template"/>
+                    <field name="related_element_type" attrs="{'invisible': [('template', '!=', 'AE')]}"
+                           options="{'no_create_edit': True}"/>
+                </xpath>
+            </field>
+        </record>
+
+
+
+        <record id="payroll_custom_address_view" model="ir.ui.view">
+            <field name="name">payroll.custom.address.view</field>
+            <field name="model">res.partner</field>
+            <field name="priority" eval="400"/>
+            <field name="inherit_id" ref="base.res_partner_view_form_private"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//div[@name='div_address']//..//.." position="replace">
+                    <group>
+                        <field name="country_id" class="o_address_country"
+                               options='{"no_open": True, "no_create": True}'/>
+                        <field name="street" class="o_address_street"/>
+                        <field name="street2" class="o_address_street"/>
+                        <field name="building"/>
+                        <field name="floor"/>
+
+                    </group>
+                </xpath>
+                <xpath expr="//field[@name='phone']" position="before">
+                    <field name="po_box"/>
+                </xpath>
+                <xpath expr="//field[@name='mobile']" position="after">
+                    <field name="fax" widget="phone"/>
+                </xpath>
+                <xpath expr="//field[@name='po_box']" position="before">
+                    <field name="area"/>
+                </xpath>
+
+            </field>
+        </record>
+
+        <record id="payroll_custom_payroll_structure_view" model="ir.ui.view">
+            <field name="name">payroll.custom.payroll.structure.view</field>
+            <field name="model">hr.payroll.structure</field>
+            <field name="inherit_id" ref="hr_payroll.view_hr_employee_grade_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='unpaid_work_entry_type_ids']//.." position="replace">
+                </xpath>
+                <xpath expr="//page[@name='other_input']" position="replace">
+                </xpath>
+            </field>
+        </record>
+
+
+
+
+
+
+    </data>
+</odoo>
