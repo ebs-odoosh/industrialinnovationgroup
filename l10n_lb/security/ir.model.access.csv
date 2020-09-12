@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_l10n_lb_account_auto_generate_mapping,l10n_lb.account_auto_generate_mapping,model_account_auto_generate_mapping,,1,1,1,1
+access_l10n_lb_account_vat_report,l10n_lb.account_vat_report,model_account_vat_report,,1,1,1,1
+access_l10n_lb_account_vat_report_config,l10n_lb.account_vat_report_config,model_account_vat_report_config,,1,1,1,1
+access_l10n_lb_account_foreign_exchange_report_config,l10n_lb.account_foreign_exchange_report_config,model_account_foreign_exchange_report_config,,1,1,1,1
+access_l10n_lb_account_static_accounts_config,l10n_lb.account_static_accounts_config,model_account_static_accounts_config,,1,1,1,1

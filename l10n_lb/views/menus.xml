@@ -1,0 +1,101 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<odoo>
+
+
+    <record model="ir.ui.menu" id="account.menu_account_customer">
+        <field name="active" eval="False"/>
+    </record>
+
+    <record model="ir.ui.menu" id="account.menu_account_supplier">
+        <field name="active" eval="False"/>
+    </record>
+    <record model="ir.ui.menu" id="account.menu_action_tax_adjustment">
+        <field name="active" eval="False"/>
+    </record>
+
+    <record model="ir.ui.menu" id="account.menu_configure_tax_report">
+        <field name="active" eval="False"/>
+    </record>
+
+    <record model="ir.ui.menu" id="account_reports.menu_action_account_report_gt">
+        <field name="active" eval="False"/>
+    </record>
+
+    <menuitem
+            id="custom_account_vendor_menu"
+            name="Vendor"
+            action="custom_vendor_window"
+            parent="account.menu_finance_payables"
+            sequence="201"
+    />
+    <menuitem
+            id="vat_closing_window_menu"
+            name="VAT Closing"
+            sequence="5"
+            action="vat_closing_window_view"
+            parent="account.menu_finance_entries_accounting_miscellaneous"
+
+    /> <menuitem
+            id="foreign_exchange_window_menu"
+            name="Foreign Exchange"
+            sequence="7"
+            action="foreign_exchange_window_view"
+            parent="account.menu_finance_entries_accounting_miscellaneous"
+
+    />
+    <menuitem
+            id="custom_account_customer_menu"
+            name="Customer"
+            action="custom_customer_window"
+            parent="account.menu_finance_receivables"
+            sequence="111"
+    />
+
+
+    <menuitem
+            id="acc_auto_gen_map_menu"
+            name="Account Auto Generate Map"
+            action="acc_auto_gen_map_window"
+            parent="account.account_account_menu"
+            sequence="5"
+    />
+
+    <menuitem
+            id="vat_report_config_menu"
+            name="VAT Closing Configuration"
+            action="vat_report_config_window"
+            parent="account.account_account_menu"
+            sequence="7"
+    />  <menuitem
+            id="foreign_exchange_report_config_menu"
+            name="Foreign Exchange Configuration"
+            action="foreign_exchange_report_config_window"
+            parent="account.account_account_menu"
+            groups="account.group_account_manager"
+            sequence="8"
+    />
+    <menuitem
+            id="static_accounts_config_menu"
+            name="Static Accounts Configuration"
+            action="static_accounts_config_window"
+            parent="account.account_account_menu"
+            groups="account.group_account_manager"
+            sequence="9"
+    />
+
+    <menuitem
+            id="account_account_type_view_menu"
+            name="Account Type"
+            action="account_account_type_window"
+            parent="account.account_account_menu"
+            groups="account.group_account_manager"
+            sequence="10"
+    />
+    <!--    <menuitem-->
+    <!--            id="vat_report_menu"-->
+    <!--            name="VAT Report"-->
+    <!--            action="vat_report_window"-->
+    <!--            parent="account_reports.account_reports_audit_reports_menu"-->
+    <!--            sequence="10"-->
+    <!--    />-->
+</odoo>

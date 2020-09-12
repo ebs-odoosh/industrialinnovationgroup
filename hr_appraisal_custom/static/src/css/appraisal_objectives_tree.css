@@ -1,0 +1,7 @@
+.objectives_tree [data-name="title"] {
+    width: 100px !important;
+}.objectives_tree [data-name="weight"] {
+    width: 50px !important;
+}.objectives_tree [data-name="description"] {
+    width: 200px !important;
+}

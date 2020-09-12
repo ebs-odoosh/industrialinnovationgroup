@@ -1,0 +1,65 @@
+<odoo>
+    <data>
+
+        <!--Employees Menu-->
+        <record model="ir.ui.menu" id="hr.menu_hr_root">
+            <field name="groups_id"
+                   eval="[(6,0,[ref('hr.group_hr_manager'),ref('hr.group_hr_user'),ref('security_rules.group_hr_employee')])]"/>
+            <field name="action" ref="hr.open_view_employee_list_my"/>
+        </record>
+
+        <record model="ir.ui.menu" id="hr.menu_hr_employee_user">
+            <field name="groups_id" eval="[(6,0,[ref('base.user_admin')])]"/>
+        </record>
+
+        <record model="ir.ui.menu" id="hr.menu_hr_employee">
+            <field name="groups_id" eval="[(6,0,[ref('base.user_admin')])]"/>
+        </record>
+
+        <!--Website Menu-->
+        <record model="ir.ui.menu" id="website.menu_website_configuration">
+            <field name="groups_id"
+                   eval="[(6,0,[ref('website.group_website_publisher'),ref('website.group_website_designer')]),]"/>
+        </record>
+
+        <!--Appraisal Menu-->
+        <record model="ir.ui.menu" id="hr_appraisal.menu_hr_appraisal_root">
+            <field name="groups_id"
+                   eval="[(6,0,[ref('hr_appraisal.group_hr_appraisal_user'),ref('hr_appraisal.group_hr_appraisal_manager'),ref('security_rules.group_hr_appraisal_employee')])]"/>
+        </record>
+
+        <record model="ir.ui.menu" id="hr_appraisal.menu_hr_appraisal_configuration">
+            <field name="groups_id"
+                   eval="[(6,0,[ref('base.user_admin')])]"/>
+        </record>
+
+
+        <!--Approval Menu-->
+        <record model="ir.ui.menu" id="approvals.approvals_menu_root">
+            <field name="groups_id"
+                   eval="[(6,0,[ref('approvals.group_approval_user'),ref('approvals.group_approval_manager'),ref('security_rules.group_approval_employee')])]"/>
+        </record>
+
+        <!--Contacts Menu-->
+        <record model="ir.ui.menu" id="contacts.menu_contacts">
+            <field name="groups_id" eval="[(6,0,[ref('base.user_admin')])]"/>
+        </record>
+
+        <!--Discuss Menu-->
+        <record model="ir.ui.menu" id="mail.menu_root_discuss">
+            <field name="groups_id" eval="[(6,0,[ref('base.user_admin')])]"/>
+        </record>
+
+        <!--Calendar Menu-->
+        <record model="ir.ui.menu" id="calendar.mail_menu_calendar">
+            <field name="groups_id" eval="[(6,0,[ref('base.user_admin')])]"/>
+        </record>
+
+        <!--Dashboards Menu-->
+        <record model="ir.ui.menu" id="base.menu_board_root">
+            <field name="groups_id" eval="[(6,0,[ref('base.user_admin')])]"/>
+        </record>
+
+
+    </data>
+</odoo>

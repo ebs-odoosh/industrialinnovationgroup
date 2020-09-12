@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <!-- Account Tax Group -->
+        <record id="acc_4111111" model="account.account">
+            <field name="name">Test account</field>
+            <field name="code">4111111</field>
+            <field name="user_type_id" ref="account.data_account_type_receivable"/>
+           <!-- <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>-->
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_4111"/>
+			<field name="reconcile">True</field>
+        </record>
+		
+		
+		 <!-- Account Tax Group -->
+        <record id="acc_442501" model="account.account">
+            <field name="name">Paid to MOF</field>
+            <field name="code">442501</field>
+            <field name="user_type_id" ref="account.data_account_type_current_liabilities"/>
+           <!-- <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>-->
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_4425"/>
+			<field name="reconcile">False</field>
+        </record>
+		
+		
+		  <record id="acc_442601" model="account.account">
+            <field name="name">TVA Payable Asset Closing</field>
+            <field name="code">442601</field>
+            <field name="user_type_id" ref="account.data_account_type_current_liabilities"/>
+           <!-- <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>-->
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_4426"/>
+			<field name="reconcile">False</field>
+        </record>
+		
+		
+		  <record id="acc_442602" model="account.account">
+            <field name="name">TVA Payable Charges Closing</field>
+            <field name="code">442602</field>
+            <field name="user_type_id" ref="account.data_account_type_current_liabilities"/>
+           <!-- <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>-->
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_4426"/>
+			<field name="reconcile">False</field>
+        </record>
+		
+		  <record id="acc_442603" model="account.account">
+            <field name="name">TVA Payable Purchase and Services</field>
+            <field name="code">442603</field>
+            <field name="user_type_id" ref="account.data_account_type_current_liabilities"/>
+           <!-- <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>-->
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_4426"/>
+			<field name="reconcile">False</field>
+        </record>
+		
+		
+		<record id="acc_442701" model="account.account">
+            <field name="name">TVA Sales Closing</field>
+            <field name="code">442701</field>
+            <field name="user_type_id" ref="account.data_account_type_current_liabilities"/>
+           <!-- <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>-->
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_4427"/>
+			<field name="reconcile">False</field>
+        </record>
+		
+		<record id="acc_7751" model="account.account">
+            <field name="name">Foreign Exchange Gain</field>
+            <field name="code">7751</field>
+            <field name="user_type_id" ref="account.data_account_type_revenue"/>
+           <!-- <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>-->
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_7751"/>
+			<field name="reconcile">False</field>
+        </record>
+		
+		<record id="acc_6151" model="account.account">
+            <field name="name">Foreign Exchange Loss</field>
+            <field name="code">6751</field>
+            <field name="user_type_id" ref="account.data_account_type_expenses"/>
+           <!-- <field name="chart_template_id" ref="l10n_lb_pcg_chart_template"/>-->
+            <field name="group_id" ref="l10n_lb.grp_coa_lb_6751"/>
+			<field name="reconcile">False</field>
+        </record>
+
+		
+
+    </data>
+</odoo>

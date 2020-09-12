@@ -1,0 +1,116 @@
+<odoo>
+    <data>
+
+
+<!--        <record id="custom_vendor_window" model="ir.actions.act_window">-->
+<!--            <field name="name">Vendors</field>-->
+<!--            <field name="res_model">res.partner</field>-->
+<!--            <field name="view_mode">kanban,tree,form,activity</field>-->
+<!--            &lt;!&ndash;            <field name="search_view_id" ref="base.view_res_partner_filter"/>&ndash;&gt;-->
+<!--            <field name="context">{-->
+<!--                'search_default_supplier': 1,-->
+<!--                'res_partner_search_mode':'supplier',-->
+<!--                'default_is_company': True,-->
+<!--                'default_supplier_rank': 1,-->
+<!--                'default_is_supplier':True-->
+<!--                }-->
+<!--            </field>-->
+<!--            <field name="domain">[('is_supplier','=',True)]</field>-->
+<!--        </record>-->
+
+
+<!--        <record id="custom_customer_window" model="ir.actions.act_window">-->
+<!--            <field name="name">Customers</field>-->
+<!--            <field name="res_model">res.partner</field>-->
+<!--            <field name="view_mode">kanban,tree,form,activity</field>-->
+<!--            &lt;!&ndash;            <field name="search_view_id" ref="base.view_res_partner_filter"/>&ndash;&gt;-->
+<!--            <field name="domain">[('is_customer','=',True)]</field>-->
+<!--            <field name="context">{-->
+<!--                'search_default_customer': 1,-->
+<!--                'res_partner_search_mode':'customer',-->
+<!--                'default_is_company': True,-->
+<!--                'default_customer_rank': 1,-->
+<!--                'default_is_customer':True-->
+<!--                }-->
+<!--            </field>-->
+<!--        </record>-->
+
+<!--        <record model="ir.ui.menu" id="account.menu_account_customer">-->
+<!--            <field name="active" eval="False"/>-->
+<!--        </record>-->
+
+<!--        <record model="ir.ui.menu" id="account.menu_account_supplier">-->
+<!--            <field name="active" eval="False"/>-->
+<!--        </record>-->
+
+
+<!--        <menuitem-->
+<!--                id="custom_account_customer_menu"-->
+<!--                name="Customer"-->
+<!--                action="custom_customer_window"-->
+<!--                parent="account.menu_finance_receivables"-->
+<!--                sequence="111"-->
+<!--        />-->
+
+
+<!--        <menuitem-->
+<!--                id="custom_account_vendor_menu"-->
+<!--                name="Vendor"-->
+<!--                action="custom_vendor_window"-->
+<!--                parent="account.menu_finance_payables"-->
+<!--                sequence="201"-->
+<!--        />-->
+
+
+        <record id="purchase_order_asset_custom" model="ir.ui.view">
+            <field name="name">purchase.order.asset.custom</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.purchase_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="after">
+                    <field name="asset_number" invisible="True"/>
+                </xpath>
+                <xpath expr="//div[@name='button_box']" position="inside">
+                    <button name="action_see_asset" type="object" class="oe_stat_button"
+                            attrs="{'invisible':[('asset_number','=',0)]}" icon="fa-id-card-o">
+                                <div class="o_field_widget o_stat_info">
+                                    <span class="o_stat_value">
+                                        <field name="asset_number"/>
+                                    </span>
+                                    <span class="o_stat_text">Assets</span>
+                                </div>
+                    </button>
+                </xpath>
+
+                <xpath expr="//button[@name='button_unlock']" position="after">
+<!--                    <button name="%(create_asset_po_view_action)d"-->
+<!--                                        string="Create Asset"-->
+<!--                                        type="action" class="oe_highlight"-->
+<!--                                        attrs="{'invisible':[('state','not in',('purchase','done'))]}"-->
+<!--                                        context="{-->
+<!--                                        'default_po_id':id,-->
+<!--                                        'default_asset_type':'purchase'-->
+<!--                                        }"-->
+<!--                                        />-->
+                    <button name="open_create_asset_wiz"
+                                        string="Create Asset"
+                                        type="object" class="oe_highlight"
+                                        attrs="{'invisible':[('state','not in',('purchase','done'))]}"
+                                        />
+                </xpath>
+
+                <xpath expr="//field[@name='order_line']/tree/field[@name='qty_invoiced']" position="after">
+                    <field name="asset_created_nb"/>
+                </xpath>
+                <xpath expr="//field[@name='order_line']/form/group/group[1]/field[@name='qty_received_method']" position="before">
+                    <field name="asset_created_nb"/>
+                </xpath>
+
+
+
+
+            </field>
+        </record>
+
+    </data>
+</odoo>
